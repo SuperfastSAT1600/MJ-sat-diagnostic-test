@@ -19,8 +19,8 @@ SuperfastSAT SAT 진단 테스트 시스템입니다.
 ### 설치
 ```bash
 # 저장소 클론
-git clone https://github.com/SuperfastSAT1600/sat-diagnostic-test.git
-cd sat-diagnostic-test
+git clone https://github.com/SuperfastSAT1600/MJ-sat-diagnostic-test.git
+cd MJ-sat-diagnostic-test
 
 # 의존성 설치
 npm install
