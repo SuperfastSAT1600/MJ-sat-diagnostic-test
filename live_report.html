@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{studentName}}'s Diagnostic Test Results</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 40px 20px; color: #33475b; }
+        .report-container { max-width: 900px; margin: auto; background: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; }
+        .header { text-align: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 20px; }
+        .header h1 { font-size: 32px; font-weight: 900; color: #1a3a5f; margin: 0; }
+        .header p { font-size: 16px; color: #5a7184; margin: 5px 0 0; }
+        
+        .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 40px; }
+        .score-display { text-align: center; }
+        .score-display .label { font-size: 20px; font-weight: 700; color: #5a7184; }
+        .score-display .score-value { font-size: 100px; font-weight: 900; color: #3498db; line-height: 1; margin: 10px 0; }
+        .score-display .sub-score { font-size: 18px; color: #5a7184; }
+        .chart-container { width: 100%; max-width: 400px; margin: auto; }
+
+        .section { margin-top: 60px; }
+        .section-title { font-size: 24px; font-weight: 700; color: #1a3a5f; padding-bottom: 10px; border-bottom: 2px solid #3498db; margin-bottom: 20px; }
+        
+        .improvement-box { background-color: #e9f5ff; border-left: 5px solid #3498db; padding: 20px; border-radius: 5px; font-size: 16px; line-height: 1.7; }
+        
+        .cta-section { margin-top: 60px; background-color: #1a3a5f; color: white; padding: 40px; border-radius: 10px; text-align: center; }
+        .cta-section h2 { font-size: 28px; font-weight: 900; margin-top: 0; }
+        .cta-section p { color: #c0d1e2; font-size: 18px; }
+        .cta-button { display: inline-block; background-color: #3498db; color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-size: 20px; font-weight: bold; margin-top: 20px; transition: all 0.3s; }
+        .cta-button:hover { background-color: #ffffff; color: #1a3a5f; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <header class="header">
+            <h1>{{studentName}}'s Diagnostic Analysis Report</h1>
+            <p>Conducted on {{testDate}}</p>
+        </header>
+
+        <main>
+            <section class="summary-grid">
+                <div class="score-display">
+                    <div class="label">Total Score</div>
+                    <div id="totalScoreValue" class="score-value">0</div>
+                    <div class="sub-score">RW <span id="rwScoreValue">0</span> pts | Math <span id="mathScoreValue">0</span> pts</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="skillRadarChart"></canvas>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Learning Recommendations</h2>
+                <div class="improvement-box">
+                    <strong>{{studentName}}</strong> student showed relatively low accuracy in the <strong>'{{weakestSkill}}'</strong> area. We recommend reviewing the basic concepts of this area and developing application skills through solving related types of problems.
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <h2>Are you satisfied with the results?</h2>
+                <p>Let's create the optimal learning strategy for your student<br>with Superfast SAT's expert consultants.</p>
+                <a href="http://pf.kakao.com/_YourChannelID" target="_blank" class="cta-button">Apply for 1:1 Expert Consulting</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // const reportData = {{report_data_json}};
+        const reportData = {
+            score: 1200,
+            rwScore: 600,
+            mathScore: 600,
+            // ... Add necessary data
+        };
+
+        // Animation effects using GSAP
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Score counting animation
+            gsap.to("#totalScoreValue", { innerText: reportData.score, duration: 1.5, ease: "power1.out", snap: "innerText" });
+            gsap.to("#rwScoreValue", { innerText: reportData.rwScore, duration: 1.5, ease: "power1.out", snap: "innerText" });
+            gsap.to("#mathScoreValue", { innerText: reportData.mathScore, duration: 1.5, ease: "power1.out", snap: "innerText" });
+
+            // 2. Sequential section appearance animation (error-corrected version)
+            gsap.from(".section", { 
+                duration: 1, 
+                y: 30, 
+                opacity: 0, 
+                stagger: 0.3, 
+                delay: 0.5,
+                ease: "power2.out"
+            });
+        });
+
+        // Generate radar chart using Chart.js
+        const ctx = document.getElementById('skillRadarChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Vocabulary', 'Grammar', 'Information Comprehension', 'Algebra', 'Problem Solving'],
+                datasets: [{
+                    label: 'Achievement by Area',
+                    // Virtual data: Generate chart data based on actual scores.
+                    data: [
+                        (reportData.rwScore - 400) / 4, 
+                        (reportData.rwScore - 350) / 4,
+                        (reportData.rwScore - 380) / 4,
+                        (reportData.mathScore - 400) / 4,
+                        (reportData.mathScore - 370) / 4
+                    ],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        pointLabels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Diagnostic Test Report</title>
+    <style>
+        /* Remove external font import, use system default fonts */
+        body { font-family: Arial, sans-serif; font-size: 10px; color: #333; background-color: #fff; }
+        .page { width: 794px; height: 1123px; padding: 40px; box-sizing: border-box; page-break-after: always; border: 1px solid #eee; margin: 20px auto; }
+        .page:last-child { page-break-after: auto; }
+
+        .header-table { width: 100%; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .header-table .logo { font-size: 24px; font-weight: 700; }
+        .header-table .student-info { text-align: right; }
+        h1 { text-align: center; font-size: 28px; margin: 20px 0; font-weight: 700; }
+        
+        .total-score-box { text-align: center; margin-bottom: 30px; }
+        .total-score-box .label { font-size: 14px; }
+        .total-score-box .score { font-size: 48px; font-weight: 700; }
+        
+        /* Change Grid layout to Table for stability */
+        .content-table { width: 100%; }
+        .content-table .left-panel { width: 40%; vertical-align: top; }
+        .content-table .right-panel { width: 60%; vertical-align: top; padding-left: 20px; }
+        
+        .section-scores, .rationale-box { border: 1px solid #ccc; padding: 20px; height: 700px; box-sizing: border-box; }
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 5px; }
+        .section-score { font-size: 40px; font-weight: 700; color: #333; }
+        
+        .confidence-table { margin-top: 15px; }
+        .confidence-table h3 { margin-top: 0; font-size: 12px; }
+        .confidence-table table { width: 100%; border-collapse: collapse; }
+        .confidence-table td { padding: 4px 0; font-size: 11px; }
+        .confidence-table .q-num { text-align: left; }
+        .confidence-table .q-result-icon { width: 16px; vertical-align: middle; font-size: 14px; }
+        .confidence-table .q-confidence { text-align: right; }
+        
+        .rationale-box h3 { margin-top: 0; }
+        .rationale-list { list-style: none; padding-left: 0; margin: 0; }
+        .rationale-list li { margin-bottom: 8px; line-height: 1.4; }
+        .rationale-list .q-num { font-weight: 700; display: inline-block; width: 20px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <table class="header-table"><tr>
+            <td class="logo">Superfast SAT</td>
+            <td class="student-info"><strong>Name:</strong> {{studentName}}<br><strong>Tested on:</strong> {{testDate}}</td>
+        </tr></table>
+        <h1>Your Diagnostic Test Report</h1>
+        <div class="total-score-box">
+            <div class="label">TOTAL SCORE: <span class="score">{{score}}</span></div>
+        </div>
+        <table class="content-table"><tr>
+            <td class="left-panel">
+                <div class="section-scores">
+                    <div class="section-title">Reading and Writing</div>
+                    <div class="section-score">{{rwScore}}</div>
+                    <div class="confidence-table">
+                        <h3>Correctness | Confidence</h3>
+                        <table><tbody>{{rw_results_table}}</tbody></table>
+                    </div>
+                </div>
+            </td>
+            <td class="right-panel">
+                 <div class="rationale-box">
+                    <h3>Question Rationale</h3>
+                    <ul class="rationale-list">{{rw_rationale_list}}</ul>
+                </div>
+            </td>
+        </tr></table>
+    </div>
+
+    <div class="page">
+         <table class="header-table"><tr>
+            <td class="logo">Superfast SAT</td>
+            <td class="student-info"><strong>Name:</strong> {{studentName}}<br><strong>Tested on:</strong> {{testDate}}</td>
+        </tr></table>
+        <h1>Your Diagnostic Test Report</h1>
+        <div class="total-score-box">
+            <div class="label">TOTAL SCORE: <span class="score">{{score}}</span></div>
+        </div>
+        <table class="content-table"><tr>
+            <td class="left-panel">
+                <div class="section-scores">
+                    <div class="section-title">Math</div>
+                    <div class="section-score">{{mathScore}}</div>
+                    <div class="confidence-table">
+                        <h3>Correctness | Confidence</h3>
+                        <table><tbody>{{math_results_table}}</tbody></table>
+                    </div>
+                </div>
+            </td>
+            <td class="right-panel">
+                 <div class="rationale-box">
+                    <h3>Question Rationale</h3>
+                    <ul class="rationale-list">{{math_rationale_list}}</ul>
+                </div>
+            </td>
+        </tr></table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+Section,Number,Passage,Question,OptionA,OptionB,OptionC,OptionD
+RW,1,Graphic designer Marco Rivera draws inspiration from the neon lights and vibrant advertisements of bustling city streets. This love for dynamic visuals is evident in the _____ designs he creates.,Which choice completes the text with the most logical and precise word or phrase?,striking,mysterious,confirmed,restrained
+RW,2,"In a thriving coral reef ecosystem, various marine species establish an _____ network of interactions: small fish seek shelter among the coral branches, larger predators patrol the outer edges, and symbiotic organisms help maintain the reef’s delicate balance.",Which choice completes the text with the most logical and precise word or phrase?,ornamental,opaque,abstract,intricate
+RW,3,"The following text is adapted from The Future of Artificial Intelligence, a 2022 study on machine learning. Dr. Liu and Dr. Chapman are discussing the limitations of early AI models.
+
+LIU: The early versions of artificial intelligence struggled with complex decision-making. They could process vast amounts of data but lacked the ability to make nuanced judgments.
+
+CHAPMAN: Exactly. The first models were rigid. They no longer answer the demands of modern technology, which requires adaptability and learning over time.","As used in the text, what does the word ""answer"" most nearly mean?",Clarify,Support,Satisfy,Challenge
+RW,4,"The following text is from The Life and Legacy of Amelia Earhart, a biography of the famous aviator.
+
+Amelia Earhart approached each flight with a boldness that set her apart from many of her contemporaries. This quality allowed her to push the boundaries of aviation and challenge societal expectations, inspiring countless future pilots.","As used in the text, what does the word ""quality"" most nearly mean?",Reputation,Trait,Achievement,Standard
+RW,5,"The following lines are from Henry Wadsworth Longfellow’s 1879 poem “The Tide Rises, The Tide Falls.”
+
+   The tide rises, the tide falls,
+   The twilight darkens, the curlew calls;
+   Along the sea-sands damp and brown
+   The traveler hastens toward the town,
+   Ever returning, yet never the same,
+   The waves erase all trace of his name.
+
+   Darkness settles on roofs and walls,
+   But the sea, the sea in the darkness calls;
+   The little waves, with their soft, white hands,
+   Efface the footprints in the sands,
+   And the tide rises, the tide falls.",Which choice best describes the function of the underlined portion in the text as a whole?,To describe the physical motion of the tide,To express the traveler’s personal feelings of sadness,To emphasize human transience contrasted with nature’s continuity,To portray the sea as a hostile destroyer of human efforts
+RW,6,"Scientific theories, such as Darwin’s theory of evolution or Newton’s laws of motion, seek to explain natural phenomena using empirical evidence and logical reasoning. However, some scholars argue that a theory that only describes what happens without explaining why it happens lacks depth. For example, a theory that predicts planetary movements without addressing the forces that govern those movements might be seen as incomplete. Conversely, some theories not only describe phenomena but also provide underlying mechanisms to explain them.",Which choice best describes the overall structure of the text?,It introduces a field of study by referencing two major theories and then explains how some theories provide deeper explanations than others.,It presents two influential scientific theories and argues that neither explains the phenomena they describe.,It outlines the historical development of scientific theories and then proposes new research questions for scientists.,"It compares two well-known theories and determines which is more widely accepted by the scientific community."
+RW,7,"Text 1
+
+In the early 20th century, classic detective novels by authors like Agatha Christie and Arthur Conan Doyle defined the mystery genre. Their intricate plots, logical deductions, and memorable detectives have been celebrated for generations. However, some critics argue that these stories rely on outdated tropes—predictable whodunits, rigid social structures, and unrealistic detective brilliance—making them less relevant to modern readers. They suggest that these classic works should be set aside in favor of more contemporary mystery stories that reflect today’s social complexities and psychological depth.
+
+Text 2
+
+Traditional detective fiction may be old-fashioned, but it still has a place in the literary world. Many readers enjoy its structured mysteries, and the genre continues to sell millions of copies worldwide. While classic detective stories may not fully align with contemporary tastes, they can be updated to appeal to modern audiences. Some authors have successfully reimagined the genre, blending the deductive brilliance of classic detectives with contemporary themes, flawed protagonists, and morally complex cases. For instance, modern adaptations of Sherlock Holmes and Hercule Poirot have introduced new settings and psychological depth while preserving the intellectual challenge that fans appreciate.","Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",By rejecting the idea that classic detective novels feel outdated and arguing that modern readers would still enjoy their original formats.,By agreeing that classic detective stories no longer appeal to modern readers and should be replaced with contemporary mysteries.,By pointing out that publishers could increase their sales by encouraging more modernized adaptations of classic detective stories.,"By suggesting that rather than discarding classic detective stories, authors should consider updating them to align with contemporary storytelling styles.
+"
+RW,8,"Season,Hours per week studied by humanities majors,Hours per week studied by STEM majors
+Fall,12.3,18.7
+Winter,10.1,16.2
+Spring,11.5,17.4
+
+
+A team of education researchers tracked the study habits of college students across three seasons: fall, winter, and spring. They found that the lowest number of study hours per week occurred in ______.",Which choice most effectively uses data from the table to complete the statement?,"The spring season for humanities majors and the fall season for STEM majors.
+
+","The winter season for humanities majors and the spring season for STEM majors.
+
+","The winter season for both humanities and STEM majors.
+
+","The fall season for both humanities and STEM majors.
+
+"
+RW,9,,,,,,
+RW,10,,,,,,
+RW,11,,,,,,
+RW,12,,,,,,
+RW,13,,,,,,
+RW,14,,,,,,
+RW,15,,,,,,
+RW,16,,,,,,
+RW,17,,,,,,
+RW,18,,,,,,
+RW,19,,,,,,
+RW,20,,,,,,
+RW,21,,,,,,
+RW,22,,,,,,
+RW,23,,,,,,
+RW,24,,,,,,
+RW,25,,,,,,
+RW,26,,,,,,
+RW,27,,,,,,
