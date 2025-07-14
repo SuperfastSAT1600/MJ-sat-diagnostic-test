@@ -4,6 +4,7 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCdxGGYeVlFiTTYk2m8_p7-H5mpy5IdjoU",
   authDomain: "sfs-diagnostictest.firebaseapp.com",
+  databaseURL: "https://sfs-diagnostictest-default-rtdb.firebaseio.com",
   projectId: "sfs-diagnostictest",
   storageBucket: "sfs-diagnostictest.firebasestorage.app",
   messagingSenderId: "719185200332",
