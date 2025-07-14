@@ -21,7 +21,14 @@
 <body>
     <div class="container">
         <h1>Diagnostic test has been successfully submitted!</h1>
-        <p>Result analysis takes approximately 1-2 days. Once the analysis is complete, your assigned consultant will contact you.</p>
+        <p>Result analysis takes approximately 1-2 days. Once the analysis is complete, SuperfastSAT will contact you or your parent(s).</p>
+
+        <div id="code-box" style="background:#f8fafd;border:1.5px solid #b3c6e0;padding:24px 18px 18px 18px;border-radius:10px;margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto;">
+            <p style="font-size:1.15em;font-weight:600;color:#1a3a6b;margin-bottom:10px;">Please copy the unique code below and share it with your parent or send it via text message.</p>
+            <span id="student-name" style="display:none;">{{studentName}}</span>
+            <div style="font-size:1.5em;font-weight:bold;letter-spacing:2px;color:#0a2a7a;margin-bottom:16px;" id="unique-code">{{code}}</div>
+            <button id="send-code-sms-btn" style="background:#071BE9;color:#fff;border:none;border-radius:50px;padding:15px 30px;font-size:1.2em;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.04);width:100%;max-width:420px;margin:0 auto 10px auto;display:block;">Send code via SMS</button>
+        </div>
 
         <div class="cta-box">
             <p>Want to see your diagnostic test results quickly?</p>
@@ -30,17 +37,25 @@
             <a href="http://pf.kakao.com/_YourChannelID" target="_blank" class="kakaotalk-btn">⚡️ Quick Result Inquiry via KakaoTalk</a>
         </div>
 
-        <div class="section" id="faq">
-            <h2>Frequently Asked Questions (FAQ)</h2>
-            <p><strong>Q. When will the results be available?</strong><br>A. Analysis is typically completed within 1-2 business days, and faster confirmation is available if you inquire via KakaoTalk.</p>
-            <p><strong>Q. How are regular classes conducted?</strong><br>A. ...</p>
-        </div>
+        <!-- FAQ 섹션 삭제됨 -->
 
-        <div class="section" id="reviews">
-            <h2>Student and Parent Reviews</h2>
-            <p>"Thanks to the systematic analysis, I was able to accurately identify my child's weaknesses. Thank you so much!" - OOO Parent</p>
-            <p>"I didn't know my score could improve this much in such a short time. It was the best choice." - OOO Student</p>
+        <!-- Student and Parent Reviews 섹션 삭제됨 -->
+        <!-- 하단 공식 홈페이지/블로그 안내 -->
+        <div style="margin-top:48px; text-align:center; color:#1a3a6b; font-size:1.08em;">
+            <div style="margin-bottom:6px; font-weight:600;">SuperfastSAT Official Links</div>
+            <div>
+                <a href="https://superfastsat.com/" target="_blank" style="color:#071BE9; text-decoration:underline; font-weight:500;">Official Website</a> &nbsp;|&nbsp; 
+                <a href="https://blog.naver.com/superfastsat" target="_blank" style="color:#071BE9; text-decoration:underline; font-weight:500;">Official Blog</a>
+        </div>
         </div>
     </div>
 </body>
+<script>
+  document.getElementById('send-code-sms-btn').onclick = function() {
+    var code = document.getElementById('unique-code').innerText.trim();
+    var studentName = document.getElementById('student-name').innerText.trim();
+    var smsBody = encodeURIComponent(studentName + ' SAT 진단테스트 고유 코드: ' + code);
+    window.location.href = 'sms:?body=' + smsBody;
+  };
+</script>
 </html>

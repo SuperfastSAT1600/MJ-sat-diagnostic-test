@@ -6,12 +6,14 @@
     <title>SuperfastSAT Diagnostic Test</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="container">
         <img src="superfastsat-logo.png" alt="SuperfastSAT Logo" class="logo" style="max-width:320px;display:block;margin:0 auto 16px auto;">
         <h1 style="text-align:center;">SAT Diagnostic Test</h1>
-        <form action="/submit" method="POST">
+        <form action="/submit" method="POST" id="quizForm">
             <div class="student-info">
                 <label for="studentName">Student Name</label>
                 <input type="text" id="studentName" name="studentName" required>
@@ -37,36 +39,119 @@
                     <option value="High School Graduate">High School Graduate</option>
                 </select>
 
-                <label for="phoneNumber" style="margin-top: 15px;">Phone Number</label>
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                  <select id="countryCode" name="countryCode" required style="flex: 0 0 110px; padding: 6px 8px; font-size: 16px; min-width: 0;">
-                    <!-- Options will be populated by JavaScript -->
-                  </select>
-                  <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Enter phone number" style="flex: 1; padding: 6px 8px; font-size: 16px;">
+                <div class="notice-section" style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #071BE9;">
+                    <h3 style="margin-top: 0; color: #071BE9; font-size: 1.1em;">Important Notice</h3>
+                    <ul style="margin: 0; padding-left: 20px; color: #555;">
+                        <li style="margin-bottom: 10px;">Please do not use GPT or any AI tools during this diagnostic test. Understanding what you need to study is much more valuable than getting a high score on this test.</li>
+                        <li style="margin-bottom: 0;">Haven't studied for the SAT yet or worried about not improving your scores? Don't worry! SuperfastSAT is here to fully support your SAT success.</li>
+                    </ul>
                 </div>
 
-                <label for="coffeeName" style="margin-top: 15px;">Coffee Name</label>
-                <input type="text" id="coffeeName" name="coffeeName" required placeholder="Enter your favorite coffee name">
             </div>
 
             <div id="questions-area"></div>
-
-            <button type="submit" class="submit-btn">Submit Results</button>
+            <div class="timer-box" id="timerBox" style="display:none;"></div>
+            <div class="submit-section" id="submitSection" style="display:block; text-align: center; margin-top: 30px;">
+                <button type="submit" class="submit-btn" style="background: #071BE9; color: white; padding: 16px 32px; border: none; border-radius: 24px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background 0.2s;">
+                    Submit
+                </button>
+            </div>
         </form>
     </div>
     <script>
+    let timerStarted = false;
+    let timerInterval = null;
+    function startTimer(duration) {
+      let time = duration;
+      const timerBox = document.getElementById('timerBox');
+      timerBox.style.display = 'block';
+      function updateTimer() {
+        if (time < 0) {
+          timerBox.textContent = '시간 종료';
+          clearInterval(timerInterval);
+          return;
+        }
+        const h = String(Math.floor(time / 3600)).padStart(2, '0');
+        const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+        const s = String(time % 60).padStart(2, '0');
+        timerBox.textContent = `Time: ${h}:${m}:${s}`;
+        time--;
+      }
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
     // 동적으로 문제를 생성하는 코드
     document.addEventListener('DOMContentLoaded', function() {
         Papa.parse('questions.csv', {
             download: true,
             header: true,
+            skipEmptyLines: true,
             complete: function(results) {
-                const data = results.data.filter(row => row.Question && row.OptionA && row.OptionB && row.OptionC && row.OptionD);
+                const data = results.data.filter(row => row.Question);
                 const questionsArea = document.getElementById('questions-area');
+                // Number(문제 번호) 기준으로 오름차순 정렬
+                data.sort(function(a, b) {
+                  const numA = parseInt(a.Number, 10);
+                  const numB = parseInt(b.Number, 10);
+                  if (isNaN(numA)) return 1;
+                  if (isNaN(numB)) return -1;
+                  return numA - numB;
+                });
+
+                // RW 아코디언 버튼 및 패널 생성
+                const rwHeader = document.createElement('button');
+                rwHeader.className = 'accordion-header';
+                rwHeader.textContent = 'RW';
+                rwHeader.type = 'button';
+                const rwPanel = document.createElement('div');
+                rwPanel.className = 'accordion-panel';
+                rwPanel.style.display = 'none';
+                // RW 아코디언 버튼에 펼침/접힘 기호 추가
+                let rwOpen = false;
+                const updateRwHeader = () => {
+                  rwHeader.textContent = (rwOpen ? '▼ ' : '▶ ') + 'RW';
+                };
+                updateRwHeader();
+                rwHeader.addEventListener('click', function() {
+                  rwOpen = !rwOpen;
+                  rwPanel.style.display = rwOpen ? 'block' : 'none';
+                  updateRwHeader();
+                  if (rwOpen && !timerStarted) {
+                    timerStarted = true;
+                    startTimer(3600);
+                  }
+                });
+
+                // Math 아코디언 버튼 및 패널 생성
+                const mathHeader = document.createElement('button');
+                mathHeader.className = 'accordion-header';
+                mathHeader.type = 'button';
+                const mathPanel = document.createElement('div');
+                mathPanel.className = 'accordion-panel';
+                mathPanel.style.display = 'none';
+                let mathOpen = false;
+                const updateMathHeader = () => {
+                  mathHeader.textContent = (mathOpen ? '▼ ' : '▶ ') + 'Math';
+                };
+                updateMathHeader();
+                mathHeader.addEventListener('click', function() {
+                  mathOpen = !mathOpen;
+                  mathPanel.style.display = mathOpen ? 'block' : 'none';
+                  updateMathHeader();
+                  if (mathOpen && !timerStarted) {
+                    timerStarted = true;
+                    startTimer(3600);
+                  }
+                });
+
                 data.forEach(function(row, idx) {
-                    const qNum = idx + 1;
+                    const qNum = row.Number || (idx + 1);
                     const qBlock = document.createElement('div');
                     qBlock.className = 'question-block';
+                    
+                    // 문제 타입 확인
+                    const questionType = row.QuestionType || 'multiple_choice';
+                    
                     // Passage
                     if(row.Passage && row.Passage.trim() !== '') {
                         const passageDiv = document.createElement('div');
@@ -82,46 +167,79 @@
                     // Question Text
                     const qTitle = document.createElement('div');
                     qTitle.className = 'question-title';
-                    qTitle.textContent = row.Question;
+                    qTitle.innerHTML = row.Question;
                     qBlock.appendChild(qTitle);
                     // Answer label
                     const answerLabel = document.createElement('div');
                     answerLabel.className = 'answer-label';
                     answerLabel.textContent = 'Answer';
                     qBlock.appendChild(answerLabel);
-                    // Options
+                    
+                    // 문제 타입에 따라 다른 UI 생성
+                    if (questionType === 'short_answer') {
+                        // 주관식 문제 UI
+                        const shortAnswerDiv = document.createElement('div');
+                        shortAnswerDiv.className = 'short-answer-input';
+                        shortAnswerDiv.style.marginBottom = '20px';
+                        
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.name = 'q' + row.Subject + qNum;
+                        input.required = true;
+                        input.placeholder = '답을 입력하세요';
+                        input.style.width = '100%';
+                        input.style.padding = '12px 16px';
+                        input.style.border = '1.5px solid #e5e8f0';
+                        input.style.borderRadius = '24px';
+                        input.style.fontSize = '1.08em';
+                        input.style.background = '#fafbfc';
+                        input.style.boxSizing = 'border-box';
+                        
+                        shortAnswerDiv.appendChild(input);
+                        qBlock.appendChild(shortAnswerDiv);
+                    } else {
+                        // 객관식 문제 UI
                     const optionsDiv = document.createElement('div');
                     optionsDiv.className = 'options';
                     ['A','B','C','D'].forEach(function(opt) {
                         const rowDiv = document.createElement('div');
                         rowDiv.className = 'option-row';
+                        rowDiv.style.display = 'flex';
+                        rowDiv.style.alignItems = 'center';
+                        rowDiv.style.marginBottom = '10px';
+                        // 알파벳 라벨 (테두리 바깥)
+                        const alphaLabel = document.createElement('span');
+                        alphaLabel.textContent = opt;
+                        alphaLabel.className = 'option-alpha-label';
+                        rowDiv.appendChild(alphaLabel);
+                        // 보기 라벨 (테두리 안)
                         const label = document.createElement('label');
                         label.style.display = 'flex';
                         label.style.alignItems = 'center';
                         label.style.width = '100%';
-                        label.style.padding = '10px 16px';
+                        label.style.padding = '2px 16px'; // 위아래 2px, 좌우 16px
                         label.style.border = '1.5px solid #e5e8f0';
                         label.style.borderRadius = '24px';
-                        label.style.marginBottom = '10px';
                         label.style.background = '#fafbfc';
                         label.style.fontWeight = '500';
                         label.style.fontSize = '1.08em';
                         label.style.transition = 'border 0.2s, background 0.2s';
                         const input = document.createElement('input');
                         input.type = 'radio';
-                        input.name = 'q' + qNum;
+                        input.name = 'q' + row.Subject + qNum;
                         input.value = opt;
                         input.style.marginRight = '16px';
                         input.style.accentColor = '#071BE9';
                         if(opt==='A') input.required = true;
                         label.appendChild(input);
                         const span = document.createElement('span');
-                        span.textContent = row['Option'+opt];
+                        span.innerHTML = row['Option'+opt];
                         label.appendChild(span);
                         rowDiv.appendChild(label);
                         optionsDiv.appendChild(rowDiv);
                     });
                     qBlock.appendChild(optionsDiv);
+                    }
                     // Confidence Rating (Answer 아래로 이동)
                     const confLabel = document.createElement('div');
                     confLabel.className = 'confidence-label';
@@ -148,7 +266,7 @@
                         label.style.transition = 'background 0.2s, color 0.2s, border 0.2s';
                         const input = document.createElement('input');
                         input.type = 'radio';
-                        input.name = 'c' + qNum;
+                        input.name = 'c' + row.Subject + qNum;
                         input.value = val;
                         input.style.marginRight = '6px';
                         input.style.accentColor = '#071BE9';
@@ -163,225 +281,207 @@
                         confBtns.appendChild(label);
                     });
                     qBlock.appendChild(confBtns);
-                    questionsArea.appendChild(qBlock);
+
+                    // Subject 컬럼 기준으로 분류
+                    if (row.Subject && row.Subject.trim() === 'Math') {
+                      mathPanel.appendChild(qBlock);
+                    } else {
+                      rwPanel.appendChild(qBlock);
+                    }
+
+                    // MathJax 동적 렌더링 트리거
+                    if (window.MathJax && window.MathJax.typesetPromise) {
+                      window.MathJax.typesetPromise([qBlock]);
+                    }
                 });
+                // RW, Math 아코디언 버튼/패널을 questionsArea에 추가
+                questionsArea.insertBefore(rwHeader, questionsArea.firstChild);
+                questionsArea.insertBefore(rwPanel, rwHeader.nextSibling);
+                questionsArea.insertBefore(mathHeader, rwPanel.nextSibling);
+                questionsArea.insertBefore(mathPanel, mathHeader.nextSibling);
             }
         });
 
-        // Populate country code select with all countries
-        const countryCodes = [
-          { name: "Afghanistan", code: "+93", flag: "🇦🇫" },
-          { name: "Albania", code: "+355", flag: "🇦🇱" },
-          { name: "Algeria", code: "+213", flag: "🇩🇿" },
-          { name: "Andorra", code: "+376", flag: "🇦🇩" },
-          { name: "Angola", code: "+244", flag: "🇦🇴" },
-          { name: "Antigua and Barbuda", code: "+1-268", flag: "🇦🇬" },
-          { name: "Argentina", code: "+54", flag: "🇦🇷" },
-          { name: "Armenia", code: "+374", flag: "🇦🇲" },
-          { name: "Australia", code: "+61", flag: "🇦🇺" },
-          { name: "Austria", code: "+43", flag: "🇦🇹" },
-          { name: "Azerbaijan", code: "+994", flag: "🇦🇿" },
-          { name: "Bahamas", code: "+1-242", flag: "🇧🇸" },
-          { name: "Bahrain", code: "+973", flag: "🇧🇭" },
-          { name: "Bangladesh", code: "+880", flag: "🇧🇩" },
-          { name: "Barbados", code: "+1-246", flag: "🇧🇧" },
-          { name: "Belarus", code: "+375", flag: "🇧🇾" },
-          { name: "Belgium", code: "+32", flag: "🇧🇪" },
-          { name: "Belize", code: "+501", flag: "🇧🇿" },
-          { name: "Benin", code: "+229", flag: "🇧🇯" },
-          { name: "Bhutan", code: "+975", flag: "🇧🇹" },
-          { name: "Bolivia", code: "+591", flag: "🇧🇴" },
-          { name: "Bosnia and Herzegovina", code: "+387", flag: "🇧🇦" },
-          { name: "Botswana", code: "+267", flag: "🇧🇼" },
-          { name: "Brazil", code: "+55", flag: "🇧🇷" },
-          { name: "Brunei", code: "+673", flag: "🇧🇳" },
-          { name: "Bulgaria", code: "+359", flag: "🇧🇬" },
-          { name: "Burkina Faso", code: "+226", flag: "🇧🇫" },
-          { name: "Burundi", code: "+257", flag: "🇧🇮" },
-          { name: "Cabo Verde", code: "+238", flag: "🇨🇻" },
-          { name: "Cambodia", code: "+855", flag: "🇰🇭" },
-          { name: "Cameroon", code: "+237", flag: "🇨🇲" },
-          { name: "Canada", code: "+1", flag: "🇨🇦" },
-          { name: "Central African Republic", code: "+236", flag: "🇨🇫" },
-          { name: "Chad", code: "+235", flag: "🇹🇩" },
-          { name: "Chile", code: "+56", flag: "🇨🇱" },
-          { name: "China", code: "+86", flag: "🇨🇳" },
-          { name: "Colombia", code: "+57", flag: "🇨🇴" },
-          { name: "Comoros", code: "+269", flag: "🇰🇲" },
-          { name: "Congo", code: "+242", flag: "🇨🇬" },
-          { name: "Costa Rica", code: "+506", flag: "🇨🇷" },
-          { name: "Croatia", code: "+385", flag: "🇭🇷" },
-          { name: "Cuba", code: "+53", flag: "🇨🇺" },
-          { name: "Cyprus", code: "+357", flag: "🇨🇾" },
-          { name: "Czechia", code: "+420", flag: "🇨🇿" },
-          { name: "Denmark", code: "+45", flag: "🇩🇰" },
-          { name: "Djibouti", code: "+253", flag: "🇩🇯" },
-          { name: "Dominica", code: "+1-767", flag: "🇩🇲" },
-          { name: "Dominican Republic", code: "+1-809", flag: "🇩🇴" },
-          { name: "Ecuador", code: "+593", flag: "🇪🇨" },
-          { name: "Egypt", code: "+20", flag: "🇪🇬" },
-          { name: "El Salvador", code: "+503", flag: "🇸🇻" },
-          { name: "Equatorial Guinea", code: "+240", flag: "🇬🇶" },
-          { name: "Eritrea", code: "+291", flag: "🇪🇷" },
-          { name: "Estonia", code: "+372", flag: "🇪🇪" },
-          { name: "Eswatini", code: "+268", flag: "🇸🇿" },
-          { name: "Ethiopia", code: "+251", flag: "🇪🇹" },
-          { name: "Fiji", code: "+679", flag: "🇫🇯" },
-          { name: "Finland", code: "+358", flag: "🇫🇮" },
-          { name: "France", code: "+33", flag: "🇫🇷" },
-          { name: "Gabon", code: "+241", flag: "🇬🇦" },
-          { name: "Gambia", code: "+220", flag: "🇬🇲" },
-          { name: "Georgia", code: "+995", flag: "🇬🇪" },
-          { name: "Germany", code: "+49", flag: "🇩🇪" },
-          { name: "Ghana", code: "+233", flag: "🇬🇭" },
-          { name: "Greece", code: "+30", flag: "🇬🇷" },
-          { name: "Grenada", code: "+1-473", flag: "🇬🇩" },
-          { name: "Guatemala", code: "+502", flag: "🇬🇹" },
-          { name: "Guinea", code: "+224", flag: "🇬🇳" },
-          { name: "Guinea-Bissau", code: "+245", flag: "🇬🇼" },
-          { name: "Guyana", code: "+592", flag: "🇬🇾" },
-          { name: "Haiti", code: "+509", flag: "🇭🇹" },
-          { name: "Honduras", code: "+504", flag: "🇭🇳" },
-          { name: "Hungary", code: "+36", flag: "🇭🇺" },
-          { name: "Iceland", code: "+354", flag: "🇮🇸" },
-          { name: "India", code: "+91", flag: "🇮🇳" },
-          { name: "Indonesia", code: "+62", flag: "🇮🇩" },
-          { name: "Iran", code: "+98", flag: "🇮🇷" },
-          { name: "Iraq", code: "+964", flag: "🇮🇶" },
-          { name: "Ireland", code: "+353", flag: "🇮🇪" },
-          { name: "Israel", code: "+972", flag: "🇮🇱" },
-          { name: "Italy", code: "+39", flag: "🇮🇹" },
-          { name: "Jamaica", code: "+1-876", flag: "🇯🇲" },
-          { name: "Japan", code: "+81", flag: "🇯🇵" },
-          { name: "Jordan", code: "+962", flag: "🇯🇴" },
-          { name: "Kazakhstan", code: "+7", flag: "🇰🇿" },
-          { name: "Kenya", code: "+254", flag: "🇰🇪" },
-          { name: "Kiribati", code: "+686", flag: "🇰🇮" },
-          { name: "Kuwait", code: "+965", flag: "🇰🇼" },
-          { name: "Kyrgyzstan", code: "+996", flag: "🇰🇬" },
-          { name: "Laos", code: "+856", flag: "🇱🇦" },
-          { name: "Latvia", code: "+371", flag: "🇱🇻" },
-          { name: "Lebanon", code: "+961", flag: "🇱🇧" },
-          { name: "Lesotho", code: "+266", flag: "🇱🇸" },
-          { name: "Liberia", code: "+231", flag: "🇱🇷" },
-          { name: "Libya", code: "+218", flag: "🇱🇾" },
-          { name: "Liechtenstein", code: "+423", flag: "🇱🇮" },
-          { name: "Lithuania", code: "+370", flag: "🇱🇹" },
-          { name: "Luxembourg", code: "+352", flag: "🇱🇺" },
-          { name: "Madagascar", code: "+261", flag: "🇲🇬" },
-          { name: "Malawi", code: "+265", flag: "🇲🇼" },
-          { name: "Malaysia", code: "+60", flag: "🇲🇾" },
-          { name: "Maldives", code: "+960", flag: "🇲🇻" },
-          { name: "Mali", code: "+223", flag: "🇲🇱" },
-          { name: "Malta", code: "+356", flag: "🇲🇹" },
-          { name: "Marshall Islands", code: "+692", flag: "🇲🇭" },
-          { name: "Mauritania", code: "+222", flag: "🇲🇷" },
-          { name: "Mauritius", code: "+230", flag: "🇲🇺" },
-          { name: "Mexico", code: "+52", flag: "🇲🇽" },
-          { name: "Micronesia", code: "+691", flag: "🇫🇲" },
-          { name: "Moldova", code: "+373", flag: "🇲🇩" },
-          { name: "Monaco", code: "+377", flag: "🇲🇨" },
-          { name: "Mongolia", code: "+976", flag: "🇲🇳" },
-          { name: "Montenegro", code: "+382", flag: "🇲🇪" },
-          { name: "Morocco", code: "+212", flag: "🇲🇦" },
-          { name: "Mozambique", code: "+258", flag: "🇲🇿" },
-          { name: "Myanmar", code: "+95", flag: "🇲🇲" },
-          { name: "Namibia", code: "+264", flag: "🇳🇦" },
-          { name: "Nauru", code: "+674", flag: "🇳🇷" },
-          { name: "Nepal", code: "+977", flag: "🇳🇵" },
-          { name: "Netherlands", code: "+31", flag: "🇳🇱" },
-          { name: "New Zealand", code: "+64", flag: "🇳🇿" },
-          { name: "Nicaragua", code: "+505", flag: "🇳🇮" },
-          { name: "Niger", code: "+227", flag: "🇳🇪" },
-          { name: "Nigeria", code: "+234", flag: "🇳🇬" },
-          { name: "North Korea", code: "+850", flag: "🇰🇵" },
-          { name: "North Macedonia", code: "+389", flag: "🇲🇰" },
-          { name: "Norway", code: "+47", flag: "🇳🇴" },
-          { name: "Oman", code: "+968", flag: "🇴🇲" },
-          { name: "Pakistan", code: "+92", flag: "🇵🇰" },
-          { name: "Palau", code: "+680", flag: "🇵🇼" },
-          { name: "Palestine", code: "+970", flag: "🇵🇸" },
-          { name: "Panama", code: "+507", flag: "🇵🇦" },
-          { name: "Papua New Guinea", code: "+675", flag: "🇵🇬" },
-          { name: "Paraguay", code: "+595", flag: "🇵🇾" },
-          { name: "Peru", code: "+51", flag: "🇵🇪" },
-          { name: "Philippines", code: "+63", flag: "🇵🇭" },
-          { name: "Poland", code: "+48", flag: "🇵🇱" },
-          { name: "Portugal", code: "+351", flag: "🇵🇹" },
-          { name: "Qatar", code: "+974", flag: "🇶🇦" },
-          { name: "Romania", code: "+40", flag: "🇷🇴" },
-          { name: "Russia", code: "+7", flag: "🇷🇺" },
-          { name: "Rwanda", code: "+250", flag: "🇷🇼" },
-          { name: "Saint Kitts and Nevis", code: "+1-869", flag: "🇰🇳" },
-          { name: "Saint Lucia", code: "+1-758", flag: "🇱🇨" },
-          { name: "Saint Vincent and the Grenadines", code: "+1-784", flag: "🇻🇨" },
-          { name: "Samoa", code: "+685", flag: "🇼🇸" },
-          { name: "San Marino", code: "+378", flag: "🇸🇲" },
-          { name: "Sao Tome and Principe", code: "+239", flag: "🇸🇹" },
-          { name: "Saudi Arabia", code: "+966", flag: "🇸🇦" },
-          { name: "Senegal", code: "+221", flag: "🇸🇳" },
-          { name: "Serbia", code: "+381", flag: "🇷🇸" },
-          { name: "Seychelles", code: "+248", flag: "🇸🇨" },
-          { name: "Sierra Leone", code: "+232", flag: "🇸🇱" },
-          { name: "Singapore", code: "+65", flag: "🇸🇬" },
-          { name: "Slovakia", code: "+421", flag: "🇸🇰" },
-          { name: "Slovenia", code: "+386", flag: "🇸🇮" },
-          { name: "Solomon Islands", code: "+677", flag: "🇸🇧" },
-          { name: "Somalia", code: "+252", flag: "🇸🇴" },
-          { name: "South Africa", code: "+27", flag: "🇿🇦" },
-          { name: "South Korea", code: "+82", flag: "🇰🇷" },
-          { name: "South Sudan", code: "+211", flag: "🇸🇸" },
-          { name: "Spain", code: "+34", flag: "🇪🇸" },
-          { name: "Sri Lanka", code: "+94", flag: "🇱🇰" },
-          { name: "Sudan", code: "+249", flag: "🇸🇩" },
-          { name: "Suriname", code: "+597", flag: "🇸🇷" },
-          { name: "Sweden", code: "+46", flag: "🇸🇪" },
-          { name: "Switzerland", code: "+41", flag: "🇨🇭" },
-          { name: "Syria", code: "+963", flag: "🇸🇾" },
-          { name: "Taiwan", code: "+886", flag: "🇹🇼" },
-          { name: "Tajikistan", code: "+992", flag: "🇹🇯" },
-          { name: "Tanzania", code: "+255", flag: "🇹🇿" },
-          { name: "Thailand", code: "+66", flag: "🇹🇭" },
-          { name: "Timor-Leste", code: "+670", flag: "🇹🇱" },
-          { name: "Togo", code: "+228", flag: "🇹🇬" },
-          { name: "Tonga", code: "+676", flag: "🇹🇴" },
-          { name: "Trinidad and Tobago", code: "+1-868", flag: "🇹🇹" },
-          { name: "Tunisia", code: "+216", flag: "🇹🇳" },
-          { name: "Turkey", code: "+90", flag: "🇹🇷" },
-          { name: "Turkmenistan", code: "+993", flag: "🇹🇲" },
-          { name: "Tuvalu", code: "+688", flag: "🇹🇻" },
-          { name: "Uganda", code: "+256", flag: "🇺🇬" },
-          { name: "Ukraine", code: "+380", flag: "🇺🇦" },
-          { name: "United Arab Emirates", code: "+971", flag: "🇦🇪" },
-          { name: "United Kingdom", code: "+44", flag: "🇬🇧" },
-          { name: "United States", code: "+1", flag: "🇺🇸" },
-          { name: "Uruguay", code: "+598", flag: "🇺🇾" },
-          { name: "Uzbekistan", code: "+998", flag: "🇺🇿" },
-          { name: "Vanuatu", code: "+678", flag: "🇻🇺" },
-          { name: "Vatican City", code: "+39", flag: "🇻🇦" },
-          { name: "Venezuela", code: "+58", flag: "🇻🇪" },
-          { name: "Vietnam", code: "+84", flag: "🇻🇳" },
-          { name: "Yemen", code: "+967", flag: "🇾🇪" },
-          { name: "Zambia", code: "+260", flag: "🇿🇲" },
-          { name: "Zimbabwe", code: "+263", flag: "🇿🇼" }
-        ];
-        // 사용자 지정 상위 국가 우선 정렬
-        const customTopCountries = [
-          "South Korea", "United States", "Vietnam", "China", "Malaysia", "Indonesia"
-        ];
-        const customTop = customTopCountries.map(name => countryCodes.find(c => c.name === name)).filter(Boolean);
-        const rest = countryCodes.filter(c => !customTopCountries.includes(c.name)).sort((a, b) => a.name.localeCompare(b.name));
-        const sortedCountries = [...customTop, ...rest];
-        const select = document.getElementById('countryCode');
-        if (select) {
-          sortedCountries.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country.code;
-            option.textContent = `${country.flag} ${country.code} (${country.name})`;
-            select.appendChild(option);
-          });
-        }
+
     });
+
+    // 폼 제출 시 누락된 부분으로 자동 스크롤하는 기능
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // 문제별로 답안(q...)과 확신도(c...) 그룹을 모두 체크했는지 확인
+        const form = this;
+        const allInputs = Array.from(form.querySelectorAll('input[type="radio"], input[type="text"]'));
+        const questionNames = new Set();
+        const confidenceNames = new Set();
+        allInputs.forEach(input => {
+            if (input.name.startsWith('q')) questionNames.add(input.name);
+            if (input.name.startsWith('c')) confidenceNames.add(input.name);
+        });
+        const missingFields = [];
+        // 답안 체크
+        questionNames.forEach(name => {
+            const group = form.querySelectorAll(`input[name='${name}']`);
+            const isChecked = Array.from(group).some(input => input.checked || (input.type === 'text' && input.value.trim() !== ''));
+            if (!isChecked) missingFields.push(group[0]);
+        });
+        // 확신도 체크
+        confidenceNames.forEach(name => {
+            const group = form.querySelectorAll(`input[name='${name}']`);
+            const isChecked = Array.from(group).some(input => input.checked);
+            if (!isChecked) missingFields.push(group[0]);
+        });
+        if (missingFields.length > 0) {
+            // 누락된 필드들을 위치 순으로 정렬 (상단부터)
+            missingFields.sort((a, b) => {
+                const rectA = a.getBoundingClientRect();
+                const rectB = b.getBoundingClientRect();
+                return rectA.top - rectB.top;
+            });
+            // 첫 번째 누락된 필드로 스크롤
+            const firstMissingField = missingFields[0];
+            firstMissingField.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            // 시각적 강조 효과 추가
+            firstMissingField.style.border = '2px solid #e74c3c';
+            firstMissingField.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.3)';
+            // 3초 후 강조 효과 제거
+            setTimeout(() => {
+                firstMissingField.style.border = '';
+                firstMissingField.style.boxShadow = '';
+            }, 3000);
+            // 알림 메시지 표시
+            showNotification(`Please complete ${missingFields.length} missing field(s). Scrolling to the first one...`);
+            return false;
+        }
+        // 모든 필수 필드가 완료되면 폼 제출
+        this.submit();
+    });
+    
+    // 알림 메시지 함수
+    function showNotification(message) {
+        // 기존 알림 제거
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // 새 알림 생성
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideDown 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // 4초 후 알림 제거
+        setTimeout(() => {
+            notification.style.animation = 'slideUp 0.3s ease-in';
+            setTimeout(() => notification.remove(), 300);
+        }, 4000);
+    }
     </script>
+    <style>
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      padding: 14px;
+      font-size: 1.1em;
+      background: #fff;
+      border: 2px solid #071BE9;
+      border-radius: 24px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s, border 0.2s;
+    }
+    .accordion-header:hover {
+      background: #f3f4f6;
+    }
+    .accordion-panel {
+      padding: 0 14px 14px 14px;
+      border-bottom: 1px solid #e5e8f0;
+      background: #fff;
+    }
+    .option-row {
+      display: flex;
+      align-items: center;
+    }
+    .option-alpha-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      font-weight: 700;
+      font-size: 1.08em;
+      color: #071BE9;
+      background: #fff;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      margin-right: 12px;
+      user-select: none;
+      box-sizing: border-box;
+      transition: border 0.2s, background 0.2s;
+    }
+    .timer-box {
+      position: fixed;
+      top: 32px;
+      right: 280px;
+      z-index: 1000;
+      background: #071BE9;
+      color: #fff;
+      font-size: 1.35em;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 32px;
+      box-shadow: 0 4px 16px rgba(7,27,233,0.08);
+      letter-spacing: 1px;
+      transition: background 0.2s;
+      opacity: 0.97;
+      user-select: none;
+    }
+    .submit-btn:hover {
+      background: #0515c7 !important;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+      }
+    }
+    </style>
 </body>
 </html>

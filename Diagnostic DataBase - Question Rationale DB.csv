@@ -1,0 +1,956 @@
+Test,Section,Unit,Type,Answer,Confidence,Question Rationale,Correctness
+Diagnostic Test V2,RW,1,객관식,A,0,Clicked randomly or misunderstood the vocabulary entirely; “striking” is the only word that logically fits the tone and content of the sentence.,🟢
+Diagnostic Test V2,RW,1,객관식,A,25,Had a vague sense that the word matched the idea of dynamic visuals but wasn’t sure if it was too strong or not quite the intended meaning.,🟢
+Diagnostic Test V2,RW,1,객관식,A,50,Understood that “striking” connects to boldness and visibility but was still uncertain due to possible unfamiliarity with the word in a design context.,🟢
+Diagnostic Test V2,RW,1,객관식,A,75,Saw “striking” as the most appropriate option given the neon lights and vibrant advertisements but may have briefly considered whether a more nuanced word was expected.,🟢
+Diagnostic Test V2,RW,1,객관식,A,100,"Clearly understood that “striking” perfectly matches the imagery of dynamic, attention-grabbing visuals, showing strong vocabulary and contextual reasoning.",🟢
+Diagnostic Test V2,RW,1,객관식,B,0,"Recognized this was an illogical match, perhaps aware it had no connection to the described visuals.",🟡
+Diagnostic Test V2,RW,1,객관식,B,25,"Thought that “mysterious” sounded artistic or sophisticated and guessed it could relate to a certain type of design mood, though weakly justified.",🟡
+Diagnostic Test V2,RW,1,객관식,B,50,Believed “mysterious” was a somewhat valid artistic descriptor but did not reconcile it with the explicit cues of energy and color from neon lights.,🟡
+Diagnostic Test V2,RW,1,객관식,B,75,"Misunderstood the core tone of the passage, mistaking “dynamic visuals” for ambiguous or subtle inspiration.",🟡
+Diagnostic Test V2,RW,1,객관식,B,100,Deeply misread the text and perhaps thought “mysterious” implied a style inspired by urban life without recognizing the mismatch in tone.,🟡
+Diagnostic Test V2,RW,1,객관식,C,0,Knew this word doesn’t describe a design style and is a factual term unrelated to visual art.,🔴
+Diagnostic Test V2,RW,1,객관식,C,25,"Misclicked or misinterpreted the prompt, potentially conflating confirmation with something being “established” in a visual identity.",🔴
+Diagnostic Test V2,RW,1,객관식,C,50,Very confused about the use of adjectives in context or could be applying logic from unrelated subjects like science or law.,🔴
+Diagnostic Test V2,RW,1,객관식,C,75,"Demonstrates a significant misunderstanding of both the tone of the passage and the meaning of “confirmed,” possibly using test-taking guesswork.",🔴
+Diagnostic Test V2,RW,1,객관식,C,100,Major conceptual error where the student does not recognize part-of-speech function or contextual appropriateness.,🔴
+Diagnostic Test V2,RW,1,객관식,D,0,"Correctly rejected the term as clashing with the vibrant, dynamic inspiration described.",🔴
+Diagnostic Test V2,RW,1,객관식,D,25,"Hesitated, thinking perhaps a contrast was being made between inspiration and execution, but ultimately saw it didn’t fit.",🔴
+Diagnostic Test V2,RW,1,객관식,D,50,Read “restrained” as a valid design adjective but didn’t catch that it directly contradicts the vibrancy and dynamism described.,🔴
+Diagnostic Test V2,RW,1,객관식,D,75,Misunderstands the tone or may think the sentence is highlighting irony or contrast in style versus inspiration.,🔴
+Diagnostic Test V2,RW,1,객관식,D,100,"Misinterpreted the passage severely, confusing “restrained” as a logical follow-up to “dynamic visuals,” when it’s in fact the opposite.",🔴
+Diagnostic Test V2,RW,2,객관식,A,0,"Believes ""ornamental"" is completely illogical in the context of a network of interactions and has ruled it out with certainty.",🟡
+Diagnostic Test V2,RW,2,객관식,A,25,"Is unsure about ""ornamental"" and might be focusing on the visual beauty of the coral reef rather than the ecological relationships.",🟡
+Diagnostic Test V2,RW,2,객관식,A,50,"Sees some merit in ""ornamental"" if associating reef ecosystems primarily with decoration, but still has doubts.",🟡
+Diagnostic Test V2,RW,2,객관식,A,75,"Is leaning toward ""ornamental"" due to surface-level associations with coral reefs, but has moderate uncertainty about whether it fits the idea of interactions.",🟡
+Diagnostic Test V2,RW,2,객관식,A,100,"Is fully convinced that ""ornamental"" accurately describes the interaction network, showing a misunderstanding of the word’s connotation.",🟡
+Diagnostic Test V2,RW,2,객관식,B,0,"Has completely ruled out ""opaque"" as inappropriate for a described system of observable biological behaviors.",🔴
+Diagnostic Test V2,RW,2,객관식,B,25,"Is unsure and is considering that ecological systems can sometimes be difficult to understand, even though the passage describes them clearly.",🔴
+Diagnostic Test V2,RW,2,객관식,B,50,"Is tentatively exploring whether ""opaque"" could metaphorically apply to the complexity of the system but has clear doubts.",🔴
+Diagnostic Test V2,RW,2,객관식,B,75,"Is considering ""opaque"" as a serious contender, possibly misinterpreting the term as meaning complex rather than unclear.",🔴
+Diagnostic Test V2,RW,2,객관식,B,100,"Mistakenly thinks ""opaque"" accurately conveys the nature of coral reef interactions, misunderstanding both the word and the passage.",🔴
+Diagnostic Test V2,RW,2,객관식,C,0,"Fully understands that ""abstract"" doesn’t fit with the specific, tangible examples given in the passage.",🔴
+Diagnostic Test V2,RW,2,객관식,C,25,Is unsure and might be misled by the idea that ecological concepts can sometimes be abstract.,🔴
+Diagnostic Test V2,RW,2,객관식,C,50,"Is somewhat persuaded by the academic tone of ""abstract,"" but remains aware that the passage gives concrete examples.",🔴
+Diagnostic Test V2,RW,2,객관식,C,75,"Is strongly leaning toward ""abstract"" due to its association with theoretical ideas, despite the detailed nature of the sentence.",🔴
+Diagnostic Test V2,RW,2,객관식,C,100,"Firmly believes ""abstract"" matches the sentence, likely overlooking the concrete imagery in the passage.",🔴
+Diagnostic Test V2,RW,2,객관식,D,0,"Fully recognizes that ""intricate"" precisely describes the detailed and interconnected relationships described in the reef ecosystem.",🟢
+Diagnostic Test V2,RW,2,객관식,D,25,"Is fairly confident in ""intricate,"" seeing it as a good fit for the sentence but allowing for some doubt.",🟢
+Diagnostic Test V2,RW,2,객관식,D,50,"Sees ""intricate"" as likely correct due to the complex relationships described, though still unsure of vocabulary nuance.",🟢
+Diagnostic Test V2,RW,2,객관식,D,75,"Is tentatively choosing ""intricate"" but is uncertain about whether complexity is the key focus of the sentence.",🟢
+Diagnostic Test V2,RW,2,객관식,D,100,"Is unsure of vocabulary or the context, and chose ""intricate"" as a guess among words that seemed plausible.",🟢
+Diagnostic Test V2,RW,3,객관식,A,0,"The choice of this answer suggests no understanding of the contextual use of ""answer""; it implies a complete misreading, perhaps interpreting it in its common Q&A sense, unrelated to satisfying a need.",🔴
+Diagnostic Test V2,RW,3,객관식,A,25,"This level of confidence indicates some familiarity with “answer” meaning “explain,” but applying it here shows a surface-level reading that misses the deeper demand-response relationship in the sentence.",🔴
+Diagnostic Test V2,RW,3,객관식,A,50,"There is partial recognition of the contextual tension between early AI models and modern demands, but the choice still wrongly equates “answer” with “clarify,” suggesting an incomplete grasp.",🔴
+Diagnostic Test V2,RW,3,객관식,A,75,"With this confidence, the student may have weighed ""clarify"" against other choices but ultimately failed to align “answer” with “satisfy,” reflecting a misinterpretation of intent.",🔴
+Diagnostic Test V2,RW,3,객관식,A,100,"The student is highly confident but completely wrong, likely due to overgeneralizing the most familiar meaning of “answer” without reconsidering its metaphorical use in a more technical or formal context.",🔴
+Diagnostic Test V2,RW,3,객관식,B,0,This choice shows no understanding of how “answer” functions in context; “support” is not a logical synonym here and represents a misalignment with the passage’s tone.,🟡
+Diagnostic Test V2,RW,3,객관식,B,25,"The student may associate “support” with the idea of technology, but this reflects a misunderstanding of the specific relationship described between AI models and modern demands.",🟡
+Diagnostic Test V2,RW,3,객관식,B,50,"Some contextual awareness is evident, but interpreting “answer” as “support” suggests the student confuses aiding technology with fulfilling its evolving requirements.",🟡
+Diagnostic Test V2,RW,3,객관식,B,75,"The student likely interprets “support” as a rough equivalent of “respond to,” which is partially true, but still misses the nuance that the AI must meet the needs, not just help them.",🟡
+Diagnostic Test V2,RW,3,객관식,B,100,"The student shows strong confidence in a superficially plausible but ultimately incorrect meaning, perhaps due to conflating ""support"" with fulfilling or enabling — close, but imprecise.",🟡
+Diagnostic Test V2,RW,3,객관식,C,0,"This indicates no understanding of the phrase “answer the demands,” mistaking it for confrontation; it reflects a major disconnect from the intended meaning.",🟢
+Diagnostic Test V2,RW,3,객관식,C,25,"The student recognizes some tension between AI and modern tech but incorrectly sees “answer” as implying opposition, showing a misreading of the tone.",🟢
+Diagnostic Test V2,RW,3,객관식,C,50,"This suggests a guess based on the idea that outdated models might ""go against"" demands — a confusion between lagging behind and actively resisting.",🟢
+Diagnostic Test V2,RW,3,객관식,C,75,"There’s awareness of the mismatch between AI and modern needs, but ""challenge"" misrepresents the passive failure to meet demands as active opposition.",🟢
+Diagnostic Test V2,RW,3,객관식,C,100,The student seems sure that “challenge” fits because they misread the passage’s criticism as combative; confidence reflects misunderstanding the word’s role in the sentence.,🟢
+Diagnostic Test V2,RW,3,객관식,D,0,This shows no grasp of the idiomatic meaning of “answer the demands”; “satisfy” was likely not considered or understood.,🔴
+Diagnostic Test V2,RW,3,객관식,D,25,"The student has partial insight into the expectations of modern technology and might suspect “satisfy” fits, but lacks full comprehension of the phrase.",🔴
+Diagnostic Test V2,RW,3,객관식,D,50,"There is growing awareness that “answer” means fulfilling a need, and choosing “satisfy” at this level suggests cautious but correct reasoning.",🔴
+Diagnostic Test V2,RW,3,객관식,D,75,This shows near-complete understanding; the student likely weighed “satisfy” against similar terms and judged it as best reflecting the passage’s logic.,🔴
+Diagnostic Test V2,RW,3,객관식,D,100,"The student fully grasps that “answer the demands” means “satisfy the demands,” demonstrating precise vocabulary knowledge and contextual reading.",🔴
+Diagnostic Test V2,RW,4,객관식,A,0,"They likely misunderstood the word ""quality"" as referring to public opinion or renown, which made them associate it with ""reputation""—but this indicates a misreading of the sentence's structure and how ""boldness"" functions grammatically.",🟡
+Diagnostic Test V2,RW,4,객관식,A,25,"They saw a possible connection between ""quality"" and personality and gave ""trait"" a modest chance, though they weren't fully confident—suggesting they were on the right track but unsure of their vocabulary precision.",🟡
+Diagnostic Test V2,RW,4,객관식,A,50,"They recognized that ""trait"" was probably correct based on context clues and partial understanding of how “boldness” functions, but still hesitated—likely due to test pressure or second-guessing.",🟡
+Diagnostic Test V2,RW,4,객관식,A,75,"They strongly grasped the meaning of ""quality"" in this context and were mostly certain that it meant “trait,” with only minor doubts possibly due to previous confusion on similar vocabulary questions.",🟡
+Diagnostic Test V2,RW,4,객관식,A,100,"They were fully confident that “quality” referred directly to a personal characteristic, correctly identifying ""trait"" as the best synonym and understanding the function of the word in the sentence.",🟡
+Diagnostic Test V2,RW,4,객관식,B,0,"They incorrectly focused on how people might view Earhart rather than what defined her internally, thinking “reputation” referred to others’ perception instead of her own trait—showing a misunderstanding of the sentence's structure.",🟢
+Diagnostic Test V2,RW,4,객관식,B,25,"They gave “reputation” some consideration due to the connection between legacy and public image, but weren't committed—indicating some recognition that “reputation” might not fit precisely.",🟢
+Diagnostic Test V2,RW,4,객관식,B,50,"They leaned toward “reputation” because of Earhart’s fame but also noticed that the sentence described her personal characteristics, suggesting a conflicting interpretation of the word “quality.”",🟢
+Diagnostic Test V2,RW,4,객관식,B,75,"They mostly believed that “reputation” was what the sentence meant, possibly because of the word “inspiring,” but overlooked that “boldness” referred to something intrinsic, not how others viewed her.",🟢
+Diagnostic Test V2,RW,4,객관식,B,100,"They were completely confident that “quality” meant “reputation,” but this reflects a fundamental misunderstanding of the sentence—mistaking an internal characteristic (boldness) for an external perception.",🟢
+Diagnostic Test V2,RW,4,객관식,C,0,"They knew “achievement” didn’t quite fit but were unsure about the others, so they guessed it might be related to her accomplishments in aviation—revealing a surface-level association rather than a close contextual read.",🔴
+Diagnostic Test V2,RW,4,객관식,C,25,"They thought “achievement” might loosely work since boldness helped Earhart reach goals, even if the word didn’t match perfectly, indicating a vague understanding and uncertainty in vocabulary nuance.",🔴
+Diagnostic Test V2,RW,4,객관식,C,50,"They thought “achievement” was likely correct because they saw “pushing boundaries” and “inspiring pilots” as accomplishments, though this misses the fact that “quality” refers to an internal attribute.",🔴
+Diagnostic Test V2,RW,4,객관식,C,75,"They were fairly confident “achievement” worked, likely because of the surrounding ideas about Earhart’s impact, though they failed to see that “boldness” described how she did things, not what she did.",🔴
+Diagnostic Test V2,RW,4,객관식,C,100,"They were absolutely sure that “achievement” matched the sentence, likely because of the words “challenge” and “inspiring”—but they misunderstood the sentence’s grammar, thinking the quality named a result, not a trait.",🔴
+Diagnostic Test V2,RW,4,객관식,D,0,They weren’t convinced by “standard” at all and guessed it only because they had no better option—suggesting confusion about what the question was even asking.,🔴
+Diagnostic Test V2,RW,4,객관식,D,25,"They found “standard” vaguely related to expectations and influence, so they gave it minor consideration, though it was mostly a shot in the dark.",🔴
+Diagnostic Test V2,RW,4,객관식,D,50,"They believed “standard” might relate to how Earhart set expectations or norms for others, but this reflects a misreading—confusing personal traits with societal benchmarks.",🔴
+Diagnostic Test V2,RW,4,객관식,D,75,"They thought “standard” was probably what the sentence meant, linking it to the idea of Earhart raising the bar, though they failed to notice that “boldness” is not a measurable guideline.",🔴
+Diagnostic Test V2,RW,4,객관식,D,100,"They fully believed “standard” matched the idea of Earhart influencing norms in aviation, showing a complete misreading of the sentence and a confusion between internal traits and external expectations.",🔴
+Diagnostic Test V2,RW,5,객관식,A,0,"The choice reflects a literal interpretation without confidence in deeper meaning, missing the symbolic contrast between nature and humanity.",🟡
+Diagnostic Test V2,RW,5,객관식,A,25,The choice shows some recognition of the tide’s movement but low certainty suggests limited awareness of the broader theme of impermanence.,🟡
+Diagnostic Test V2,RW,5,객관식,A,50,"The choice assumes the line describes physical motion with moderate confidence, overlooking the metaphor of erasure and human transience.",🟡
+Diagnostic Test V2,RW,5,객관식,A,75,"The choice is made with high confidence in a surface-level interpretation, but it ignores the symbolic purpose of the tide in the poem’s context.",🟡
+Diagnostic Test V2,RW,5,객관식,A,100,"The choice is fully confident in a literal reading, misinterpreting the poetic function as purely descriptive of the tide’s behavior.",🟡
+Diagnostic Test V2,RW,5,객관식,B,0,"The choice reflects complete rejection of emotional interpretation, which is appropriate, as the underlined lines do not express internal sadness.",🔴
+Diagnostic Test V2,RW,5,객관식,B,25,The choice suggests slight consideration that the traveler’s emotions may be involved but ultimately lacks grounding in the text.,🔴
+Diagnostic Test V2,RW,5,객관식,B,50,"The choice indicates moderate belief that the poem explores personal sadness, which is a misreading since no such feeling is attributed to the traveler.",🔴
+Diagnostic Test V2,RW,5,객관식,B,75,"The choice is chosen with high confidence in a personal, emotional reading, which misrepresents the poem’s detached tone and objective narration.",🔴
+Diagnostic Test V2,RW,5,객관식,B,100,"The choice reflects certainty that the lines express inner sorrow, but this is unsupported by the poem’s language and structure.",🔴
+Diagnostic Test V2,RW,5,객관식,C,0,"The choice reflects no understanding of the symbolic theme, but correctly avoids incorrect literal interpretations.",🟢
+Diagnostic Test V2,RW,5,객관식,C,25,The choice reflects tentative recognition of symbolic meaning but lacks certainty about the contrast between nature and humanity.,🟢
+Diagnostic Test V2,RW,5,객관식,C,50,"The choice reflects growing awareness of the poem’s philosophical message, recognizing the fleeting nature of human life.",🟢
+Diagnostic Test V2,RW,5,객관식,C,75,"The choice shows strong understanding of the poem’s deeper theme, correctly interpreting the tide as a symbol of nature’s permanence.",🟢
+Diagnostic Test V2,RW,5,객관식,C,100,The choice demonstrates complete understanding of the poem’s meditation on mortality and the contrast between ephemeral humanity and eternal nature.,🟢
+Diagnostic Test V2,RW,5,객관식,D,0,"The choice rejects the idea of hostility, which is valid, since the sea is depicted as gentle and cyclical.",🔴
+Diagnostic Test V2,RW,5,객관식,D,25,"The choice shows minimal belief in the sea’s hostility, perhaps influenced by the erasure image, but misses the poem’s soft tone.",🔴
+Diagnostic Test V2,RW,5,객관식,D,50,"The choice suggests moderate belief in a destructive portrayal of nature, but this overlooks the poem’s calm and resigned atmosphere.",🔴
+Diagnostic Test V2,RW,5,객관식,D,75,"The choice shows strong confidence in an antagonistic view of the sea, misreading the poem’s tone and gentle imagery.",🔴
+Diagnostic Test V2,RW,5,객관식,D,100,"The choice reflects complete certainty in a hostile interpretation, which contradicts the poem’s calm depiction of the sea’s natural rhythm.",🔴
+Diagnostic Test V2,RW,6,객관식,A,0,"It misunderstands the passage entirely, as the text does not critique these theories—this choice shows a complete misread of the structure and intent.",🟢
+Diagnostic Test V2,RW,6,객관식,A,25,This choice likely reflects confusion between the mention of theories and the argument being made—it shows some engagement but misses key details.,🟢
+Diagnostic Test V2,RW,6,객관식,A,50,"Shows partial understanding, recognizing that theories are discussed, but not distinguishing that the critique isn't directed at Darwin or Newton specifically.",🟢
+Diagnostic Test V2,RW,6,객관식,A,75,Demonstrates strong awareness of the focus on explanatory depth but overlooks that the theories mentioned aren't being criticized directly.,🟢
+Diagnostic Test V2,RW,6,객관식,A,100,Reflects full understanding that this answer conflicts with the author's purpose; Darwin and Newton are not presented as incomplete theories.,🟢
+Diagnostic Test V2,RW,6,객관식,B,0,This choice has no basis in the text; the passage does not follow a historical or forward-looking research trajectory.,🟡
+Diagnostic Test V2,RW,6,객관식,B,25,A 25% confidence in this option reflects superficial recognition of theory development without noticing the absence of any research questions.,🟡
+Diagnostic Test V2,RW,6,객관식,B,50,"At 50%, the student may mistakenly think the structure implies development and inquiry, but this reading lacks textual support.",🟡
+Diagnostic Test V2,RW,6,객관식,B,75,"The student sees some historical context or assumes further inquiry is implied, but this goes beyond what the passage states.",🟡
+Diagnostic Test V2,RW,6,객관식,B,100,"The student confidently misreads the entire structure, inventing elements (history, future research) that aren’t in the passage.",🟡
+Diagnostic Test V2,RW,6,객관식,C,0,A complete misinterpretation—the passage is not about popularity or acceptance of theories.,🔴
+Diagnostic Test V2,RW,6,객관식,C,25,Shows confusion from seeing two theories named and assuming a comparison is taking place.,🔴
+Diagnostic Test V2,RW,6,객관식,C,50,"Recognizes that two theories are mentioned, but over-interprets that as a debate or popularity contest.",🔴
+Diagnostic Test V2,RW,6,객관식,C,75,"Thinks there’s some evaluation happening between theories, when the passage merely uses them illustratively.",🔴
+Diagnostic Test V2,RW,6,객관식,C,100,"Believes too confidently that the passage weighs scientific consensus, when that’s not discussed at all.",🔴
+Diagnostic Test V2,RW,6,객관식,D,0,"Reflects a complete misunderstanding of the text’s focus on explanatory depth, not popularity.",🔴
+Diagnostic Test V2,RW,6,객관식,D,25,No engagement with passage structure or key ideas—pure guesswork.,🔴
+Diagnostic Test V2,RW,6,객관식,D,50,"Assumes structure might loosely match based on seeing two theories, but doesn’t check for explanation about depth.",🔴
+Diagnostic Test V2,RW,6,객관식,D,75,"Grasps that some theories are more explanatory than others, but unsure how this connects to the examples.",🔴
+Diagnostic Test V2,RW,6,객관식,D,100,Clearly recognizes that the passage introduces major theories and uses them to set up a deeper contrast in explanatory value.,🔴
+Diagnostic Test V2,RW,7,객관식,A,0,"No textual support for A in Text 2, indicating a guess without evidence.",🟡
+Diagnostic Test V2,RW,7,객관식,A,25,Identifies a slight link to Text 2’s positive view of classics but doubts A fully captures the author’s stance.,🟡
+Diagnostic Test V2,RW,7,객관식,A,50,Finds some merit in A’s idea that classics remain enjoyable but remains unsure due to Text 2’s focus on modernization rather than pure defense.,🟡
+Diagnostic Test V2,RW,7,객관식,A,75,Strongly sees that Text 2 values classics but hesitates since the text emphasizes updating rather than preserving originals.,🟡
+Diagnostic Test V2,RW,7,객관식,A,100,"Interprets Text 2 as a full defense of original classic formats, ignoring its emphasis on updating for modern audiences.",🟡
+Diagnostic Test V2,RW,7,객관식,B,0,"Recognizes no basis in Text 2 for complete replacement, indicating a guess for B.",🔴
+Diagnostic Test V2,RW,7,객관식,B,25,"Notes Text 2 admits old-fashioned tone but rejects replacement, casting doubt on B.",🔴
+Diagnostic Test V2,RW,7,객관식,B,50,"Misreads Text 2’s acknowledgment of outdated tropes as support for replacement, showing some doubt but confusion about the author’s nuance.",🔴
+Diagnostic Test V2,RW,7,객관식,B,75,"Convinced that Text 2 sees classics as outdated despite examples of adaptation, reflecting strong but incorrect belief that replacement is advocated.",🔴
+Diagnostic Test V2,RW,7,객관식,B,100,"Completely misinterprets Text 2 as calling for replacement of classics, ignoring its actual call for modernization.",🔴
+Diagnostic Test V2,RW,7,객관식,C,0,"Sees minimal link in Text 2’s mention of sales but lacks textual basis, signaling a guess.",🔴
+Diagnostic Test V2,RW,7,객관식,C,25,"Recognizes Text 2 mentions sales and adaptations but doubts C fully captures the main argument, reflecting low confidence.",🔴
+Diagnostic Test V2,RW,7,객관식,C,50,Finds moderate evidence in Text 2’s sales data but is uncertain if the author’s primary point is commercial strategy rather than narrative updates.,🔴
+Diagnostic Test V2,RW,7,객관식,C,75,"Perceives that Text 2 values sales success yet overlooks that its main thrust is updating stories, showing strong but flawed focus on marketing.",🔴
+Diagnostic Test V2,RW,7,객관식,C,100,"Completely focuses on commercial incentives from Text 2, wrongly equating sales mentions with the author’s core response to discarding classics.",🔴
+Diagnostic Test V2,RW,7,객관식,D,0,"Identifies updating idea in Text 2 yet lacks confidence in its direct opposition to discarding classics, reflecting a pure guess.",🟢
+Diagnostic Test V2,RW,7,객관식,D,25,"Recognizes Text 2’s explicit call for updates but remains uncertain about its direct rebuttal to discarding classics, yielding low confidence.",🟢
+Diagnostic Test V2,RW,7,객관식,D,50,Understands Text 2 advocates modernization over replacement but is still moderately unsure if this fully counters discarding classics.,🟢
+Diagnostic Test V2,RW,7,객관식,D,75,Clearly sees Text 2’s suggestion to update classics aligns with D but retains slight doubt about nuance.,🟢
+Diagnostic Test V2,RW,7,객관식,D,100,"Fully grasps that Text 2 proposes updating rather than discarding classic detective stories, matching the author’s stance exactly.",🟢
+Diagnostic Test V2,RW,8,객관식,A,0,"Complete lack of understanding of the data, as both cited seasons actually represent the highest study hours, not the lowest.",🔴
+Diagnostic Test V2,RW,8,객관식,A,25,"Random or weakly justified guess, as neither part of the choice aligns with the data shown in the table.",🔴
+Diagnostic Test V2,RW,8,객관식,A,50,"Misled by superficial patterns or assumed that spring is always lower, but failed to validate with actual numbers.",🔴
+Diagnostic Test V2,RW,8,객관식,A,75,"Strong misunderstanding, as this choice contains two inaccurate claims that should be easily spotted with basic comparison.",🔴
+Diagnostic Test V2,RW,8,객관식,A,100,"Total misinterpretation of the data, likely from not consulting the table at all or misreading it significantly.",🔴
+Diagnostic Test V2,RW,8,객관식,B,0,"Fully rejected the option despite it containing a partially correct detail, indicating attention to accuracy.",🟡
+Diagnostic Test V2,RW,8,객관식,B,25,"Awareness that part of the answer is correct, but uncertainty about the STEM data undermines full trust in the choice.",🟡
+Diagnostic Test V2,RW,8,객관식,B,50,Partial understanding; correctly identified winter as the lowest for humanities but incorrectly assumed STEM followed a similar pattern in spring.,🟡
+Diagnostic Test V2,RW,8,객관식,B,75,"Strong belief in an almost-correct answer, but one that ignores a crucial detail from the STEM column.",🟡
+Diagnostic Test V2,RW,8,객관식,B,100,"Correctly recalled the lowest for humanities but didn’t validate the STEM data, leading to an overconfident mischoice.",🟡
+Diagnostic Test V2,RW,8,객관식,C,0,Overlooked the most accurate comparison in the table and likely didn’t check both groups' lowest values.,🟢
+Diagnostic Test V2,RW,8,객관식,C,25,Noticed a low value in one column but doubted whether it applied to both groups.,🟢
+Diagnostic Test V2,RW,8,객관식,C,50,"On the right track and possibly compared both columns, but still harbored doubts about whether the lowest values matched by season.",🟢
+Diagnostic Test V2,RW,8,객관식,C,75,"High level of accuracy and table-reading skill, with only minor uncertainty possibly due to second-guessing or distraction.",🟢
+Diagnostic Test V2,RW,8,객관식,C,100,"Precise, confident data analysis — correctly identified winter as the season with the lowest study hours for both majors.",🟢
+Diagnostic Test V2,RW,8,객관식,D,0,"Accurate table comprehension, as fall has the highest values, not the lowest.",🔴
+Diagnostic Test V2,RW,8,객관식,D,25,Misread one of the data points but recognized the error in at least one column.,🔴
+Diagnostic Test V2,RW,8,객관식,D,50,Confusion between highest and lowest values or an assumption not supported by the data.,🔴
+Diagnostic Test V2,RW,8,객관식,D,75,"Flawed analysis, as both values in fall are the peak, so this choice is clearly incorrect with careful inspection.",🔴
+Diagnostic Test V2,RW,8,객관식,D,100,"Complete misreading of the chart, as it confuses the most studied season with the least studied season in both groups.",🔴
+Diagnostic Test V2,RW,9,객관식,A,0,"This answer is not supported by the graph; the timing and pattern of oxygenation changes do not match the mollusk decline, and the claim about the Mauritanian coast is vague and incorrect.",🔴
+Diagnostic Test V2,RW,9,객관식,A,25,"This reflects a weak grasp of the data; while partially acknowledging the Alboran Sea change, it fails to address the Mauritanian stability and adds ambiguity.",🔴
+Diagnostic Test V2,RW,9,객관식,A,50,"This shows partial recognition of the Alboran Sea trend but fails to distinguish the steady Mauritanian pattern, making the explanation incomplete.",🔴
+Diagnostic Test V2,RW,9,객관식,A,75,"This indicates some understanding of the oxygenation trend in the Alboran Sea but misses the lack of change near the Mauritanian coast, weakening the reasoning.",🔴
+Diagnostic Test V2,RW,9,객관식,A,100,"This shows a strong misinterpretation of the data; while the Alboran Sea’s trend is loosely referenced, the claim about the Mauritanian coast contradicts the graph.",🔴
+Diagnostic Test V2,RW,9,객관식,B,0,This indicates awareness of the correct answer and rejection of flawed reasoning in the other choices.,🟢
+Diagnostic Test V2,RW,9,객관식,B,25,"This reflects tentative understanding that the Alboran decline coincided with oxygenation increase while the Mauritanian decline did not, but with some uncertainty.",🟢
+Diagnostic Test V2,RW,9,객관식,B,50,"This shows recognition of the inverse correlation and the contrast in patterns, although not full confidence in the conclusion.",🟢
+Diagnostic Test V2,RW,9,객관식,B,75,This reflects solid comprehension of the trends and how they connect to the mollusk decline in both regions.,🟢
+Diagnostic Test V2,RW,9,객관식,B,100,This shows clear and accurate interpretation of the data and logical consistency with the researchers' conclusion about oxygenation’s role in the Alboran Sea but not Mauritania.,🟢
+Diagnostic Test V2,RW,9,객관식,C,0,This suggests the pattern was noticed but dismissed due to overgeneralization concerns or hesitation about causal strength.,🟡
+Diagnostic Test V2,RW,9,객관식,C,25,"This shows minimal confidence due to vague wording and incorrect claim about consistent low oxygenation, indicating a flawed inference.",🟡
+Diagnostic Test V2,RW,9,객관식,C,50,This reflects partial recognition of the Alboran Sea trend but an overstatement about Mauritanian consistency.,🟡
+Diagnostic Test V2,RW,9,객관식,C,75,This indicates good recognition of the general trends but a failure to see the inaccuracy in claiming oxygenation stayed “consistently low” near Mauritania.,🟡
+Diagnostic Test V2,RW,9,객관식,C,100,"This overstates the reliability of the answer, accepting a misleading description of the Mauritanian pattern despite some accuracy regarding the Alboran Sea.",🟡
+Diagnostic Test V2,RW,9,객관식,D,0,This correctly indicates that the response is irrelevant to the research question and the timing of mollusk decline.,🔴
+Diagnostic Test V2,RW,9,객관식,D,25,"This suggests slight confusion, perhaps from focusing on general regional differences rather than specific changes over time.",🔴
+Diagnostic Test V2,RW,9,객관식,D,50,"This shows that broader oxygenation comparisons were mistakenly taken as relevant, despite not addressing mollusk decline timing.",🔴
+Diagnostic Test V2,RW,9,객관식,D,75,"This reflects misunderstanding of the key variable—change in oxygenation—not overall levels, weakening the causal connection.",🔴
+Diagnostic Test V2,RW,9,객관식,D,100,"This shows a fundamental error by treating constant regional differences as explanatory, ignoring the critical timing patterns in the graph.",🔴
+Diagnostic Test V2,RW,10,객관식,A,0,"A guess made without any confidence, reflecting uncertainty and a random selection with no understanding of the poem’s main message.",🟡
+Diagnostic Test V2,RW,10,객관식,A,25,"A tentative choice showing slight lean toward the vivid imagery of nature, but with little confidence in its relevance to the theme of comfort in death.",🟡
+Diagnostic Test V2,RW,10,객관식,A,50,"A moderate guess driven by the strong visual appeal of the natural world, but lacking solid understanding of how it connects to the poem’s message on mortality.",🟡
+Diagnostic Test V2,RW,10,객관식,A,75,"A high-confidence choice in the imagery of nature, mistakenly interpreted as offering comfort, suggesting misunderstanding of the deeper intent of the lines.",🟡
+Diagnostic Test V2,RW,10,객관식,A,100,"A fully confident choice that misreads the purpose of the passage, showing strong belief in the aesthetics of the quote but missing its failure to address death directly.",🟡
+Diagnostic Test V2,RW,10,객관식,B,0,A blind guess on a quote that partially reflects the poem’s broader themes but doesn’t center nature as a comforting force.,🟡
+Diagnostic Test V2,RW,10,객관식,B,25,A weakly supported choice where the student finds some comfort in the imagery of collective death but isn't sure it fits the question’s criteria.,🟡
+Diagnostic Test V2,RW,10,객관식,B,50,"A mid-level confidence guess recognizing the peaceful tone and metaphor of the “caravan,” though unclear on how it relates specifically to nature’s role.",🟡
+Diagnostic Test V2,RW,10,객관식,B,75,"A confident interpretation of the passage’s metaphorical calmness, equating it to comfort in death, but overlooking that it doesn’t involve nature directly.",🟡
+Diagnostic Test V2,RW,10,객관식,B,100,"A fully confident selection of a quote with poetic grace, mistaking a human-centered message for nature’s role, reflecting a misread of the question’s demand.",🟡
+Diagnostic Test V2,RW,10,객관식,C,0,"A guess made without understanding of how nature functions in the poem, drawn by the peaceful tone rather than thematic accuracy.",🔴
+Diagnostic Test V2,RW,10,객관식,C,25,"A hesitant choice driven by the gentle, quiet imagery, but lacking clarity on how it connects to the theme of mortality or nature’s comforting role.",🔴
+Diagnostic Test V2,RW,10,객관식,C,50,"A middling guess based on surface-level tranquility, seeing “quiet tale” as potentially linked to death but not strongly grounded in the poem’s core message.",🔴
+Diagnostic Test V2,RW,10,객관식,C,75,"A confident but mistaken belief that the stillness of nature implies comfort in death, without realizing the lines are too vague to be thematically strong.",🔴
+Diagnostic Test V2,RW,10,객관식,C,100,"A completely confident misinterpretation where the student sees “quiet tale” and stillness as evidence of nature’s soothing presence in death, even though it’s not explicit.",🔴
+Diagnostic Test V2,RW,10,객관식,D,0,"A guess with no understanding but a lucky selection of the correct quote, guided perhaps by words like “embrace” or “quiet.”",🟢
+Diagnostic Test V2,RW,10,객관식,D,25,"A slightly hesitant but promising choice, showing some recognition that the earth’s “embrace” could relate to comfort in death.",🟢
+Diagnostic Test V2,RW,10,객관식,D,50,"A reasonable, halfway-confident choice that senses the quote’s relevance to the theme, though perhaps not fully grasping the full metaphor.",🟢
+Diagnostic Test V2,RW,10,객관식,D,75,"A strong, well-founded choice that correctly identifies the earth’s “embrace” as symbolic of nature’s comforting role in death.",🟢
+Diagnostic Test V2,RW,10,객관식,D,100,A fully confident and correct interpretation that reflects deep understanding of both the poem’s theme and how the quoted lines embody nature’s reassuring presence.,🟢
+Diagnostic Test V2,RW,11,객관식,A,0,"They misunderstood the purpose of the panels or misread the results, as reduced power usage has no logical connection to improving clarity or reducing distortion.",🔴
+Diagnostic Test V2,RW,11,객관식,A,25,"They may associate lower power needs with better system design, but they’re overlooking that clarity and distortion are acoustic, not energy-related, qualities.",🔴
+Diagnostic Test V2,RW,11,객관식,A,50,"They think there could be a weak connection between power and audio quality, but they’re unsure how that would support the hypothesis directly.",🔴
+Diagnostic Test V2,RW,11,객관식,A,75,"They believe there might be some link between reduced power and acoustic performance, but they aren’t confident it supports the clarity/distortion claim strongly.",🔴
+Diagnostic Test V2,RW,11,객관식,A,100,"They are incorrectly assuming that less power usage directly translates to better sound quality, which misinterprets the engineering focus of the hypothesis.",🔴
+Diagnostic Test V2,RW,11,객관식,B,0,"They either misread the choice or don’t understand that more reverberation actually worsens distortion, which contradicts the hypothesis.",🔴
+Diagnostic Test V2,RW,11,객관식,B,25,"They might be thinking more reverb means “richer” sound, confusing it with clarity, which is not supported by acoustic principles in this context.",🔴
+Diagnostic Test V2,RW,11,객관식,B,50,They are unsure how to interpret reverberation in relation to distortion but suspect it might be relevant; they lack clarity on the concept.,🔴
+Diagnostic Test V2,RW,11,객관식,B,75,"They understand reverberation affects audio but are hesitant to rule it out entirely; they suspect it might sometimes help, though it doesn't here.",🔴
+Diagnostic Test V2,RW,11,객관식,B,100,"They misunderstood the effect of reverberation, incorrectly assuming it helps with clarity, when in fact it usually contributes to distortion in large spaces.",🔴
+Diagnostic Test V2,RW,11,객관식,C,0,"They disregarded the clear connection to clarity and distortion or may have randomly guessed, missing the direct relevance of the result to the hypothesis.",🟢
+Diagnostic Test V2,RW,11,객관식,C,25,They are unsure of the best choice but notice this option mentions clarity and distinguishability; they suspect it might be what the question is testing.,🟢
+Diagnostic Test V2,RW,11,객관식,C,50,"They recognize this option touches on clarity and frequency handling, but they’re not fully sure how strongly it supports the hypothesis.",🟢
+Diagnostic Test V2,RW,11,객관식,C,75,They realize this option is relevant and fits the goal of the experiment but want stronger confirmation before committing.,🟢
+Diagnostic Test V2,RW,11,객관식,C,100,"They clearly understand that improved clarity across frequencies is exactly what the engineers aimed to demonstrate, and this result supports it well.",🟢
+Diagnostic Test V2,RW,11,객관식,D,0,"They have not understood the experiment design or confused the word “delay” with some kind of improvement, making a completely irrelevant choice.",🟡
+Diagnostic Test V2,RW,11,객관식,D,25,"They may believe delay is part of echo reduction or think it somehow improves audio quality, but they’re misunderstanding the concept.",🟡
+Diagnostic Test V2,RW,11,객관식,D,50,"They think delay might be connected to how sound travels in the room, but they’re unsure whether it helps or hurts clarity.",🟡
+Diagnostic Test V2,RW,11,객관식,D,75,"They believe delay may affect perceived distortion, though they’re not sure how; they think it could be a side effect of the panel’s work.",🟡
+Diagnostic Test V2,RW,11,객관식,D,100,They correctly recognize that a delay is unrelated to clarity or distortion and does not provide any evidence for or against the hypothesis.,🟡
+Diagnostic Test V2,RW,12,객관식,A,0,"The choice is irrelevant to the specific mechanism proposed and shows no evidence of methane's involvement, so selecting it at 0% reflects appropriate dismissal.",🟡
+Diagnostic Test V2,RW,12,객관식,A,25,"Some connection to outgassing makes this choice superficially appealing, but low confidence reflects uncertainty about its relevance to methane or 2025PX specifically.",🟡
+Diagnostic Test V2,RW,12,객관식,A,50,"Believing it might be somewhat relevant to the idea of sublimation justifies a 50% confidence, even though it doesn't clearly support the specific methane-based claim.",🟡
+Diagnostic Test V2,RW,12,객관식,A,75,"At 75%, this reflects a belief that the general pattern of outgassing lends indirect credibility to Cortez’s hypothesis, despite lack of direct methane support.",🟡
+Diagnostic Test V2,RW,12,객관식,A,100,"This high confidence would imply a misunderstanding, since the choice lacks direct evidence for methane sublimation and even notes model inconsistencies.",🟡
+Diagnostic Test V2,RW,12,객관식,B,0,"The choice directly contradicts the central claim, so selecting it at 0% correctly shows a rejection of the proposed explanation.",🔴
+Diagnostic Test V2,RW,12,객관식,B,25,"A 25% confidence rating implies confusion, perhaps from focusing on the ammonia idea as a substitute, despite it undermining the methane hypothesis.",🔴
+Diagnostic Test V2,RW,12,객관식,B,50,Selecting this at 50% confidence would indicate a failure to recognize that it contradicts the given explanation rather than supporting it.,🔴
+Diagnostic Test V2,RW,12,객관식,B,75,"At 75%, this confidence level reflects a critical error in reasoning by mistakenly interpreting contradiction as support.",🔴
+Diagnostic Test V2,RW,12,객관식,B,100,"100% confidence in this option would show complete misreading of the argument, accepting a counterclaim as the best possible support.",🔴
+Diagnostic Test V2,RW,12,객관식,C,0,This reflects appropriate skepticism of a choice that downplays the uniqueness of the acceleration and contradicts the study's conclusion.,🔴
+Diagnostic Test V2,RW,12,객관식,C,25,A 25% rating suggests the test-taker sees it as potentially relevant due to its mention of gravitational forces but remains unsure.,🔴
+Diagnostic Test V2,RW,12,객관식,C,50,Selecting this option with 50% confidence implies the test-taker is swayed by the surface-level relevance but misses its underlying contradiction.,🔴
+Diagnostic Test V2,RW,12,객관식,C,75,"This reflects a misunderstanding of the context, as it falsely attributes credibility to a choice that dismisses the researchers' explanation.",🔴
+Diagnostic Test V2,RW,12,객관식,C,100,"Very high confidence in this distractor indicates a major misinterpretation, believing a refutation aligns with the original claim.",🔴
+Diagnostic Test V2,RW,12,객관식,D,0,"This reflects full dismissal of a strong, clearly supportive statement and would show a failure to recognize the relevance of embedded methane and solar heating.",🟢
+Diagnostic Test V2,RW,12,객관식,D,25,"A low confidence in this choice implies uncertainty about the role of methane or solar radiation, despite the choice providing direct support.",🟢
+Diagnostic Test V2,RW,12,객관식,D,50,"At 50%, the test-taker recognizes some relevance but doesn’t fully connect how the evidence aligns with Cortez’s mechanism.",🟢
+Diagnostic Test V2,RW,12,객관식,D,75,This shows solid reasoning—the test-taker sees the two-pronged support (formation of methane + solar activation) but may want additional confirmation.,🟢
+Diagnostic Test V2,RW,12,객관식,D,100,This confidence level reflects a correct and complete understanding of how the choice validates the researchers' proposed mechanism.,🟢
+Diagnostic Test V2,RW,13,객관식,A,0,"The response doesn't reflect any understanding of the passage or the ideas it presents, showing a total mismatch between the answer and the text.",🟢
+Diagnostic Test V2,RW,13,객관식,A,25,The answer reflects minimal comprehension; the choice might sound architectural but misses the core idea about sustainable and traditional design.,🟢
+Diagnostic Test V2,RW,13,객관식,A,50,"Some relevant ideas are acknowledged, such as traditional influence, but there’s still significant misunderstanding about the role of sustainability or originality.",🟢
+Diagnostic Test V2,RW,13,객관식,A,75,The answer captures many of the correct elements—such as blending traditional and sustainable design—but may overlook nuances like how originality is tied to repurposed materials.,🟢
+Diagnostic Test V2,RW,13,객관식,A,100,"The answer perfectly aligns with the passage’s emphasis on blending traditional Indian architectural forms with sustainable, repurposed materials in an original way.",🟢
+Diagnostic Test V2,RW,13,객관식,B,0,The answer contradicts the passage’s details entirely and suggests an influence (equal weight from classical and modern architects) that is not mentioned.,🔴
+Diagnostic Test V2,RW,13,객관식,B,25,"The answer hints at a blend of influences but interprets them inaccurately; the passage doesn’t mention architects or balance of influence, only styles and elements.",🔴
+Diagnostic Test V2,RW,13,객관식,B,50,"The answer assumes the presence of architect role models where there are none in the passage, but at least recognizes that her work combines different styles.",🔴
+Diagnostic Test V2,RW,13,객관식,B,75,"This choice reflects a general sense that both traditional and modern ideas matter, but it falsely attributes those to specific figures, weakening the inference.",🔴
+Diagnostic Test V2,RW,13,객관식,B,100,"The answer reflects the idea of dual influence, which is partly true, but invents specifics (architects) not supported by the passage.",🔴
+Diagnostic Test V2,RW,13,객관식,C,0,"The answer misrepresents the purpose of Mehta’s design, interpreting “inspired by tradition” as literal imitation, which goes against the idea of innovation.",🔴
+Diagnostic Test V2,RW,13,객관식,C,25,"There is confusion between inspiration and replication, leading to a misreading that suggests her designs are not original but copies of historical structures.",🔴
+Diagnostic Test V2,RW,13,객관식,C,50,The answer shows partial understanding—historical elements are involved—but it incorrectly assumes she replicates rather than reinterprets.,🔴
+Diagnostic Test V2,RW,13,객관식,C,75,The choice captures the historical aspect of her designs but distorts it by removing the innovation and sustainability that define her work.,🔴
+Diagnostic Test V2,RW,13,객관식,C,100,"The answer reflects a misunderstanding of how tradition is used: it’s a source of inspiration for function and sustainability, not appearance.",🔴
+Diagnostic Test V2,RW,13,객관식,D,0,"The answer falsely suggests Mehta’s primary focus is aesthetics, neglecting the functional and cultural components described in the passage.",🟡
+Diagnostic Test V2,RW,13,객관식,D,25,"There’s recognition that Mehta deviates from conventional norms, but the reason given—pure aesthetic exploration—is inaccurate.",🟡
+Diagnostic Test V2,RW,13,객관식,D,50,"This answer overstates the role of aesthetics while ignoring the text’s emphasis on function, cultural values, and environmental responsibility.",🟡
+Diagnostic Test V2,RW,13,객관식,D,75,"There’s some awareness that Mehta’s work is unconventional, but the interpretation of her motive as aesthetic experimentation is unsupported.",🟡
+Diagnostic Test V2,RW,13,객관식,D,100,This answer focuses on a secondary idea—challenging norms—but misrepresents her purpose and doesn’t acknowledge the cultural or sustainable aspects.,🟡
+Diagnostic Test V2,RW,14,객관식,A,0,"Complete rejection of the idea that methane's presence leans toward geological origins, indicating a misunderstanding of the team's neutrality between biological and non-biological causes.",🟡
+Diagnostic Test V2,RW,14,객관식,A,25,Mild suspicion that geological activity might be more likely but still a lack of clear alignment with the passage's balanced stance.,🟡
+Diagnostic Test V2,RW,14,객관식,A,50,"Even split between biological and geological causes, which seems logical but oversteps the caution emphasized by the team.",🟡
+Diagnostic Test V2,RW,14,객관식,A,75,"Strong lean toward geology as the more probable cause of methane, which injects an unsupported assumption into the team’s argument.",🟡
+Diagnostic Test V2,RW,14,객관식,A,100,"Confident assertion that geology is the dominant explanation, misrepresenting the team’s emphasis on not drawing conclusions without ruling out other causes.",🟡
+Diagnostic Test V2,RW,14,객관식,B,0,"Correct rejection of the idea that methane’s absence can rule out life, showing alignment with the passage’s focus on presence rather than absence.",🔴
+Diagnostic Test V2,RW,14,객관식,B,25,Mild uncertainty but still shows a weak grasp of the fact that the team never discusses what absence implies.,🔴
+Diagnostic Test V2,RW,14,객관식,B,50,"Even gamble on an unsupported inference, highlighting a major misreading of the text’s scope and evidence.",🔴
+Diagnostic Test V2,RW,14,객관식,B,75,"High belief in a claim the passage never makes, showing a misapplication of biosignature logic.",🔴
+Diagnostic Test V2,RW,14,객관식,B,100,"Complete misunderstanding, treating the absence of methane as a definitive sign of no life despite the passage’s silence on that topic.",🔴
+Diagnostic Test V2,RW,14,객관식,C,0,"Total rejection of the most accurate interpretation of the team's caution, misunderstanding the nuance about specific conditions.",🟢
+Diagnostic Test V2,RW,14,객관식,C,25,"Tentative recognition that context matters, but lacks full confidence in the team’s clearly stated criteria for biosignature status.",🟢
+Diagnostic Test V2,RW,14,객관식,C,50,"Partial understanding that methane’s significance depends on environmental conditions, though still unsure about the passage’s emphasis on excluding geological causes.",🟢
+Diagnostic Test V2,RW,14,객관식,C,75,"Strong recognition that methane alone is not enough, nearly matching the team’s argument but with slight hesitance.",🟢
+Diagnostic Test V2,RW,14,객관식,C,100,Precise grasp of the team's nuanced position: methane can only be considered a biosignature if no geological explanation exists.,🟢
+Diagnostic Test V2,RW,14,객관식,D,0,"Correct rejection of the irrelevant idea that methane concentration is a key issue, aligning with the team’s focus on sources, not amounts.",🔴
+Diagnostic Test V2,RW,14,객관식,D,25,"Mild concern with methane levels, showing a misdirected interpretation of what makes it a biosignature.",🔴
+Diagnostic Test V2,RW,14,객관식,D,50,"Misunderstanding of the team’s priorities, placing unwarranted emphasis on quantity rather than origin.",🔴
+Diagnostic Test V2,RW,14,객관식,D,75,"High confidence in a claim not supported by the text, showing a failure to recognize that concentration was never discussed.",🔴
+Diagnostic Test V2,RW,14,객관식,D,100,"Fundamental misreading, asserting that methane can’t be a biosignature due to low concentrations—a claim never addressed in the passage.",🔴
+Diagnostic Test V2,RW,15,객관식,A,0,Believing this answer is correct with no confidence suggests a random guess lacking any engagement with the logic of the passage.,🟡
+Diagnostic Test V2,RW,15,객관식,A,25,"Shows a slight leaning toward this choice despite low confidence, possibly due to the mention of the fire creating surface-level plausibility.",🟡
+Diagnostic Test V2,RW,15,객관식,A,50,"Reflects uncertainty and a reliance on a partial detail from the passage, but without a strong grasp of the central reasoning.",🟡
+Diagnostic Test V2,RW,15,객관식,A,75,Indicates misplaced confidence driven by the historical context rather than the conclusion structure of the passage.,🟡
+Diagnostic Test V2,RW,15,객관식,A,100,"Demonstrates full confidence in a choice that misaligns with the passage’s logic, signaling a misunderstanding of what the final sentence is meant to conclude.",🟡
+Diagnostic Test V2,RW,15,객관식,B,0,"Selecting this with no confidence shows the student may have guessed, unsure about how to connect the evidence to the conclusion.",🟢
+Diagnostic Test V2,RW,15,객관식,B,25,"Choosing this with some confidence suggests a recognition that dating evidence is key, but uncertainty about the exact phrasing of the most logical conclusion.",🟢
+Diagnostic Test V2,RW,15,객관식,B,50,Choosing this with moderate confidence indicates growing understanding of how uncertainty about the fragments' age affects what can be concluded.,🟢
+Diagnostic Test V2,RW,15,객관식,B,75,Reflects strong confidence built on recognizing the conditional nature of the evidence and the restraint required in drawing conclusions.,🟢
+Diagnostic Test V2,RW,15,객관식,B,100,Represents full understanding of the passage’s logic and purpose; the student confidently chooses the only option supported by the final sentence.,🟢
+Diagnostic Test V2,RW,15,객관식,C,0,"Suggests a random or careless guess, as this choice introduces an unrelated idea not present in the passage.",🔴
+Diagnostic Test V2,RW,15,객관식,C,25,"Reflects a surface-level interpretation of the passage, perhaps noticing the authorship debate but not realizing it was irrelevant to the researchers’ conclusion.",🔴
+Diagnostic Test V2,RW,15,객관식,C,50,"Indicates confusion about the focus of the final sentence, as this choice injects a new claim not logically connected to the team’s inability to date the fragments.",🔴
+Diagnostic Test V2,RW,15,객관식,C,75,"Shows a serious misreading of the passage’s focus, with misplaced confidence in a speculative idea never discussed.",🔴
+Diagnostic Test V2,RW,15,객관식,C,100,"Signals full confidence in a completely unsupported and logically disconnected claim, revealing a fundamental misunderstanding of the passage.",🔴
+Diagnostic Test V2,RW,15,객관식,D,0,A blind guess that results in choosing an answer with no textual support or logical connection.,🔴
+Diagnostic Test V2,RW,15,객관식,D,25,Low confidence with this choice may stem from overanalyzing the researchers' belief without grounding in what the passage actually provides.,🔴
+Diagnostic Test V2,RW,15,객관식,D,50,"Moderate confidence in this answer suggests a significant misunderstanding of the logical structure, mistaking philosophical content for dating evidence.",🔴
+Diagnostic Test V2,RW,15,객관식,D,75,"Shows misplaced certainty based on assumptions not provided by the text, highlighting a confusion between belief and evidence.",🔴
+Diagnostic Test V2,RW,15,객관식,D,100,"Represents high confidence in an unjustified inference about the researchers' assumptions, entirely unsupported by the passage’s content.",🔴
+Diagnostic Test V2,RW,16,객관식,A,0,"Has little to no understanding of the passage’s reasoning, and mistakenly believes Patel’s higher count is due to discovering new species rather than changes in classification standards.",🟡
+Diagnostic Test V2,RW,16,객관식,A,25,"Understands that Patel’s study had a higher count but wrongly attributes it to new species identification, showing partial but flawed comprehension of the passage’s logic.",🟡
+Diagnostic Test V2,RW,16,객관식,A,50,"Recognizes that Patel’s count was higher, and guesses A might be plausible due to new inclusions, but doesn’t fully grasp that the real issue was classification changes, not species discovery.",🟡
+Diagnostic Test V2,RW,16,객관식,A,75,"Sees some connection between species inclusion and count increase, but still overemphasizes discovery of new species rather than understanding the classification nuance highlighted in the passage.",🟡
+Diagnostic Test V2,RW,16,객관식,A,100,"Misreads the key distinction about classification and assumes incorrectly that new species were added, showing a fundamental misunderstanding of the passage’s contrast.",🟡
+Diagnostic Test V2,RW,16,객관식,B,0,"Fails to connect the change in bird counts to classification methods, focusing instead on vague ideas of variation, and does not realize the passage specifies small songbirds, not all birds.",🟢
+Diagnostic Test V2,RW,16,객관식,B,25,"Shows awareness that classification methods matter, but misidentifies the agent of change—implies Becker missed variations rather than classification criteria evolving over time.",🟢
+Diagnostic Test V2,RW,16,객관식,B,50,"Understands classification differences are relevant, but still incorrectly centers the explanation on Becker’s attentiveness rather than on changing taxonomic conventions.",🟢
+Diagnostic Test V2,RW,16,객관식,B,75,Correctly recognizes that classification practices evolved and caused the discrepancies in small bird counts between the two studies.,🟢
+Diagnostic Test V2,RW,16,객관식,B,100,"Accurately identifies that classification practices, especially regarding small songbirds, shifted between the two studies, leading to differing species counts despite similar actual bird populations.",🟢
+Diagnostic Test V2,RW,16,객관식,C,0,"Mistakenly believes Becker’s lower count stemmed from a lack of perceptiveness rather than different scientific standards, showing weak understanding of the passage.",🔴
+Diagnostic Test V2,RW,16,객관식,C,25,"Believes personal sensitivity explains the data discrepancy, misattributing a systemic scientific change to an individual difference.",🔴
+Diagnostic Test V2,RW,16,객관식,C,50,"Guesses that C might fit due to mention of classification changes, but misinterprets the contrast as a judgment of Becker’s skill rather than of methodology evolution.",🔴
+Diagnostic Test V2,RW,16,객관식,C,75,"Associates the classification topic with individual sensitivity, showing partial recall but flawed reasoning about the nature of scientific studies.",🔴
+Diagnostic Test V2,RW,16,객관식,C,100,Shows solid understanding that classification has changed but draws an incorrect conclusion about underestimation instead of over-classification.,🔴
+Diagnostic Test V2,RW,16,객관식,D,0,"Confidently but wrongly assumes that Patel’s team underestimated the species count, directly contradicting the passage’s statement that their count was higher.",🔴
+Diagnostic Test V2,RW,16,객관식,D,25,"Incorrectly reverses the logical relationship and thinks classification confusion led to a lower count, showing a clear misreading.",🔴
+Diagnostic Test V2,RW,16,객관식,D,50,"Confidently misreads the effect of classification differences, assuming they caused underreporting rather than over-differentiation.",🔴
+Diagnostic Test V2,RW,16,객관식,D,75,"Thinks D is correct with high confidence, showing a total misinterpretation of the role of classification in species count differences.",🔴
+Diagnostic Test V2,RW,16,객관식,D,100,"Believes D is supported by the evidence, but completely misses the clear link in the passage between newer methods and higher, not lower, species counts.",🔴
+Diagnostic Test V2,RW,17,객관식,A,0,"No understanding of the sentence or punctuation rules; the em dash is the clearest and most appropriate choice, so avoiding it suggests a complete misunderstanding of explanatory punctuation.",🟢
+Diagnostic Test V2,RW,17,객관식,A,25,"Recognizes that a word like “dendrochronology” might need explanation, but chooses a less formal or incomplete format, revealing limited awareness of how em dashes structure appositive phrases.",🟢
+Diagnostic Test V2,RW,17,객관식,A,50,"Has a partial sense that punctuation should set off an explanation, but does not recognize that the em dash is the conventional and most appropriate option in this academic context.",🟢
+Diagnostic Test V2,RW,17,객관식,A,75,"Understands that “dendrochronology” should be followed by a definition and selects the em dash with growing confidence, though may still second-guess due to unfamiliarity with punctuation nuances.",🟢
+Diagnostic Test V2,RW,17,객관식,A,100,"Shows full mastery of how to introduce an appositive with em dashes, especially in formal or academic contexts; chooses the clearest and most grammatically precise option.",🟢
+Diagnostic Test V2,RW,17,객관식,B,0,"Selects a plausible term for the blank but uses parentheses inappropriately or incompletely, indicating a misunderstanding of how to properly punctuate and close off a parenthetical phrase.",🔴
+Diagnostic Test V2,RW,17,객관식,B,25,"Assumes “(the study of tree rings)” is a valid explanation but doesn’t ensure complete punctuation, which shows limited proofreading and familiarity with formal punctuation structures.",🔴
+Diagnostic Test V2,RW,17,객관식,B,50,"Recognizes that parentheses can be used for asides, but lacks the confidence to use the more appropriate em dash or to punctuate correctly, leading to a grammatically incomplete choice.",🔴
+Diagnostic Test V2,RW,17,객관식,B,75,"Thinks parentheses work to explain unfamiliar terms but is unsure about punctuation rules and clarity, relying on a less effective and informal structure.",🔴
+Diagnostic Test V2,RW,17,객관식,B,100,"Confidently chooses parentheses to set off the explanation, though it lacks the formality and fluidity of the em dash; prioritizes function over style.",🔴
+Diagnostic Test V2,RW,17,객관식,C,0,Misunderstands the colon’s function and believes it can introduce definitions mid-sentence without recognizing its abruptness or the shift it creates in tone and rhythm.,🟡
+Diagnostic Test V2,RW,17,객관식,C,25,"Considers the colon appropriate for appositive phrases but overlooks how it can interrupt sentence flow in this context, revealing partial understanding.",🟡
+Diagnostic Test V2,RW,17,객관식,C,50,Identifies the colon as a signal for explanations but hesitates due to tone or rhythm; lacks clarity on when colons are too strong for mid-sentence insertions.,🟡
+Diagnostic Test V2,RW,17,객관식,C,75,"Understands the colon introduces explanations but prefers it incorrectly over the smoother em dash, likely due to limited stylistic awareness.",🟡
+Diagnostic Test V2,RW,17,객관식,C,100,"Confidently uses the colon to introduce a definition, though slightly misjudges its tone or disruptiveness in a formal explanatory sentence.",🟡
+Diagnostic Test V2,RW,17,객관식,D,0,"Assumes a comma can introduce the explanation, which causes a grammatical or syntactical error, indicating a weak grasp of appositive punctuation rules.",🔴
+Diagnostic Test V2,RW,17,객관식,D,25,"Chooses the comma because it sounds right in speech, but fails to apply formal grammar principles to sentence structure, leading to a flawed construction.",🔴
+Diagnostic Test V2,RW,17,객관식,D,50,"Has some sense of appositives but lacks the punctuation knowledge to properly separate them, relying on a comma that creates a run-on or unclear phrasing.",🔴
+Diagnostic Test V2,RW,17,객관식,D,75,Recognizes the function of apposition but does not understand that commas are insufficient or awkward for complex insertions like this one.,🔴
+Diagnostic Test V2,RW,17,객관식,D,100,"Confidently chooses the comma, misapplying spoken rhythm to formal writing and disregarding grammatical norms, leading to a jarring or incorrect sentence.",🔴
+Diagnostic Test V2,RW,18,객관식,A,0,"The phrase “these typewriters before this innovation” runs together without appropriate punctuation, making the sentence grammatically unclear and syntactically awkward.",🔴
+Diagnostic Test V2,RW,18,객관식,A,25,"The student may sense the sentence feels clunky but is unsure why, selecting this as a vague attempt to keep things continuous without understanding the run-on.",🔴
+Diagnostic Test V2,RW,18,객관식,A,50,The student is on the right track in identifying the phrase “before this innovation” as important but lacks clarity on how to separate ideas properly.,🔴
+Diagnostic Test V2,RW,18,객관식,A,75,"They suspect that something’s wrong with flow or punctuation, but still cling to this version as a possibly acceptable structure.",🔴
+Diagnostic Test V2,RW,18,객관식,A,100,"The student has confidence in this phrasing despite its grammatical issues, which suggests a fundamental misunderstanding of sentence boundaries and clause relationships.",🔴
+Diagnostic Test V2,RW,18,객관식,B,0,"There’s a slight chance that a student might hope the comma salvages the sentence, but it still reads as a run-on and disrupts clarity.",🔴
+Diagnostic Test V2,RW,18,객관식,B,25,"The student recognizes that a pause might be needed, but incorrectly thinks a comma is sufficient to separate the two ideas.",🔴
+Diagnostic Test V2,RW,18,객관식,B,50,They’re likely aware of a shift between the clauses but aren’t yet comfortable with the punctuation rules that apply to such shifts.,🔴
+Diagnostic Test V2,RW,18,객관식,B,75,"The student is testing options and may feel unsure, thinking this punctuation might make the sentence work, though it doesn’t resolve the run-on.",🔴
+Diagnostic Test V2,RW,18,객관식,B,100,The student is fairly confident the comma helps but is still mistaken about how to properly separate complete ideas into independent clauses.,🔴
+Diagnostic Test V2,RW,18,객관식,C,0,"This choice reflects full confidence in a clean, grammatically correct separation of ideas, using a period to properly mark the shift in topic and sentence structure.",🟢
+Diagnostic Test V2,RW,18,객관식,C,25,"A student with 25% confidence is guessing, vaguely sensing a pause is needed but unsure whether a comma provides the necessary separation.",🟢
+Diagnostic Test V2,RW,18,객관식,C,50,"The student suspects a full stop might help but doesn't yet fully recognize that “before this innovation” starts a new sentence, leading to tentative uncertainty.",🟢
+Diagnostic Test V2,RW,18,객관식,C,75,"There’s a clear sense that two sentences are involved, and this punctuation seems like the cleanest break, though the student may not be totally sure why it works.",🟢
+Diagnostic Test V2,RW,18,객관식,C,100,"This reflects full understanding that a period correctly divides the sentence, making both halves grammatically complete and stylistically clear.",🟢
+Diagnostic Test V2,RW,18,객관식,D,0,"Choosing this option at 0% confidence suggests a misunderstanding of how conjunctions and transitions like ""before"" should function grammatically.",🔴
+Diagnostic Test V2,RW,18,객관식,D,25,This level of confidence likely means the student is guessing and thinks “and before” might link ideas smoothly without recognizing the resulting error.,🔴
+Diagnostic Test V2,RW,18,객관식,D,50,"The student is trying to connect ideas but doesn't see that “and before” joins two mismatched elements, making the sentence structurally flawed.",🔴
+Diagnostic Test V2,RW,18,객관식,D,75,"They have some sense that “and before” might be useful for combining ideas, but they miss the need for a full separation of clauses.",🔴
+Diagnostic Test V2,RW,18,객관식,D,100,"This student wrongly believes that “and before” is a valid continuation, showing a major misunderstanding of sentence structure and conjunction use.",🔴
+Diagnostic Test V2,RW,19,객관식,A,0,No awareness of proper punctuation rules and a guess based on rhythm or familiarity,🟡
+Diagnostic Test V2,RW,19,객관식,A,25,Some recognition that a pause is needed without understanding clause separation,🟡
+Diagnostic Test V2,RW,19,객관식,A,50,Partial understanding that a transition is occurring but confusion about how to join two independent clauses correctly,🟡
+Diagnostic Test V2,RW,19,객관식,A,75,"Instinct that punctuation is necessary around “rather,” but not knowing that a semicolon is required before it",🟡
+Diagnostic Test V2,RW,19,객관식,A,100,Confident misuse of symmetrical commas and a misunderstanding of how to punctuate transitions between full clauses,🟡
+Diagnostic Test V2,RW,19,객관식,B,0,No understanding of clause division and failure to acknowledge the lack of punctuation between two complete thoughts,🔴
+Diagnostic Test V2,RW,19,객관식,B,25,"Vague awareness that “rather” is a transition, but no application of punctuation rules for independent clauses",🔴
+Diagnostic Test V2,RW,19,객관식,B,50,"Recognition that the sentence feels incomplete or abrupt, but no clear grasp of what punctuation is needed to fix it",🔴
+Diagnostic Test V2,RW,19,객관식,B,75,"Understanding that something more than a comma is needed but wrongly omits it, aiming for simplicity",🔴
+Diagnostic Test V2,RW,19,객관식,B,100,"Overconfidence in a grammatically flawed structure, ignoring the need for punctuation to join independent clauses",🔴
+Diagnostic Test V2,RW,19,객관식,C,0,"Misunderstanding of punctuation function, creating an incorrect structure by bracketing the conjunctive adverb with mismatched punctuation",🔴
+Diagnostic Test V2,RW,19,객관식,C,25,Some recognition that a semicolon is needed but poor execution in how to incorporate the transition word,🔴
+Diagnostic Test V2,RW,19,객관식,C,50,Some knowledge of clause boundaries but confusion about correct punctuation placement around adverbs like “rather”,🔴
+Diagnostic Test V2,RW,19,객관식,C,75,Nearly correct reasoning about the need for strong punctuation but failure to apply the conventional semicolon-comma structure,🔴
+Diagnostic Test V2,RW,19,객관식,C,100,Confident but incorrect assumption that punctuation before and after “rather” is acceptable regardless of clause type,🔴
+Diagnostic Test V2,RW,19,객관식,D,0,Lack of understanding of the sentence structure and how to correctly connect independent clauses with transitional adverbs,🟢
+Diagnostic Test V2,RW,19,객관식,D,25,Beginning awareness that “rather” needs to be set off and that a semicolon plays a role in joining full clauses,🟢
+Diagnostic Test V2,RW,19,객관식,D,50,Growing understanding of punctuation rules and a partially correct application of the semicolon-comma pattern,🟢
+Diagnostic Test V2,RW,19,객관식,D,75,Solid grasp of independent clause connection and how transitions like “rather” function with punctuation,🟢
+Diagnostic Test V2,RW,19,객관식,D,100,Complete and correct understanding of how to punctuate a transition between two full ideas using a semicolon and comma,🟢
+Diagnostic Test V2,RW,20,객관식,A,0,Complete guess with no consideration of the activists’ continuous pressure.,🔴
+Diagnostic Test V2,RW,20,객관식,A,25,Some recognition that it’s about policy change but misattributes passive consideration to the activists’ efforts.,🔴
+Diagnostic Test V2,RW,20,객관식,A,50,Understands that the blank requires an action clause but misinterprets the activists’ role by implying passive outcome.,🔴
+Diagnostic Test V2,RW,20,객관식,A,75,Recognizes sentence structure but fails to select an active verb that shows sustained campaigning.,🔴
+Diagnostic Test V2,RW,20,객관식,A,100,Certain it’s about eventual consideration yet ignores that the activists themselves applied pressure.,🔴
+Diagnostic Test V2,RW,20,객관식,B,0,Random choice that ignores the core idea of direct pressure leading to review.,🔴
+Diagnostic Test V2,RW,20,객관식,B,25,Slight sense that protests are relevant but misses the link to officials’ reluctant agreement.,🔴
+Diagnostic Test V2,RW,20,객관식,B,50,Identifies protests as a factor but overemphasizes media attention rather than lawmaker response.,🔴
+Diagnostic Test V2,RW,20,객관식,B,75,"Understands that protests influenced events but focuses on secondary effect, not sustained pressure.",🔴
+Diagnostic Test V2,RW,20,객관식,B,100,Confident in the media angle yet overlooks that direct demonstrations forced official action.,🔴
+Diagnostic Test V2,RW,20,객관식,C,0,"Pure guess without recognizing that causal pressure, not mere description, fills the blank.",🟡
+Diagnostic Test V2,RW,20,객관식,C,25,Vague sense of public pressure but misframes timing and undermines continuous campaigning.,🟡
+Diagnostic Test V2,RW,20,객관식,C,50,Sees public pressure as key but selects wording that disrupts flow and clarity.,🟡
+Diagnostic Test V2,RW,20,객관식,C,75,Appreciates the activists’ influence but falters on syntax and causal construction.,🟡
+Diagnostic Test V2,RW,20,객관식,C,100,Sure of public pressure’s role yet picks an awkward clause that clashes with “until.”,🟡
+Diagnostic Test V2,RW,20,객관식,D,0,"No understanding of the activists’ active role, random selection of the correct answer.",🟢
+Diagnostic Test V2,RW,20,객관식,D,25,Some awareness that demonstrations are needed but uncertainty about phrasing remains.,🟢
+Diagnostic Test V2,RW,20,객관식,D,50,Recognizes that activists forced review through demonstrations but hesitates on phrasing strength.,🟢
+Diagnostic Test V2,RW,20,객관식,D,75,"Nearly certain that the activists’ direct pressure is correct, with only minor doubts.",🟢
+Diagnostic Test V2,RW,20,객관식,D,100,Fully confident that staging demonstrations explains how activists pressured officials until they agreed.,🟢
+Diagnostic Test V2,RW,21,객관식,A,0,Has no understanding of how gerunds work and may be guessing based on what “sounds” plural without regard to grammar or syntax,🔴
+Diagnostic Test V2,RW,21,객관식,A,25,"Recognizes that “these” is plural and possibly related to “variations,” but misunderstands that “these forming” is grammatically invalid in Standard English",🔴
+Diagnostic Test V2,RW,21,객관식,A,50,"Understands the plural connection to “variations,” but still chooses “these” out of alignment with the verb “forming,” indicating partial confusion about structure",🔴
+Diagnostic Test V2,RW,21,객관식,A,75,"Thinks “these” refers to variations and tries to use it with “forming,” showing misapplied logic despite awareness of sentence structure",🔴
+Diagnostic Test V2,RW,21,객관식,A,100,Believes “these” is the clearest referent for “variations” and doesn’t realize that the phrase “these forming” is ungrammatical in this context,🔴
+Diagnostic Test V2,RW,21,객관식,B,0,Does not understand the distinction between demonstrative pronouns and objects of prepositions when used before gerunds,🔴
+Diagnostic Test V2,RW,21,객관식,B,25,"Believes “those” matches “variations,” but fails to recognize that “those forming” is not grammatical in Standard English",🔴
+Diagnostic Test V2,RW,21,객관식,B,50,"Identifies “those” as referring to plural “variations” and thinks it can be followed by “forming,” showing partial misunderstanding of gerund constructions",🔴
+Diagnostic Test V2,RW,21,객관식,B,75,"Assumes “those forming” is acceptable because it sounds right, showing weak control over formal written conventions",🔴
+Diagnostic Test V2,RW,21,객관식,B,100,Chooses “those” confidently as a referent for “variations” without recognizing the ungrammatical nature of “those forming”,🔴
+Diagnostic Test V2,RW,21,객관식,C,0,"Chooses “them” likely as a default object pronoun after “to,” but does not understand how gerunds require possessive or appropriate case before them",🟡
+Diagnostic Test V2,RW,21,객관식,C,25,May know “contribute to them forming” sounds okay conversationally but doesn't grasp its nonstandard usage in formal contexts,🟡
+Diagnostic Test V2,RW,21,객관식,C,50,"Understands the object role of “them,” but fails to see that “it” is preferred with gerunds in Standard English, suggesting a common but incorrect belief",🟡
+Diagnostic Test V2,RW,21,객관식,C,75,"Feels that “them forming” works, perhaps from hearing it in speech, but lacks awareness of formal writing expectations",🟡
+Diagnostic Test V2,RW,21,객관식,C,100,"Is confident in “them” as the object of “to” and assumes “them forming” is standard, unaware that “it forming” is more grammatically acceptable",🟡
+Diagnostic Test V2,RW,21,객관식,D,0,"Chooses “it” with little understanding of gerunds or grammar, possibly just guessing based on sentence flow",🟢
+Diagnostic Test V2,RW,21,객관식,D,25,"Recognizes that “it forming” is smoother than other options but unsure why, showing developing intuition about grammar",🟢
+Diagnostic Test V2,RW,21,객관식,D,50,"Understands that “it forming” is grammatically correct even if not entirely sure why, showing moderate grasp of syntax rules",🟢
+Diagnostic Test V2,RW,21,객관식,D,75,"Identifies that “it” is required for the gerund phrase to work grammatically, showing strong understanding of sentence structure",🟢
+Diagnostic Test V2,RW,21,객관식,D,100,"Correctly applies the rule that gerunds often follow possessive or pronoun forms like “it,” demonstrating full command of Standard English conventions",🟢
+Diagnostic Test V2,RW,22,객관식,A,0,Does not demonstrate understanding of the sentence’s time frame and shows no confidence in the selected answer,🔴
+Diagnostic Test V2,RW,22,객관식,A,25,"Does not demonstrate understanding of verb tense but shows slight uncertainty, possibly guessing without recognizing the tense mismatch",🔴
+Diagnostic Test V2,RW,22,객관식,A,50,"May understand that the sentence is about something ongoing, but fails to recognize the incompatibility of present tense with the past narrative",🔴
+Diagnostic Test V2,RW,22,객관식,A,75,"Understands that an action is occurring but misjudges the sentence’s time context, choosing present tense with misplaced confidence",🔴
+Diagnostic Test V2,RW,22,객관식,A,100,"Thinks present tense fits due to habitual action, not realizing the narrative is clearly in the past, showing strong but incorrect confidence",🔴
+Diagnostic Test V2,RW,22,객관식,B,0,Recognizes ongoing past action is needed but is unsure about how “has been analyzing” fits with a past-tense event,🟡
+Diagnostic Test V2,RW,22,객관식,B,25,Understands that something continuous happened but doesn’t notice the tense clash between present perfect and past simple,🟡
+Diagnostic Test V2,RW,22,객관식,B,50,"Correctly notices the sentence refers to something ongoing, but misinterprets “has been analyzing” as acceptable in past narrative",🟡
+Diagnostic Test V2,RW,22,객관식,B,75,"Believes present perfect progressive works due to the recentness of the action, overlooking tense consistency",🟡
+Diagnostic Test V2,RW,22,객관식,B,100,Thinks “has been analyzing” is a grammatically accurate and contextually sound choice despite tense conflict,🟡
+Diagnostic Test V2,RW,22,객관식,C,0,Knows future tense doesn’t align with past context but is unsure what tense would work better,🔴
+Diagnostic Test V2,RW,22,객관식,C,25,Sees that “will analyze” refers to a later time but fails to grasp the contradiction with “noticed”,🔴
+Diagnostic Test V2,RW,22,객관식,C,50,Understands the narrative is in the past but selects “will analyze” mistakenly thinking it might suggest a sequence of actions,🔴
+Diagnostic Test V2,RW,22,객관식,C,75,"Overconfidently picks future tense, missing the fundamental inconsistency with the sentence's setting",🔴
+Diagnostic Test V2,RW,22,객관식,C,100,"Thinks “will analyze” works as a projection of action, misunderstanding basic narrative time alignment",🔴
+Diagnostic Test V2,RW,22,객관식,D,0,Shows awareness that the sentence needs a past-tense structure and is leaning toward a progressive form,🟢
+Diagnostic Test V2,RW,22,객관식,D,25,Understands that past progressive signals ongoing past activity and is becoming confident in its use for simultaneous events,🟢
+Diagnostic Test V2,RW,22,객관식,D,50,Correctly identifies the use of past progressive for actions in progress when something else occurred,🟢
+Diagnostic Test V2,RW,22,객관식,D,75,Clearly understands both the structure and meaning of the past progressive and how it supports narrative flow,🟢
+Diagnostic Test V2,RW,22,객관식,D,100,Demonstrates full command of verb tense usage and confidently applies past progressive to match the timing and action described in the sentence,🟢
+Diagnostic Test V2,RW,23,객관식,A,0,"The answer contains grammatical errors and shows no understanding of possessive forms, indicating a misreading of both the structure and the context.",🔴
+Diagnostic Test V2,RW,23,객관식,A,25,"There is low confidence in this choice, but some awareness of the need for a possessive structure, though the second possessive is still misused.",🔴
+Diagnostic Test V2,RW,23,객관식,A,50,"There is moderate uncertainty, suggesting the student is attempting to use possessive grammar but is unclear about how many possessive forms are appropriate or necessary.",🔴
+Diagnostic Test V2,RW,23,객관식,A,75,"The student is fairly confident this form sounds correct, but the extra possessive still indicates a misunderstanding of how to properly structure possessives involving parts of a single object.",🔴
+Diagnostic Test V2,RW,23,객관식,A,100,"The student is very confident in an answer that contains a clear grammatical mistake, showing a misunderstanding of how double possessives work in this context.",🔴
+Diagnostic Test V2,RW,23,객관식,B,0,"The student believes ""bolts"" is plural possessive and that the sentence refers to multiple bolts, reflecting a misreading of the singular subject.",🟡
+Diagnostic Test V2,RW,23,객관식,B,25,"The student is somewhat unsure but thinks the subject might be plural and tries to match the possessive to that understanding, making this a grammatically plausible but contextually imprecise choice.",🟡
+Diagnostic Test V2,RW,23,객관식,B,50,"This reflects moderate confidence in plural possessive logic, and the student may think the bolt David Kim designed applies to all bolts generally, showing partial misunderstanding of the context.",🟡
+Diagnostic Test V2,RW,23,객관식,B,75,"The student is mostly confident in their interpretation, possibly believing the passage refers to a new standard across multiple bolts, not a singular item.",🟡
+Diagnostic Test V2,RW,23,객관식,B,100,"The student is fully confident, interpreting the sentence as referencing a general improvement across many bolts and misses the singular reference to one bolt Kim designed.",🟡
+Diagnostic Test V2,RW,23,객관식,C,0,"The student selected the singular possessive and non-possessive plural correctly, showing a complete misunderstanding of plural nouns versus possessive forms.",🟢
+Diagnostic Test V2,RW,23,객관식,C,25,"The student has a weak understanding of the noun form but senses the need for a singular reference, mistakenly combining it with a plural noun without the possessive.",🟢
+Diagnostic Test V2,RW,23,객관식,C,50,"The student is unsure how to handle plural nouns and possessives but avoids using multiple apostrophes, signaling confusion rather than total randomness.",🟢
+Diagnostic Test V2,RW,23,객관식,C,75,"The student is leaning toward this choice because it sounds familiar or grammatically simpler, despite not forming a proper possessive.",🟢
+Diagnostic Test V2,RW,23,객관식,C,100,The student is quite confident in their understanding of possessives but does not realize that “bolts ridges’” is an incorrect and uncommon grammatical structure.,🟢
+Diagnostic Test V2,RW,23,객관식,D,0,"The student knows to use a singular possessive and plural noun to describe parts of a single object, demonstrating solid grammatical and contextual understanding.",🔴
+Diagnostic Test V2,RW,23,객관식,D,25,"The student is testing out grammar logic and thinks “bolt’s ridges” makes sense, showing a decent grasp of possessive forms and structure.",🔴
+Diagnostic Test V2,RW,23,객관식,D,50,"The student is reasonably confident that the singular bolt is being discussed and that the ridges belong to it, aligning grammar with meaning.",🔴
+Diagnostic Test V2,RW,23,객관식,D,75,The student has high confidence and demonstrates a precise understanding of both the subject (a single bolt) and correct possessive grammar.,🔴
+Diagnostic Test V2,RW,23,객관식,D,100,"The student shows complete command of possessive structure and contextual clarity, confidently identifying the correct grammatical form and logical fit.",🔴
+Diagnostic Test V2,RW,24,객관식,A,0,"The transition ""In fact"" contradicts the contrast implied in the sentence and shows a misunderstanding of the sentence’s logical structure.",🟡
+Diagnostic Test V2,RW,24,객관식,A,25,"The transition ""In fact"" implies reinforcement rather than concession, but the sentence requires acknowledging a contrast, so this shows partial understanding.",🟡
+Diagnostic Test V2,RW,24,객관식,A,50,"Using ""In fact"" shows uncertainty about the sentence's logic; it somewhat connects the ideas but misses the necessary shift in tone.",🟡
+Diagnostic Test V2,RW,24,객관식,A,75,"This shows the test taker has a decent grasp of transitions but may be overapplying ""In fact"" without evaluating logical relationships.",🟡
+Diagnostic Test V2,RW,24,객관식,A,100,"This reflects confident misunderstanding; the test taker strongly believes the sentence builds on the previous idea, but it actually shifts perspective.",🟡
+Diagnostic Test V2,RW,24,객관식,B,0,"The transition ""In other words"" suggests the second sentence restates the first, which is incorrect and shows little understanding of logical flow.",🔴
+Diagnostic Test V2,RW,24,객관식,B,25,"Choosing ""In other words"" shows awareness of cohesion but a lack of attention to how the second sentence introduces a contrast rather than clarification.",🔴
+Diagnostic Test V2,RW,24,객관식,B,50,"The test taker recognizes the need for connection but struggles to distinguish between rephrasing and contrasting, showing moderate understanding.",🔴
+Diagnostic Test V2,RW,24,객관식,B,75,This indicates the test taker has considered sentence function but misidentified the relationship between the two clauses.,🔴
+Diagnostic Test V2,RW,24,객관식,B,100,"This reflects overconfidence in using common transitions, mistakenly thinking the second sentence is a paraphrase when it's a contrast.",🔴
+Diagnostic Test V2,RW,24,객관식,C,0,"Choosing ""Granted"" at 0% confidence suggests a random guess that happens to land on the correct answer, showing no understanding of the logic.",🟢
+Diagnostic Test V2,RW,24,객관식,C,25,"This reflects some intuition about the sentence needing contrast, but the test taker lacks full understanding of how ""Granted"" works.",🟢
+Diagnostic Test V2,RW,24,객관식,C,50,"This choice shows moderate understanding of how ""Granted"" introduces a concession and fits the contrast between the two ideas.",🟢
+Diagnostic Test V2,RW,24,객관식,C,75,"This reflects fairly strong reasoning, recognizing that ""Granted"" appropriately signals a concession that sets up a comparative statement.",🟢
+Diagnostic Test V2,RW,24,객관식,C,100,This reflects full understanding of the sentence’s logic and the role of concessive transitions in emphasizing contrast.,🟢
+Diagnostic Test V2,RW,24,객관식,D,0,"Choosing ""Therefore"" with no confidence shows confusion but avoidance of stronger, incorrect answers; it indicates the test taker doesn't believe it fits.",🔴
+Diagnostic Test V2,RW,24,객관식,D,25,This suggests the test taker misunderstood the sentence’s logic but is cautious enough not to strongly back an incorrect causal transition.,🔴
+Diagnostic Test V2,RW,24,객관식,D,50,"This reflects a tendency to misread contrasts as causation, but there's hesitation indicating partial recognition of an issue.",🔴
+Diagnostic Test V2,RW,24,객관식,D,75,"This indicates a logical misinterpretation of the relationship between the ideas, mistaking contrast for cause-effect.",🔴
+Diagnostic Test V2,RW,24,객관식,D,100,"This reflects a clear misunderstanding of the sentence structure, with misplaced confidence in a transition that implies causation rather than concession.",🔴
+Diagnostic Test V2,RW,25,객관식,A,0,"Shows the student had no belief in the choice and likely selected it randomly or as a placeholder without considering how ""Conversely"" fails to logically connect the sentences.",🔴
+Diagnostic Test V2,RW,25,객관식,A,25,"Reflects low confidence and awareness that ""Conversely"" might be off, but the student wasn't sure what else to pick and didn’t fully grasp why contrast was inappropriate.",🔴
+Diagnostic Test V2,RW,25,객관식,A,50,"Indicates some growing suspicion that “Conversely” might not work, possibly recognizing that the sentences aren’t opposites, but still unsure about alternatives.",🔴
+Diagnostic Test V2,RW,25,객관식,A,75,"Shows the student is almost certain, but incorrectly so, suggesting a misunderstanding of contrast transitions and how they misalign with cause-and-effect logic.",🔴
+Diagnostic Test V2,RW,25,객관식,A,100,"The student is entirely confident in a fundamentally flawed choice, reflecting a deep misunderstanding of how to use ""Conversely"" and the logic of transitional relationships.",🔴
+Diagnostic Test V2,RW,25,객관식,B,0,"No confidence in ""In so doing"" indicates either a random guess or total unfamiliarity with the phrase as a transitional device for indicating result.",🟢
+Diagnostic Test V2,RW,25,객관식,B,25,"Suggests the student sees some potential in the phrase but doesn’t understand it clearly enough to trust it, showing unfamiliarity with how it signals a consequence.",🟢
+Diagnostic Test V2,RW,25,객관식,B,50,"Shows partial understanding; the student may recognize that ""In so doing"" connects actions to outcomes but isn’t fully confident in how the two sentences are linked.",🟢
+Diagnostic Test V2,RW,25,객관식,B,75,"Reflects a strong understanding of the causal structure in the text and likely comprehension of the phrase’s meaning, though the student still has slight uncertainty.",🟢
+Diagnostic Test V2,RW,25,객관식,B,100,"Demonstrates complete understanding of how “In so doing” bridges the architect’s actions and their effects, with high confidence in both vocabulary and logic.",🟢
+Diagnostic Test V2,RW,25,객관식,C,0,"Zero confidence in ""For instance"" suggests the student knew it didn’t fit, possibly recognizing that no example is being introduced.",🔴
+Diagnostic Test V2,RW,25,객관식,C,25,"Low confidence shows the student had doubts and may have realized that the second sentence doesn’t function as an example, but chose it from lack of better options.",🔴
+Diagnostic Test V2,RW,25,객관식,C,50,Moderate confidence reflects confusion between an example and a consequence; the student likely misread the second sentence as illustrating the first rather than resulting from it.,🔴
+Diagnostic Test V2,RW,25,객관식,C,75,"High confidence here indicates the student misidentified the structure, thinking the second sentence gives a concrete example, when it actually expresses a broader effect.",🔴
+Diagnostic Test V2,RW,25,객관식,C,100,"Complete confidence in an incorrect choice points to a significant misunderstanding of what ""For instance"" means in context and how it mismatches the sentence purpose.",🔴
+Diagnostic Test V2,RW,25,객관식,D,0,"No confidence in ""In particular"" suggests the student correctly rejected it as irrelevant, likely noticing that no specific detail is being emphasized.",🟡
+Diagnostic Test V2,RW,25,객관식,D,25,"The student sees slight potential but correctly lacks trust in the choice, perhaps recognizing that ""In particular"" zooms in too much for a general result.",🟡
+Diagnostic Test V2,RW,25,객관식,D,50,"Moderate confidence shows the student views the second sentence as a specific elaboration rather than a broader outcome, reflecting partial misinterpretation.",🟡
+Diagnostic Test V2,RW,25,객관식,D,75,"The student strongly believes “In particular” fits, likely seeing it as highlighting a detail, though they misread the sentence's purpose as focusing on a point rather than showing an effect.",🟡
+Diagnostic Test V2,RW,25,객관식,D,100,"High confidence here indicates a solid misunderstanding of “In particular,” misapplying it to a sentence that expresses a general consequence rather than a specific focus.",🟡
+Diagnostic Test V2,RW,26,객관식,A,0,"Thinks this choice is correct but shows no understanding of what adaptation means in context, possibly guessing based on superficial details.",🟡
+Diagnostic Test V2,RW,26,객관식,A,25,"Believes the tusk and Arctic waters are relevant but doesn’t realize that the tusk isn’t an adaptation to Arctic survival, reflecting a misunderstanding of the prompt.",🟡
+Diagnostic Test V2,RW,26,객관식,A,50,"Is partially confident that living in Arctic waters and having a tusk shows adaptation, but misses that recognizability isn’t the same as being specially adapted.",🟡
+Diagnostic Test V2,RW,26,객관식,A,75,"Feels somewhat sure due to the mention of the Arctic, but overlooks that the focus is on adaptation, not appearance.",🟡
+Diagnostic Test V2,RW,26,객관식,A,100,"Sees the relevance of habitat and tusk and feels quite confident, but still misinterprets how adaptation should be framed in the answer.",🟡
+Diagnostic Test V2,RW,26,객관식,B,0,Recognizes some relevance in narwhals not migrating but isn’t sure if it directly proves adaptation to Arctic conditions.,🟢
+Diagnostic Test V2,RW,26,객관식,B,25,"Sees that non-migration and sea ice reliance relate to adaptation, but is hesitant about whether this fully answers the question.",🟢
+Diagnostic Test V2,RW,26,객관식,B,50,Understands the connection to adaptation and Arctic survival and feels decently confident that it fits the goal.,🟢
+Diagnostic Test V2,RW,26,객관식,B,75,"Strongly sees that year-round Arctic living and dependence on sea ice are clear signs of adaptation, with only slight doubt.",🟢
+Diagnostic Test V2,RW,26,객관식,B,100,Fully understands how non-migration and reliance on sea ice show narwhals are adapted to Arctic life and feels certain this is the best fit.,🟢
+Diagnostic Test V2,RW,26,객관식,C,0,Chooses this due to interesting tusk information but is completely off-base regarding the goal of adaptation.,🔴
+Diagnostic Test V2,RW,26,객관식,C,25,"Has some interest in the tusk detail and folklore, but doesn’t recognize that the answer is irrelevant to survival in Arctic conditions.",🔴
+Diagnostic Test V2,RW,26,객관식,C,50,"Feels mildly confident because the tusk seems unique, but fails to connect it to Arctic-specific traits.",🔴
+Diagnostic Test V2,RW,26,객관식,C,75,"Feels somewhat sure due to the specific imagery of the tusk, but doesn’t grasp that the prompt is about environmental adaptation, not popularity.",🔴
+Diagnostic Test V2,RW,26,객관식,C,100,"Feels quite confident due to the memorable description of the tusk, but completely misinterprets the purpose of the question.",🔴
+Diagnostic Test V2,RW,26,객관식,D,0,"Sees melting ice as related to narwhals and assumes it must show something about adaptation, missing that this is about threat, not traits.",🔴
+Diagnostic Test V2,RW,26,객관식,D,25,"Feels slightly confident that climate change’s impact on narwhals might relate to how they’re adapted, though the logic is misaligned.",🔴
+Diagnostic Test V2,RW,26,객관식,D,50,Recognizes the importance of sea ice but doesn’t clearly connect it to narwhals being suited for Arctic life.,🔴
+Diagnostic Test V2,RW,26,객관식,D,75,Thinks the sentence is informative and somewhat related but isn’t sure whether it addresses the idea of special adaptation.,🔴
+Diagnostic Test V2,RW,26,객관식,D,100,"Feels very confident that this environmental threat sentence relates to narwhals’ Arctic connection, but misreads the prompt’s focus on adaptations.",🔴
+Diagnostic Test V2,RW,27,객관식,A,0,"The student selected an answer that mentions a unique trait of axolotls but not the one most relevant to research value, and they’re not at all confident, suggesting they may realize the answer doesn’t directly address the question.",🟡
+Diagnostic Test V2,RW,27,객관식,A,25,"The student focused on a distinctive biological trait and has slight confidence in it, though their uncertainty likely stems from not seeing a clear connection to scientific research.",🟡
+Diagnostic Test V2,RW,27,객관식,A,50,The student shows moderate confidence in an answer that highlights a real axolotl trait but may be overlooking the fact that it doesn’t explain why scientists study them.,🟡
+Diagnostic Test V2,RW,27,객관식,A,75,"The student is fairly confident about a feature that distinguishes axolotls from other amphibians, but they may have overestimated how relevant that feature is to the purpose of scientific research.",🟡
+Diagnostic Test V2,RW,27,객관식,A,100,"The student is fully confident in an answer that describes a unique biological phenomenon, but they’ve missed that neoteny is not the reason axolotls are scientifically valuable.",🟡
+Diagnostic Test V2,RW,27,객관식,B,0,"The student is not confident in their choice, but they’ve selected the only answer that directly connects axolotls’ regenerative powers to their value in research, which is precisely supported by the notes.",🟢
+Diagnostic Test V2,RW,27,객관식,B,25,"The student shows mild confidence in an answer that correctly explains why axolotls are studied, suggesting they may be on the right track but still unsure about the supporting detail.",🟢
+Diagnostic Test V2,RW,27,객관식,B,50,"The student is moderately confident in the strongest, most relevant answer choice, indicating they likely noticed the regeneration link but aren’t fully certain it’s the best match.",🟢
+Diagnostic Test V2,RW,27,객관식,B,75,"The student is quite confident in the best-supported and most relevant choice, showing a strong understanding of how regeneration makes axolotls valuable to science.",🟢
+Diagnostic Test V2,RW,27,객관식,B,100,"The student is completely confident in the correct answer, demonstrating a clear understanding that axolotls’ regenerative abilities are the primary reason they are studied by scientists.",🟢
+Diagnostic Test V2,RW,27,객관식,C,0,"The student picked a trait about axolotls remaining aquatic but has no confidence in it, which reflects accurate self-doubt since the notes don’t suggest that this is why they are valuable to researchers.",🔴
+Diagnostic Test V2,RW,27,객관식,C,25,"The student sees a possible connection between aquatic lifestyle and research conditions but isn’t confident, which aligns with the weak support this detail has in the notes.",🔴
+Diagnostic Test V2,RW,27,객관식,C,50,"The student is unsure but thinks that staying aquatic might relate to research value, even though the notes do not make that connection explicit.",🔴
+Diagnostic Test V2,RW,27,객관식,C,75,"The student is fairly confident that being aquatic helps make axolotls easier to study, which is a reasonable assumption, though not supported by the provided notes as the main reason for scientific interest.",🔴
+Diagnostic Test V2,RW,27,객관식,C,100,"The student is fully confident in a logistical trait that seems helpful but isn’t actually mentioned as a research motivator in the notes, so their confidence is misplaced.",🔴
+Diagnostic Test V2,RW,27,객관식,D,0,"The student chose an answer unrelated to the research focus and has no confidence in it, showing an accurate awareness that the endangered status is not why axolotls are studied scientifically.",🔴
+Diagnostic Test V2,RW,27,객관식,D,25,"The student has low confidence in a conservation-related answer, which makes sense since the note about endangered status is separate from the scientific research context.",🔴
+Diagnostic Test V2,RW,27,객관식,D,50,"The student believes the conservation status might connect to research interest but isn’t sure, reflecting some confusion about the purpose of the study mentioned in the notes.",🔴
+Diagnostic Test V2,RW,27,객관식,D,75,"The student is fairly confident in an answer that highlights an important environmental issue, but they’re misinterpreting it as the reason for scientific research, which the notes don’t support.",🔴
+Diagnostic Test V2,RW,27,객관식,D,100,"The student is completely confident in a conservation-focused answer that doesn’t match the question’s goal, misunderstanding that the scientific value lies in regenerative ability, not endangerment.",🔴
+Diagnostic Test V2,Math,1,객관식,A,0,Completely unsure but happened to select the correct answer by guessing.,🟢
+Diagnostic Test V2,Math,1,객관식,A,25,Somewhat unsure but noticed that 8 − 5 = 3 and used logic to reach the correct answer.,🟢
+Diagnostic Test V2,Math,1,객관식,A,50,Partially confident and correctly solved the equation and subtracted 5 from the result.,🟢
+Diagnostic Test V2,Math,1,객관식,A,75,Fairly confident and used clear step-by-step reasoning to solve and subtract correctly.,🟢
+Diagnostic Test V2,Math,1,객관식,A,100,Fully confident and correctly performed both the algebraic steps and final subtraction to arrive at the right answer.,🟢
+Diagnostic Test V2,Math,1,객관식,B,0,Completely unsure and selected an incorrect value; may have guessed randomly without attempting to solve.,🟡
+Diagnostic Test V2,Math,1,객관식,B,25,Somewhat unsure and selected an incorrect value; might have solved for z but skipped the subtraction step.,🟡
+Diagnostic Test V2,Math,1,객관식,B,50,Partially confident in an incorrect value; possibly misunderstood the question and stopped at solving z=8.,🟡
+Diagnostic Test V2,Math,1,객관식,B,75,Fairly confident in an incorrect value; likely solved part of the problem but misread or ignored the final expression z−5.,🟡
+Diagnostic Test V2,Math,1,객관식,B,100,Fully confident in an incorrect answer; likely misunderstood the task and believed z itself was the answer.,🟡
+Diagnostic Test V2,Math,1,객관식,C,0,Completely unsure and selected a value unrelated to solving the equation; may not have worked through the steps.,🔴
+Diagnostic Test V2,Math,1,객관식,C,25,Somewhat unsure and selected a plausible number like 12; may have incorrectly added 20 instead of subtracting or dividing.,🔴
+Diagnostic Test V2,Math,1,객관식,C,50,Partially confident in a wrong method; student might have solved 4z=12 instead of adding 20 to both sides.,🔴
+Diagnostic Test V2,Math,1,객관식,C,75,Fairly confident in a miscalculation; student possibly misapplied operations when isolating z.,🔴
+Diagnostic Test V2,Math,1,객관식,C,100,Fully confident in an incorrect value; suggests a strong belief in a wrong method of isolating z.,🔴
+Diagnostic Test V2,Math,1,객관식,D,0,Completely unsure and selected a number with no connection to the equation; likely guessed.,🔴
+Diagnostic Test V2,Math,1,객관식,D,25,Somewhat unsure and selected a large number like 20; may have mistaken the constant for the solution.,🔴
+Diagnostic Test V2,Math,1,객관식,D,50,Partially confident in a misinterpretation; possibly confused the role of 20 in the equation.,🔴
+Diagnostic Test V2,Math,1,객관식,D,75,Fairly confident in an incorrect setup; might have interpreted 20 as the answer or plugged it in to check validity without solving.,🔴
+Diagnostic Test V2,Math,1,객관식,D,100,Fully confident in a completely incorrect answer; strong belief in a flawed reasoning path.,🔴
+Diagnostic Test V2,Math,2,객관식,A,0,"Guess without understanding, landing on an incorrect option by chance.",🔴
+Diagnostic Test V2,Math,2,객관식,A,25,"Uncertainty, but some reasoning might have led to overestimating the mean.",🔴
+Diagnostic Test V2,Math,2,객관식,A,50,"Saw 7.5 as a reasonable average, possibly from miscounting or adding incorrectly.",🔴
+Diagnostic Test V2,Math,2,객관식,A,75,"Moderate belief in the answer, likely due to thinking the mean lies between 7 and 8 without recalculating.",🔴
+Diagnostic Test V2,Math,2,객관식,A,100,"Full belief in a slightly overestimated mean, likely due to a math error or dividing by the wrong number.",🔴
+Diagnostic Test V2,Math,2,객관식,B,0,Guessed randomly and landed on a clearly too-high option.,🔴
+Diagnostic Test V2,Math,2,객관식,B,25,"Mild attraction to a round number, without much evidence.",🔴
+Diagnostic Test V2,Math,2,객관식,B,50,Likely overestimated the impact of larger numbers like 14 and 12.,🔴
+Diagnostic Test V2,Math,2,객관식,B,75,"Strong belief that the mean was pulled higher by large values, but without checking the full data set.",🔴
+Diagnostic Test V2,Math,2,객관식,B,100,"Fully confident in an overestimate, probably from incorrectly adding or ignoring smaller weights.",🔴
+Diagnostic Test V2,Math,2,객관식,C,0,Guessed correctly without any confidence in the process.,🟢
+Diagnostic Test V2,Math,2,객관식,C,25,"Minimal trust in the math, even though the answer was right.",🟢
+Diagnostic Test V2,Math,2,객관식,C,50,Some calculation effort but uncertainty about dividing or summing.,🟢
+Diagnostic Test V2,Math,2,객관식,C,75,Mostly correct math with slight doubt in execution or remembering how to calculate mean.,🟢
+Diagnostic Test V2,Math,2,객관식,C,100,Complete accuracy and trust in the process: summing the data and dividing correctly.,🟢
+Diagnostic Test V2,Math,2,객관식,D,0,"Guessed and ended up on a low, incorrect estimate.",🔴
+Diagnostic Test V2,Math,2,객관식,D,25,"Mild confidence in an underestimate, likely from ignoring higher weights like 14 and 12.",🔴
+Diagnostic Test V2,Math,2,객관식,D,50,"Thought the mean might be low, perhaps from scanning rather than calculating.",🔴
+Diagnostic Test V2,Math,2,객관식,D,75,Strong but mistaken belief that the weights skew low.,🔴
+Diagnostic Test V2,Math,2,객관식,D,100,"Total conviction in an undercalculated mean, likely from a math mistake or counting too few values.",🔴
+Diagnostic Test V2,Math,3,객관식,A,0,"Chose 14 while being completely unsure, possibly guessing without applying the ratio at all.",🔴
+Diagnostic Test V2,Math,3,객관식,A,25,"Chose 14 with low confidence, maybe recognizing that it seems too high but not sure how to use the ratio.",🔴
+Diagnostic Test V2,Math,3,객관식,A,50,"Chose 14 with moderate confidence, suggesting a rough mental estimate without verifying with proportion math.",🔴
+Diagnostic Test V2,Math,3,객관식,A,75,"Chose 14 with high confidence, indicating a misunderstanding of the ratio or how to apply proportions.",🔴
+Diagnostic Test V2,Math,3,객관식,A,100,"Chose 14 with full confidence, reflecting high certainty in an incorrect computation or misinterpretation of the ratio.",🔴
+Diagnostic Test V2,Math,3,객관식,B,0,"Chose 12 while being completely unsure, perhaps guessing randomly among middle values.",🔴
+Diagnostic Test V2,Math,3,객관식,B,25,"Chose 12 with low confidence, indicating awareness that it’s close to a reasonable estimate but not verifying with math.",🔴
+Diagnostic Test V2,Math,3,객관식,B,50,"Chose 12 with moderate confidence, likely thinking 12 feels “reasonable” but not working through the full ratio setup.",🔴
+Diagnostic Test V2,Math,3,객관식,B,75,"Chose 12 with high confidence, suggesting the student is estimating but slightly off in their application of the 2:7 ratio.",🔴
+Diagnostic Test V2,Math,3,객관식,B,100,"Chose 12 with full confidence, indicating belief in an approximation that rounds the ratio improperly.",🔴
+Diagnostic Test V2,Math,3,객관식,C,0,"Chose 10 while being completely unsure, implying a lucky guess despite not applying the proportion.",🟢
+Diagnostic Test V2,Math,3,객관식,C,25,"Chose 10 with low confidence, likely recognizing it’s a round number and could be right, but unsure of the method.",🟢
+Diagnostic Test V2,Math,3,객관식,C,50,"Chose 10 with moderate confidence, probably recalling that 2:7 simplifies to 1:3.5 and multiplying 35 accordingly.",🟢
+Diagnostic Test V2,Math,3,객관식,C,75,"Chose 10 with high confidence, showing clear understanding of ratio and correct multiplication.",🟢
+Diagnostic Test V2,Math,3,객관식,C,100,"Chose 10 with full confidence, demonstrating accurate proportion work and full mastery of the setup.",🟢
+Diagnostic Test V2,Math,3,객관식,D,0,"Chose 8 while being completely unsure, possibly guessing the lowest number.",🔴
+Diagnostic Test V2,Math,3,객관식,D,25,"Chose 8 with low confidence, thinking it might be right but lacking any calculation.",🔴
+Diagnostic Test V2,Math,3,객관식,D,50,"Chose 8 with moderate confidence, potentially using a flawed logic like flipping the ratio.",🔴
+Diagnostic Test V2,Math,3,객관식,D,75,"Chose 8 with high confidence, indicating a misconception about the ratio or incorrect formula usage.",🔴
+Diagnostic Test V2,Math,3,객관식,D,100,"Chose 8 with full confidence, showing complete certainty in an incorrect approach or misreading the question.",🔴
+Diagnostic Test V2,Math,4,객관식,A,0,"Completely unsure and chose an answer that happens to be correct, indicating a lucky guess without understanding the relationship between exterior and interior angles.",🟢
+Diagnostic Test V2,Math,4,객관식,A,25,"Slight hunch that A might be right, possibly noticing symmetry or a pattern, but lacking clarity on how triangle angle rules or exterior angle properties apply.",🟢
+Diagnostic Test V2,Math,4,객관식,A,50,"Some awareness that equal angles or exterior angle relationships are involved, but uncertainty about how to apply them precisely leads to a hesitant selection of A.",🟢
+Diagnostic Test V2,Math,4,객관식,A,75,"Confident that equal angle properties and triangle sum rules are relevant, but not fully sure how to derive the final angle from the given 110°.",🟢
+Diagnostic Test V2,Math,4,객관식,A,100,Fully confident and correctly applied both the triangle sum rule and the exterior angle theorem to conclude that angle PQR must be 40°.,🟢
+Diagnostic Test V2,Math,4,객관식,B,0,Completely unsure and selected an incorrect answer without recognizing the relationship between triangle interior and exterior angles.,🔴
+Diagnostic Test V2,Math,4,객관식,B,25,"Mildly confident in answer B, possibly thinking 45° splits 90° evenly or assuming a visual symmetry without validating the math.",🔴
+Diagnostic Test V2,Math,4,객관식,B,50,"Recognizes there’s an isosceles triangle involved but confuses how to distribute the remaining angle measure, leading to an uncertain selection of 45°.",🔴
+Diagnostic Test V2,Math,4,객관식,B,75,Believes there's a logical reason for B based on evenly splitting angles but misapplies triangle angle sum or misinterprets the 110° as a bisected angle.,🔴
+Diagnostic Test V2,Math,4,객관식,B,100,Fully confident in answer B due to a flawed but systematic misapplication of angle properties—possibly assuming the 110° is split equally.,🔴
+Diagnostic Test V2,Math,4,객관식,C,0,"Guessed C without understanding angle relationships or triangle geometry, picking a round number that feels mathematically “clean.”",🔴
+Diagnostic Test V2,Math,4,객관식,C,25,Picked C thinking it might represent half of something (like 100 or 110) but lacks grounding in triangle or exterior angle rules.,🔴
+Diagnostic Test V2,Math,4,객관식,C,50,"Somewhat confident in choosing 50°, perhaps due to assuming the triangle is equilateral or symmetric in a misleading way.",🔴
+Diagnostic Test V2,Math,4,객관식,C,75,"Chose 50° thinking it represents an average or midpoint in the angle set, confident in the intuition but not the geometry.",🔴
+Diagnostic Test V2,Math,4,객관식,C,100,"Confidently chose 50° due to a misconception about angle splitting or misunderstanding of triangle properties, showing flawed but consistent reasoning.",🔴
+Diagnostic Test V2,Math,4,객관식,D,0,"Randomly selected D with no clear understanding of angle rules or triangle geometry, possibly mistaking 110° as part of a supplementary setup.",🔴
+Diagnostic Test V2,Math,4,객관식,D,25,"Chose D with minimal confidence, perhaps mistaking which angles are interior versus exterior or misplacing where angle PQR is in the diagram.",🔴
+Diagnostic Test V2,Math,4,객관식,D,50,Somewhat confident D is correct due to a misinterpretation of the 110° as needing to be split with more than half assigned to one angle.,🔴
+Diagnostic Test V2,Math,4,객관식,D,75,"Fairly confident that 55° fits based on faulty reasoning about linear pairs or supplementarity, misjudging how angle measures relate in the triangle.",🔴
+Diagnostic Test V2,Math,4,객관식,D,100,"Fully confident in D despite it being incorrect, showing a deep misunderstanding of the relationship between triangle interior angles and their exterior angle.",🔴
+Diagnostic Test V2,Math,5,객관식,A,0,"Completely unsure and chose an incorrect interpretation, showing confusion about what 20 represents.",🔴
+Diagnostic Test V2,Math,5,객관식,A,25,"Somewhat guessed this incorrect option, possibly associating the number 20 with distance without checking units.",🔴
+Diagnostic Test V2,Math,5,객관식,A,50,"Understood that 20 might refer to something in the equation but misinterpreted it as total distance, showing partial reasoning.",🔴
+Diagnostic Test V2,Math,5,객관식,A,75,Confident in an incorrect choice due to a misunderstanding of how equations model distance over time.,🔴
+Diagnostic Test V2,Math,5,객관식,A,100,"Very confident in a wrong idea, strongly mistaking the coefficient for a final distance rather than a rate.",🔴
+Diagnostic Test V2,Math,5,객관식,B,0,Guessed randomly or misunderstood the context entirely.,🔴
+Diagnostic Test V2,Math,5,객관식,B,25,Somewhat associated the number 20 with quantity but misread it as a count of trips.,🔴
+Diagnostic Test V2,Math,5,객관식,B,50,"Partially aware that 20 relates to a repeated quantity, but didn’t connect it to speed or rate.",🔴
+Diagnostic Test V2,Math,5,객관식,B,75,"Confidently but incorrectly thought 20 represented a count of trips, misreading the structure of the equation.",🔴
+Diagnostic Test V2,Math,5,객관식,B,100,Very confident but completely misinterpreted what the coefficient in a linear equation typically stands for.,🔴
+Diagnostic Test V2,Math,5,객관식,C,0,"Guessed correctly, perhaps based on familiarity with equation forms but without full understanding.",🟢
+Diagnostic Test V2,Math,5,객관식,C,25,"Recognized the equation form and had a decent idea that 20 meant speed, but lacked full confidence.",🟢
+Diagnostic Test V2,Math,5,객관식,C,50,"Knew that in d=rt, the 20 was likely the speed, but wasn’t fully certain.",🟢
+Diagnostic Test V2,Math,5,객관식,C,75,Understood the structure of the equation and was quite sure 20 represented miles per hour.,🟢
+Diagnostic Test V2,Math,5,객관식,C,100,"Fully confident and correct — demonstrated clear understanding of how rate, time, and distance relate.",🟢
+Diagnostic Test V2,Math,5,객관식,D,0,"Guessed or selected at random, without analyzing the context or equation structure.",🔴
+Diagnostic Test V2,Math,5,객관식,D,25,"Somewhat misread the question, maybe thinking 20 must relate to time since distance and time are mentioned.",🔴
+Diagnostic Test V2,Math,5,객관식,D,50,"Knew time was involved but mistakenly applied 20 as the duration, not rate.",🔴
+Diagnostic Test V2,Math,5,객관식,D,75,"Mistakenly confident in associating 20 with time instead of rate, likely confusing equation roles.",🔴
+Diagnostic Test V2,Math,5,객관식,D,100,"Very confident in an incorrect interpretation, mixing up units or misapplying basic distance-time logic.",🔴
+Diagnostic Test V2,Math,6,객관식,A,0,Completely unsure and selected a choice that doesn't have to be an integer; reflects random guessing and misunderstanding of the algebraic structure.,🟡
+Diagnostic Test V2,Math,6,객관식,A,25,Somewhat unsure and selected a non-guaranteed option; indicates partial familiarity with factoring but lacks clarity on what must always be true.,🟡
+Diagnostic Test V2,Math,6,객관식,A,50,Chose a distractor with moderate confidence; likely recognizes the form of factoring but doesn’t evaluate which values are always divisible.,🟡
+Diagnostic Test V2,Math,6,객관식,A,75,Selected an answer that isn’t always an integer with high confidence; confident but incorrect reasoning about expressions involving b and h.,🟡
+Diagnostic Test V2,Math,6,객관식,A,100,Fully confident in a choice that doesn’t have to be true; demonstrates major misunderstanding of the constraints and integer conditions.,🟡
+Diagnostic Test V2,Math,6,객관식,B,0,No confidence but chose a distractor involving k; may understand part of the structure but not how divisibility affects the expression.,🟡
+Diagnostic Test V2,Math,6,객관식,B,25,Some confidence in a distractor; suggests awareness that k is involved in the equation but incorrect analysis of which term is guaranteed.,🟡
+Diagnostic Test V2,Math,6,객관식,B,50,"Moderate confidence in a plausible distractor; indicates partial understanding of the connection between b and k, but not enough to verify integer status.",🟡
+Diagnostic Test V2,Math,6,객관식,B,75,High confidence in a distractor involving b/k; overestimates the reliability of a term that could be non-integer depending on j.,🟡
+Diagnostic Test V2,Math,6,객관식,B,100,Fully confident in an expression involving b/k; shows deep misunderstanding of the flexibility in j and k.,🟡
+Diagnostic Test V2,Math,6,객관식,C,0,Chose a definitively incorrect expression with no confidence; suggests random guessing or confusion about how h affects divisibility.,🔴
+Diagnostic Test V2,Math,6,객관식,C,25,Low confidence and selected a wrong option involving constant term; recognizes the number 45 but doesn't correctly evaluate its relation to h.,🔴
+Diagnostic Test V2,Math,6,객관식,C,50,Moderate confidence in a non-integer value; partial knowledge that h=4 but not enough to rule out incorrect answer.,🔴
+Diagnostic Test V2,Math,6,객관식,C,75,High confidence in a wrong value; mistakenly believes 45/h is a reliable integer without calculating it.,🔴
+Diagnostic Test V2,Math,6,객관식,C,100,Completely confident in an incorrect non-integer result; does not recognize that 45 ÷ 4 is not an integer.,🔴
+Diagnostic Test V2,Math,6,객관식,D,0,No confidence but picked the only expression guaranteed to be an integer; suggests accidental success or vague intuition about divisibility.,🟢
+Diagnostic Test V2,Math,6,객관식,D,25,Some confidence in the correct choice; has basic awareness that 45 divided by a factor will be an integer.,🟢
+Diagnostic Test V2,Math,6,객관식,D,50,Moderate confidence in the correct answer; understands the integer constraint given kj=−45.,🟢
+Diagnostic Test V2,Math,6,객관식,D,75,High confidence in the correct expression; clearly connects kj=−45 to the idea that k must divide 45.,🟢
+Diagnostic Test V2,Math,6,객관식,D,100,Fully confident in the correct answer; demonstrates strong understanding of factoring structure and integer properties.,🟢
+Diagnostic Test V2,Math,7,객관식,A,0,"Had no idea and guessed an answer that is actually correct, indicating pure luck without understanding.",🟢
+Diagnostic Test V2,Math,7,객관식,A,25,"Chose a correct answer but with low confidence, suggesting some pattern recognition but uncertainty.",🟢
+Diagnostic Test V2,Math,7,객관식,A,50,"Recognized some aspects of the pattern, but unsure if the equation matched exactly.",🟢
+Diagnostic Test V2,Math,7,객관식,A,75,Confident in a partially verified pattern and got lucky with a correct choice.,🟢
+Diagnostic Test V2,Math,7,객관식,A,100,Fully confident and correct – shows a clear understanding of linear relationships.,🟢
+Diagnostic Test V2,Math,7,객관식,B,0,"Guessed an incorrect answer with no confidence, indicating a random choice.",🔴
+Diagnostic Test V2,Math,7,객관식,B,25,"Some vague recognition of structure, but lacked clarity and chose a wrong equation.",🔴
+Diagnostic Test V2,Math,7,객관식,B,50,Thought the equation might work but wasn’t sure – confidence misaligned with accuracy.,🔴
+Diagnostic Test V2,Math,7,객관식,B,75,Misinterpreted the structure and backed the wrong choice with moderate confidence.,🔴
+Diagnostic Test V2,Math,7,객관식,B,100,Very confident in an incorrect formula – strong misunderstanding of the relationship.,🔴
+Diagnostic Test V2,Math,7,객관식,C,0,Guessed an implausible answer with zero reasoning or understanding.,🔴
+Diagnostic Test V2,Math,7,객관식,C,25,Had minimal logic but still failed to narrow to a plausible structure.,🔴
+Diagnostic Test V2,Math,7,객관식,C,50,"Recognized that the equation doesn’t look too wrong, but didn’t verify it.",🔴
+Diagnostic Test V2,Math,7,객관식,C,75,Mistakenly believed the equation was close enough – not fully tested.,🔴
+Diagnostic Test V2,Math,7,객관식,C,100,Backed a bad equation with near-full certainty – indicates a confident misunderstanding.,🔴
+Diagnostic Test V2,Math,7,객관식,D,0,Randomly chose a completely wrong structure.,🔴
+Diagnostic Test V2,Math,7,객관식,D,25,Couldn’t recall how to test the equation but still guessed confidently.,🔴
+Diagnostic Test V2,Math,7,객관식,D,50,Had a false sense of understanding based on partial number alignment.,🔴
+Diagnostic Test V2,Math,7,객관식,D,75,Seriously misjudged the slope or y-intercept and backed it with certainty.,🔴
+Diagnostic Test V2,Math,7,객관식,D,100,Most confident in a totally incorrect model – signals a fundamental error in linear interpretation.,🔴
+Diagnostic Test V2,Math,8,객관식,A,0,Had no idea and picked 2400 randomly due to seeing it as the largest number.,🔴
+Diagnostic Test V2,Math,8,객관식,A,25,"Noticed $240 is the price and thought it directly related to 2400%, but wasn’t sure how percentage math works.",🔴
+Diagnostic Test V2,Math,8,객관식,A,50,"Recognized that the price is 12 times the original but incorrectly assumed that translates to 2400%, without fully understanding why.",🔴
+Diagnostic Test V2,Math,8,객관식,A,75,"Saw that 240 is 12 × 20, interpreted that as 2400% without checking if this referred to increase beyond the original price.",🔴
+Diagnostic Test V2,Math,8,객관식,A,100,"Incorrectly believed that multiplying 20 by 12 gives the percent increase of 2400%, and trusted this incorrect reasoning with high confidence.",🔴
+Diagnostic Test V2,Math,8,객관식,B,0,"Guessed with no reasoning and happened to land on 1200, without any attempt to relate the numbers.",🟡
+Diagnostic Test V2,Math,8,객관식,B,25,"Recognized $240 and $20 but had no idea how to relate them through percentage, guessed 1200 as a large number.",🟡
+Diagnostic Test V2,Math,8,객관식,B,50,"Saw that 240 is much bigger than 20 and guessed 1200 might represent the percentage, but didn’t calculate.",🟡
+Diagnostic Test V2,Math,8,객관식,B,75,"Tried to compute q by dividing 240 by 20, got 12, and mistakenly interpreted that as 1200% without subtracting the original 100%.",🟡
+Diagnostic Test V2,Math,8,객관식,B,100,"Divided 240 by 20 to get 12, then multiplied by 100 to get 1200%, incorrectly assuming that ratio alone represents the percent increase without subtracting the base 100%.",🟡
+Diagnostic Test V2,Math,8,객관식,C,0,"Completely unsure and guessed randomly, landing on a correct answer by chance despite having no understanding of the relationship between percentage increase and the original value.",🟢
+Diagnostic Test V2,Math,8,객관식,C,25,"Somewhat unsure but saw that $240 is much larger than $20 and thought the answer had to be a big number, choosing 1100 as a semi-random guess without fully checking the math.",🟢
+Diagnostic Test V2,Math,8,객관식,C,50,Understood that the price increase was a percent of 20 but did not carefully work through the steps; thought 1100 seemed reasonable and guessed with moderate confidence.,🟢
+Diagnostic Test V2,Math,8,객관식,C,75,"Recognized that the price increase was calculated from 20, and attempted to set up the equation, but may have made a mistake in solving it and still ended up choosing 1100 with fairly high confidence.",🟢
+Diagnostic Test V2,Math,8,객관식,C,100,"Correctly set up the equation 240 = 20(1 + q/100), solved algebraically to find q = 1100, and selected the answer with full confidence based on sound reasoning.",🟢
+Diagnostic Test V2,Math,8,객관식,D,0,Guessed without thinking and picked 2200 at random.,🔴
+Diagnostic Test V2,Math,8,객관식,D,25,"Thought the percent should be very large but didn’t compare properly with the original price, selecting 2200 based on intuition.",🔴
+Diagnostic Test V2,Math,8,객관식,D,50,"Confused the difference between 220 and 20, then mistakenly multiplied that by 100 to get 2200 as the percent increase.",🔴
+Diagnostic Test V2,Math,8,객관식,D,75,"Believed the price went up by $220, then wrongly computed that as 2200% without confirming against the original price.",🔴
+Diagnostic Test V2,Math,8,객관식,D,100,"Misapplied the formula, using (220 ÷ 20) × 100 to get 1100, then doubled it accidentally or thought it should be “even higher,” choosing 2200 confidently.",🔴
+Diagnostic Test V2,Math,9,객관식,A,0,guess on an otherwise correct elimination of all three statements,🟢
+Diagnostic Test V2,Math,9,객관식,A,25,uncertain about the statistical implications but correctly doubted all statements,🟢
+Diagnostic Test V2,Math,9,객관식,A,50,fair grasp that none of the statements are guaranteed but still held some uncertainty,🟢
+Diagnostic Test V2,Math,9,객관식,A,75,solid understanding of statistical sampling and the limitations of inference,🟢
+Diagnostic Test V2,Math,9,객관식,A,100,strong mastery of how sample data relate to population estimates and variability,🟢
+Diagnostic Test V2,Math,9,객관식,B,0,guessed while mistakenly believing repeated samples would yield identical percentages,🔴
+Diagnostic Test V2,Math,9,객관식,B,25,misled by the superficial logic of Statement II without full understanding of sampling variability,🔴
+Diagnostic Test V2,Math,9,객관식,B,50,partial misunderstanding of statistical randomness in repeated sampling,🔴
+Diagnostic Test V2,Math,9,객관식,B,75,incorrectly assumed sampling yields identical outcomes—a key statistical misconception,🔴
+Diagnostic Test V2,Math,9,객관식,B,100,major misunderstanding of the variability in repeated random samples and overconfidence in flawed reasoning,🔴
+Diagnostic Test V2,Math,9,객관식,C,0,completely blind guess including both flawed statements,🔴
+Diagnostic Test V2,Math,9,객관식,C,25,thought both I and II were plausible but didn’t fully understand the statistical rules,🔴
+Diagnostic Test V2,Math,9,객관식,C,50,over-relied on the sample percentage without recognizing its limitation,🔴
+Diagnostic Test V2,Math,9,객관식,C,75,confidently misunderstood the nature of sample estimates and thought they definitively reflect population data,🔴
+Diagnostic Test V2,Math,9,객관식,C,100,"deeply misapplied the concept of sampling, erroneously believing both the sample and any repetition of it would yield exact matches",🔴
+Diagnostic Test V2,Math,9,객관식,D,0,random guess that paired two unrelated claims with no evidence,🔴
+Diagnostic Test V2,Math,9,객관식,D,25,believed that similar ecosystems mean identical genetic traits—a flawed generalization,🔴
+Diagnostic Test V2,Math,9,객관식,D,50,incorrectly thought the sample statistic applies universally to similar populations,🔴
+Diagnostic Test V2,Math,9,객관식,D,75,serious misunderstanding of statistical generalizability across populations,🔴
+Diagnostic Test V2,Math,9,객관식,D,100,overconfidence in a flawed assumption that sample results in one population can be transferred to another with no supporting data,🔴
+Diagnostic Test V2,Math,10,객관식,A,0,"The choice of this answer with no confidence may reflect a complete guess, with the student not understanding what the margin of error implies.",🔴
+Diagnostic Test V2,Math,10,객관식,A,25,"The student may have been leaning toward this answer but wasn’t confident, perhaps misinterpreting margin of error as individual error rate.",🔴
+Diagnostic Test V2,Math,10,객관식,A,50,"The student is unsure but sees some surface logic in the idea that 4% of individuals might be misclassified, showing a misunderstanding of statistical terminology.",🔴
+Diagnostic Test V2,Math,10,객관식,A,75,"The student sees the margin of error and connects it to measurement inaccuracy but misapplies it, suggesting some misunderstanding of sampling error.",🔴
+Diagnostic Test V2,Math,10,객관식,A,100,"The student is confident in their interpretation that margin of error reflects individual misclassification, which is a fundamental misunderstanding of the concept.",🔴
+Diagnostic Test V2,Math,10,객관식,B,0,"The student chose this answer at random, having no clear understanding of what the margin of error indicates.",🔴
+Diagnostic Test V2,Math,10,객관식,B,25,"The student may suspect the phrase “not possible” is too strong, but isn't confident in their grasp of statistical language.",🔴
+Diagnostic Test V2,Math,10,객관식,B,50,The student is unsure but detects the absolute claim in the answer and is beginning to question its validity in light of the margin of error.,🔴
+Diagnostic Test V2,Math,10,객관식,B,75,The student has a basic understanding that confidence intervals represent possible values and recognizes that values below 38% can’t be ruled out.,🔴
+Diagnostic Test V2,Math,10,객관식,B,100,"The student is confident that saying something is “not possible” is too strong, and they correctly reject this choice based on proper understanding of confidence intervals.",🔴
+Diagnostic Test V2,Math,10,객관식,C,0,"The student selected the answer because it repeats the value from the prompt, having no confidence that this represents a population truth.",🔴
+Diagnostic Test V2,Math,10,객관식,C,25,The student assumes the sample percent reflects the population but is not entirely convinced and shows some caution.,🔴
+Diagnostic Test V2,Math,10,객관식,C,50,"The student acknowledges 42% as a starting point, but isn’t sure whether a margin of error affects that interpretation.",🔴
+Diagnostic Test V2,Math,10,객관식,C,75,The student incorrectly believes that a point estimate represents the population but has some doubt about it.,🔴
+Diagnostic Test V2,Math,10,객관식,C,100,"The student is fully confident that the sample percent is equivalent to the population percent, misunderstanding how margins of error work.",🔴
+Diagnostic Test V2,Math,10,객관식,D,0,The student has no idea what the margin of error implies but randomly guessed the most conservative answer.,🟢
+Diagnostic Test V2,Math,10,객관식,D,25,"The student notices that 46% is the upper end of the margin of error and wonders if that sets a limit, showing partial understanding.",🟢
+Diagnostic Test V2,Math,10,객관식,D,50,The student has a solid grasp of confidence intervals and understands that values above 46% are outside the likely range.,🟢
+Diagnostic Test V2,Math,10,객관식,D,75,"The student strongly understands the meaning of margin of error and knows that while 46% is possible, values above it are unlikely.",🟢
+Diagnostic Test V2,Math,10,객관식,D,100,"The student is highly confident and demonstrates a strong understanding of how confidence intervals work, correctly identifying D as the most statistically supported interpretation.",🟢
+Diagnostic Test V2,Math,11,객관식,A,0,"The answer choice is completely wrong and the student has no confidence, showing a random guess without understanding the concept of similar triangles or scale factor.",🔴
+Diagnostic Test V2,Math,11,객관식,A,25,"The student picked a clearly incorrect answer but with low confidence, suggesting they had doubts and recognized the guess was probably wrong.",🔴
+Diagnostic Test V2,Math,11,객관식,A,50,"The student is unsure and chooses an incorrect answer, possibly due to confusion between direct and inverse relationships in similar figures.",🔴
+Diagnostic Test V2,Math,11,객관식,A,75,"The student is fairly confident in an incorrect answer, which suggests a misunderstanding of the scaling principle between similar figures.",🔴
+Diagnostic Test V2,Math,11,객관식,A,100,"The student is fully confident in a wrong answer, indicating a strong misconception about how similarity works—perhaps thinking the scale factor is reversed.",🔴
+Diagnostic Test V2,Math,11,객관식,B,0,"The student shows no understanding of similarity and chooses the original value from Plot A, purely guessing.",🔴
+Diagnostic Test V2,Math,11,객관식,B,25,"The student selects the side length from Plot A, showing some recall but no application of the concept of scale, and lacks confidence.",🔴
+Diagnostic Test V2,Math,11,객관식,B,50,"The student believes the sides remain unchanged despite the larger perimeter, showing flawed reasoning but awareness of potential error.",🔴
+Diagnostic Test V2,Math,11,객관식,B,75,"The student somewhat trusts the answer, thinking the side might not scale with the perimeter, but still doubts their logic.",🔴
+Diagnostic Test V2,Math,11,객관식,B,100,"The student is completely confident that the side lengths don’t scale, revealing a fundamental misunderstanding of similarity and proportionality.",🔴
+Diagnostic Test V2,Math,11,객관식,C,0,"The student’s guess is numerically far off and confidence is zero, likely clicking at random or misreading the scale factor.",🔴
+Diagnostic Test V2,Math,11,객관식,C,25,"The student chose a large number that doesn’t match the scale factor but had no confidence, likely a misclick or error without reasoning.",🔴
+Diagnostic Test V2,Math,11,객관식,C,50,"The student guesses that scaling 10 by 10 gives 100 but admits uncertainty, showing a vague sense of proportionality.",🔴
+Diagnostic Test V2,Math,11,객관식,C,75,"The student incorrectly uses a factor of 10 instead of 9 but shows medium confidence, suggesting a minor calculation or reading error.",🔴
+Diagnostic Test V2,Math,11,객관식,C,100,"The student mistakenly scales by 10 and feels fairly sure, likely due to rounding or a misinterpretation of the perimeter values.",🔴
+Diagnostic Test V2,Math,11,객관식,D,0,"The student is completely confident in an incorrect 10x scale, possibly due to incorrectly simplifying 225/25 to 10.",🟢
+Diagnostic Test V2,Math,11,객관식,D,25,The student guesses correctly by chance or basic pattern recognition but has no confidence in the reasoning.,🟢
+Diagnostic Test V2,Math,11,객관식,D,50,"The student suspects the answer might be 90 based on scale, but doesn't fully understand why, and guesses low-confidence.",🟢
+Diagnostic Test V2,Math,11,객관식,D,75,The student understands similarity and scale factor but lacks full certainty in the arithmetic or application.,🟢
+Diagnostic Test V2,Math,11,객관식,D,100,The student fully understands the relationship between the triangles and applies the correct ratio to confidently choose the right answer.,🟢
+Diagnostic Test V2,Math,12,객관식,A,0,Had no idea what t represented or how to relate the number of trays and temperatures; guessed this value randomly.,🔴
+Diagnostic Test V2,Math,12,객관식,A,25,Guessed 105°F without much calculation; may have thought the number should be low but didn’t understand how to compute total heat.,🔴
+Diagnostic Test V2,Math,12,객관식,A,50,Recognized there’s a pattern in the trays but was unsure how to apply the 1.5 multiplier; chose this while halfway guessing.,🔴
+Diagnostic Test V2,Math,12,객관식,A,75,Attempted to set up a rough equation but made a mistake calculating the total; thought 105 might work but wasn't sure.,🔴
+Diagnostic Test V2,Math,12,객관식,A,100,Was confident that each tray’s temperature adds up and thought 105 was the correct base after a quick estimate.,🔴
+Diagnostic Test V2,Math,12,객관식,B,0,"Picked 115 because it seemed in the middle, but had no idea how to compute the full total.",🔴
+Diagnostic Test V2,Math,12,객관식,B,25,Guessed based on feeling that 115 looked realistic for oven temperature; unsure how it affected total heat.,🔴
+Diagnostic Test V2,Math,12,객관식,B,50,"Estimated that 115 might work after seeing 1.5 multiplier, but didn’t set up a full equation.",🔴
+Diagnostic Test V2,Math,12,객관식,B,75,"Set up part of the math correctly, but calculated 11t = 1375 incorrectly; landed on 115 by error.",🔴
+Diagnostic Test V2,Math,12,객관식,B,100,Fully confident in 115 after a miscalculation; didn’t recheck work.,🔴
+Diagnostic Test V2,Math,12,객관식,C,0,"Guessed 125 randomly, didn’t know how to handle the “1.5 times t” part.",🟢
+Diagnostic Test V2,Math,12,객관식,C,25,"Chose 125 after noticing that 8 and 2 add to 10, but unsure how to distribute the heat contribution.",🟢
+Diagnostic Test V2,Math,12,객관식,C,50,"Recognized some trays are hotter, and 125 looked like a clean number; partial understanding.",🟢
+Diagnostic Test V2,Math,12,객관식,C,75,"Tried to build an equation and plugged in 125 mentally, and it seemed to work.",🟢
+Diagnostic Test V2,Math,12,객관식,C,100,Correctly calculated t = 125 using algebra and confirmed that it gave total 1375°F.,🟢
+Diagnostic Test V2,Math,12,객관식,D,0,Totally unsure and chose 135 randomly without considering how few trays were baked at the higher temperature.,🔴
+Diagnostic Test V2,Math,12,객관식,D,25,Thought the higher temperature for some trays meant the base temperature had to be higher; guessed 135 without checking math.,🔴
+Diagnostic Test V2,Math,12,객관식,D,50,Noticed that the oven heats up for extra trays and assumed 135 would make the total work; didn’t confirm calculations.,🔴
+Diagnostic Test V2,Math,12,객관식,D,75,Set up the equation partially but misestimated the impact of 1.5t; thought 135 would be reasonable.,🔴
+Diagnostic Test V2,Math,12,객관식,D,100,"Confidently chose 135 after calculating total heat, but made an error in arithmetic and didn't verify that 1485 is too high.",🔴
+Diagnostic Test V2,Math,13,객관식,A,0,"Guessing randomly without any understanding, no confidence that this is correct.",🔴
+Diagnostic Test V2,Math,13,객관식,A,25,"Has a little intuition that this may be right but unsure of reasoning, low confidence.",🔴
+Diagnostic Test V2,Math,13,객관식,A,50,Recognizes that this value appeared in the question but unsure how it connects to cosine of angle S.,🔴
+Diagnostic Test V2,Math,13,객관식,A,75,"Understands that sin(R) = cos(S), so this matches the exact value from the question, fairly confident.",🔴
+Diagnostic Test V2,Math,13,객관식,A,100,"Knows with full certainty that cos(S) = sin(R) in a right triangle, and directly recalls the value given.",🔴
+Diagnostic Test V2,Math,13,객관식,B,0,"Chooses answer that doesn’t match the given sin(R), completely guessing and unaware of identity relation.",🟢
+Diagnostic Test V2,Math,13,객관식,B,25,Thinks it looks familiar and might be related to the given number but lacks clarity on whether it’s the right identity.,🟢
+Diagnostic Test V2,Math,13,객관식,B,50,"Notices it's the same value from the question and thinks that might be relevant, but unsure if cosine and sine can match.",🟢
+Diagnostic Test V2,Math,13,객관식,B,75,"Realizes that this is the value from sin(R), and thinks it might be related to cos(S) based on angle complement rule.",🟢
+Diagnostic Test V2,Math,13,객관식,B,100,Fully confident this is right because of understanding that sin(R) = cos(S) and the exact value was provided.,🟢
+Diagnostic Test V2,Math,13,객관식,C,0,Randomly picks this incorrect value with no justification or knowledge.,🔴
+Diagnostic Test V2,Math,13,객관식,C,25,"Vaguely thinks it might be the original value flipped but unsure how cosine works, low reasoning.",🔴
+Diagnostic Test V2,Math,13,객관식,C,50,Recognizes this value appeared in the problem but incorrectly thinks cosine might involve flipping numerator and denominator.,🔴
+Diagnostic Test V2,Math,13,객관식,C,75,"Incorrectly reasons that cosine might invert the sine value somehow, giving partial confidence in this wrong value.",🔴
+Diagnostic Test V2,Math,13,객관식,C,100,"Fairly confident that this is a transformed version of the given value, though mistaken in thinking it’s the correct relation.",🔴
+Diagnostic Test V2,Math,13,객관식,D,0,"Guesses a square root without thinking about trigonometric identities, just picks a number from the prompt.",🔴
+Diagnostic Test V2,Math,13,객관식,D,25,Mildly recalls seeing square root 15 somewhere and guesses it's correct but no logic backing.,🔴
+Diagnostic Test V2,Math,13,객관식,D,50,Thinks this value looks clean and important but doesn’t realize it’s far too large to be a cosine ratio.,🔴
+Diagnostic Test V2,Math,13,객관식,D,75,Thinks square root 15​ was important in the original value and assumes it must be the final answer.,🔴
+Diagnostic Test V2,Math,13,객관식,D,100,"Very sure this is correct because of square root 15​, but completely misunderstands how cosine ratios work.",🔴
+Diagnostic Test V2,Math,14,객관식,A,0,"Does not recognize the correct solution and expresses no confidence, indicating a complete guess or misunderstanding of how to verify solutions in a nonlinear system.",🟢
+Diagnostic Test V2,Math,14,객관식,A,25,"Selects the correct solution with low confidence, suggesting the student may have guessed but had a faint intuition about the structure of the solution.",🟢
+Diagnostic Test V2,Math,14,객관식,A,50,"Chooses the correct answer with moderate confidence, implying partial understanding of how to substitute into both equations but possibly unsure about handling radicals.",🟢
+Diagnostic Test V2,Math,14,객관식,A,75,"Correctly identifies the solution with high confidence, reflecting solid skills in solving and verifying nonlinear systems with radicals.",🟢
+Diagnostic Test V2,Math,14,객관식,A,100,"Fully confident in the correct answer, demonstrating mastery in solving nonlinear systems and working accurately with irrational numbers.",🟢
+Diagnostic Test V2,Math,14,객관식,B,0,"Selects an incorrect solution and shows no confidence, indicating a random guess or unfamiliarity with how to test solutions in a system.",🔴
+Diagnostic Test V2,Math,14,객관식,B,25,"Chooses an incorrect answer with low confidence, possibly confused by the symmetry of the values or the presence of square roots.",🔴
+Diagnostic Test V2,Math,14,객관식,B,50,"Picks an incorrect option with moderate confidence, showing partial procedural understanding but overlooking a key mismatch in one equation.",🔴
+Diagnostic Test V2,Math,14,객관식,B,75,"Chooses a clearly incorrect answer with high confidence, showing a misunderstanding of how to verify both equations in a system with radicals.",🔴
+Diagnostic Test V2,Math,14,객관식,B,100,"Fully confident in an incorrect answer, which highlights a fundamental miscalculation or conceptual error in checking system solutions.",🔴
+Diagnostic Test V2,Math,14,객관식,C,0,"Makes a low-confidence selection of a plausible-looking but incorrect solution, likely guessing based on surface similarity to correct forms.",🟡
+Diagnostic Test V2,Math,14,객관식,C,25,"Selects a distractor with some confidence, possibly recognizing the pattern in the expression but not validating both equations fully.",🟡
+Diagnostic Test V2,Math,14,객관식,C,50,"Chooses an incorrect answer with moderate confidence, possibly due to partial substitution without verifying both equations match.",🟡
+Diagnostic Test V2,Math,14,객관식,C,75,"Picks a wrong answer with high confidence, indicating familiarity with solving steps but failing to catch the mismatch in one equation.",🟡
+Diagnostic Test V2,Math,14,객관식,C,100,"Totally confident in a wrong answer, showing a deep misunderstanding of nonlinear system verification despite comfort with square roots.",🟡
+Diagnostic Test V2,Math,14,객관식,D,0,"Chooses a less plausible distractor randomly, showing no confidence and possibly guessing under time pressure.",🔴
+Diagnostic Test V2,Math,14,객관식,D,25,"Picks a less plausible option with minimal confidence, likely misled by unusual formatting or irrational numbers.",🔴
+Diagnostic Test V2,Math,14,객관식,D,50,"Selects a less plausible distractor with some confidence, indicating confusion about how to substitute and simplify with radicals.",🔴
+Diagnostic Test V2,Math,14,객관식,D,75,"Picks an implausible solution with high confidence, showing misunderstanding of how nonlinear systems behave.",🔴
+Diagnostic Test V2,Math,14,객관식,D,100,"Totally confident in an implausible answer, reflecting a major misconception about substitution and solution checking in such systems.",🔴
+Diagnostic Test V2,Math,15,주관식,25/100,0,Did not understand the table or what the question was asking but happened to land on the correct answer by guessing.,🟢
+Diagnostic Test V2,Math,15,주관식,25/100,25,Thought 25/100 seemed reasonable but wasn’t confident about whether veggie sandwiches were the numerator.,🟢
+Diagnostic Test V2,Math,15,주관식,25/100,50,Knew it had to be a ratio involving 25 and 100 but wasn’t sure if those were the right values to use.,🟢
+Diagnostic Test V2,Math,15,주관식,25/100,75,Recognized that 25 veggie sandwiches out of 100 total matched the question’s goal and felt mostly sure.,🟢
+Diagnostic Test V2,Math,15,주관식,25/100,100,Fully confident in interpreting a basic probability from a two-way table using totals; knew it had to be 25/100.,🟢
+Diagnostic Test V2,Math,15,주관식,0.25,0,Did not understand the table or what the question was asking but happened to land on the correct answer by guessing.,🟢
+Diagnostic Test V2,Math,15,주관식,0.25,25,Thought 25/100 seemed reasonable but wasn’t confident about whether veggie sandwiches were the numerator.,🟢
+Diagnostic Test V2,Math,15,주관식,0.25,50,Knew it had to be a ratio involving 25 and 100 but wasn’t sure if those were the right values to use.,🟢
+Diagnostic Test V2,Math,15,주관식,0.25,75,Recognized that 25 veggie sandwiches out of 100 total matched the question’s goal and felt mostly sure.,🟢
+Diagnostic Test V2,Math,15,주관식,0.25,100,Fully confident in interpreting a basic probability from a two-way table using totals; knew it had to be 25/100.,🟢
+Diagnostic Test V2,Math,15,주관식,1/4,0,Did not understand the table or what the question was asking but happened to land on the correct answer by guessing.,🟢
+Diagnostic Test V2,Math,15,주관식,1/4,25,Thought 25/100 seemed reasonable but wasn’t confident about whether veggie sandwiches were the numerator.,🟢
+Diagnostic Test V2,Math,15,주관식,1/4,50,Knew it had to be a ratio involving 25 and 100 but wasn’t sure if those were the right values to use.,🟢
+Diagnostic Test V2,Math,15,주관식,1/4,75,Recognized that 25 veggie sandwiches out of 100 total matched the question’s goal and felt mostly sure.,🟢
+Diagnostic Test V2,Math,15,주관식,1/4,100,Fully confident in interpreting a basic probability from a two-way table using totals; knew it had to be 25/100.,🟢
+Diagnostic Test V2,Math,15,주관식,*,0,"Guessed a number unrelated to the table or misread what was being asked, with no confidence in the choice.",🔴
+Diagnostic Test V2,Math,15,주관식,*,25,Had a vague idea it involved veggie sandwiches but chose a random fraction without checking carefully.,🔴
+Diagnostic Test V2,Math,15,주관식,*,50,Tried to reason it out but may have confused total types with individual counts and got the wrong answer without certainty.,🔴
+Diagnostic Test V2,Math,15,주관식,*,75,Used some values from the table and was fairly confident but misunderstood what “probability” meant or chose incorrect values.,🔴
+Diagnostic Test V2,Math,15,주관식,*,100,"Confidently misinterpreted the prompt or miscalculated the total, possibly thinking their answer was correct without checking the full total.",🔴
+Diagnostic Test V2,Math,16,객관식,A,0,"Totally unsure and chose an answer that is noticeably too low, showing confusion or guessing without calculation.",🔴
+Diagnostic Test V2,Math,16,객관식,A,25,"Somewhat unsure and chose an answer that’s still too low, but maybe influenced by a subtraction-only approach or estimate.",🔴
+Diagnostic Test V2,Math,16,객관식,A,50,"Partially confident and selected a nearby value, but the gap suggests weak grasp of percent increase calculation or rounding.",🔴
+Diagnostic Test V2,Math,16,객관식,A,75,"Fairly confident and selected a plausible but slightly off answer, likely due to truncation instead of rounding.",🔴
+Diagnostic Test V2,Math,16,객관식,A,100,Completely confident and chose the correct answer after calculating the percent increase and rounding accurately.,🔴
+Diagnostic Test V2,Math,16,객관식,B,0,Totally unsure but happened to select an incorrect mid-range option without clear rationale.,🔴
+Diagnostic Test V2,Math,16,객관식,B,25,"Somewhat confident in an answer that’s off, perhaps due to confusion between rounding and truncating.",🔴
+Diagnostic Test V2,Math,16,객관식,B,50,Partial confidence in a number that feels close but not close enough to reflect solid understanding of percent change.,🔴
+Diagnostic Test V2,Math,16,객관식,B,75,"Quite confident and chose a value near the actual result, showing strong rounding sense even if not perfect.",🔴
+Diagnostic Test V2,Math,16,객관식,B,100,"Fully confident but the answer selected is incorrect, suggesting a miscalculation or misapplication of the formula.",🔴
+Diagnostic Test V2,Math,16,객관식,C,0,No confidence and picked an answer that's close to correct only by accident or guessing.,🔴
+Diagnostic Test V2,Math,16,객관식,C,25,"Slight confidence and picked a very plausible distractor, perhaps due to truncating the decimal too early.",🔴
+Diagnostic Test V2,Math,16,객관식,C,50,Moderate confidence in an answer that would result from an early stop in rounding—shows decent estimation but not full accuracy.,🔴
+Diagnostic Test V2,Math,16,객관식,C,75,"High confidence and selected the most tempting wrong choice, probably from careless rounding.",🔴
+Diagnostic Test V2,Math,16,객관식,C,100,"Certain the answer was right, but rounded down instead of up—strong understanding but slight technical slip.",🔴
+Diagnostic Test V2,Math,16,객관식,D,0,Chose randomly and by chance landed on the correct answer without knowing the math behind it.,🟢
+Diagnostic Test V2,Math,16,객관식,D,25,"Not very confident but still picked the correct answer, possibly by estimation or partial understanding.",🟢
+Diagnostic Test V2,Math,16,객관식,D,50,"Decent confidence and got the right answer, likely by remembering or applying the percent increase formula roughly.",🟢
+Diagnostic Test V2,Math,16,객관식,D,75,"Strong confidence in the correct answer, showing clear understanding of the formula and correct rounding.",🟢
+Diagnostic Test V2,Math,16,객관식,D,100,Absolute certainty and accurate math—used the formula properly and understood percent change perfectly.,🟢
+Diagnostic Test V2,Math,17,객관식,A,0,Clueless selection of A with no confidence; the student guesses randomly and is unaware of the contradiction condition.,🔴
+Diagnostic Test V2,Math,17,객관식,A,25,The student selects A thinking it's a potential answer but lacks confidence in the contradiction logic that rules it out.,🔴
+Diagnostic Test V2,Math,17,객관식,A,50,"Student picks A with partial confidence, possibly due to mixing up the steps in substitution and equating the expressions.",🔴
+Diagnostic Test V2,Math,17,객관식,A,75,"Student believes A is right but hasn’t fully checked whether it causes a contradiction, showing decent but incomplete understanding.",🔴
+Diagnostic Test V2,Math,17,객관식,A,100,Fully confident in an incorrect choice suggests the student misunderstood the algebraic contradiction or made a substitution error without verifying.,🔴
+Diagnostic Test V2,Math,17,객관식,B,0,"No understanding of the system's logic, the student selects B with random chance and no justification.",🔴
+Diagnostic Test V2,Math,17,객관식,B,25,"Student guesses B with weak reasoning, perhaps focusing on eliminating variables but not solving fully.",🔴
+Diagnostic Test V2,Math,17,객관식,B,50,Partial confidence in B may mean the student recognized substitution but made a sign or simplification error.,🔴
+Diagnostic Test V2,Math,17,객관식,B,75,Student is close but believes B is correct due to algebraic misstep or missing the contradiction when p=10.,🔴
+Diagnostic Test V2,Math,17,객관식,B,100,"Fully confident but wrong, the student likely followed steps correctly but never reached or verified the contradiction, showing a conceptual gap.",🔴
+Diagnostic Test V2,Math,17,객관식,C,0,No understanding of system structure; C selected randomly and luckily is correct.,🟢
+Diagnostic Test V2,Math,17,객관식,C,25,"Some awareness of the setup or solving steps, student picks C with low confidence, possibly without knowing why it's correct.",🟢
+Diagnostic Test V2,Math,17,객관식,C,50,"Recognizes substitution and elimination setup and notices something interesting with p=10, but not fully sure of its implications.",🟢
+Diagnostic Test V2,Math,17,객관식,C,75,Identifies that p=10 makes both sides equal but isn't fully sure that this leads to a contradiction.,🟢
+Diagnostic Test V2,Math,17,객관식,C,100,"Correct choice with full confidence indicates the student understands that when p=10, a contradiction like 0=17 occurs, meaning no solution.",🟢
+Diagnostic Test V2,Math,17,객관식,D,0,Student randomly picks D with no reasoning related to the system properties.,🔴
+Diagnostic Test V2,Math,17,객관식,D,25,"Selects D with low confidence, maybe from misreading the question or not simplifying correctly.",🔴
+Diagnostic Test V2,Math,17,객관식,D,50,Picks D with some reasoning but likely based on faulty manipulation of one equation.,🔴
+Diagnostic Test V2,Math,17,객관식,D,75,"Pretty confident in D but hasn't tested whether it leads to a contradiction, suggesting solid algebra but poor interpretation.",🔴
+Diagnostic Test V2,Math,17,객관식,D,100,"Fully confident in D shows a major misunderstanding of what ""no solution"" implies and how to check for it algebraically.",🔴
+Diagnostic Test V2,Math,18,주관식,792,0,"Has no understanding of how to evaluate functions or deal with absolute value, and guessed randomly without any confidence.",🟢
+Diagnostic Test V2,Math,18,주관식,792,25,"Recognizes the question involves function evaluation but lacks confidence in using absolute value and signs correctly, leading to a random guess with some hesitation.",🟢
+Diagnostic Test V2,Math,18,주관식,792,50,"Understands the basic structure of functions but is unsure about how absolute value and negative parameters interact, leading to moderate confidence in an incorrect calculation.",🟢
+Diagnostic Test V2,Math,18,주관식,792,75,"Feels fairly confident about function substitution but mismanages the absolute value or sign of a negative variable, producing a wrong answer with misplaced confidence.",🟢
+Diagnostic Test V2,Math,18,주관식,792,100,"Completely confident in an incorrect answer, indicating a systematic misunderstanding of absolute value behavior or how negative parameters affect evaluation.",🟢
+Diagnostic Test V2,Math,18,주관식,*,0,"Guessed the correct answer without knowing how to evaluate functions or interpret the equation, showing no confidence in the result.",🔴
+Diagnostic Test V2,Math,18,주관식,*,25,"Had partial familiarity with function notation and structure, leading to a lucky guess that happened to be correct, though with little certainty.",🔴
+Diagnostic Test V2,Math,18,주관식,*,50,"Understands how to substitute into the function and suspects absolute value plays a role but isn't completely sure how to simplify with a negative parameter, yet gets it right.",🔴
+Diagnostic Test V2,Math,18,주관식,*,75,"Correctly applies absolute value and substitution, understands the structure of nonlinear expressions, but still second-guesses the final multiplication, reducing confidence.",🔴
+Diagnostic Test V2,Math,18,주관식,*,100,"Fully understands how to evaluate functions involving absolute value and negative parameters, correctly calculates both values, and confidently multiplies them.",🔴
+Diagnostic Test V2,Math,19,객관식,A,0,"Total guess with no understanding, but correct by chance due to random selection.",🟢
+Diagnostic Test V2,Math,19,객관식,A,25,Partial recognition of $20 per guest but uncertain about what the 400 represents.,🟢
+Diagnostic Test V2,Math,19,객관식,A,50,Understands there’s a per-person rate and a fixed component but unsure how they relate.,🟢
+Diagnostic Test V2,Math,19,객관식,A,75,"Understands pricing structure generally, but hasn’t fully validated the fixed cost.",🟢
+Diagnostic Test V2,Math,19,객관식,A,100,"Fully understands both the fixed $1200 base and the $20 per extra guest, resulting in the correct function.",🟢
+Diagnostic Test V2,Math,19,객관식,B,0,Random guess with no clear relation to the pricing structure.,🟡
+Diagnostic Test V2,Math,19,객관식,B,25,Recognizes 1200 as a key number from the first 40 guests but misapplies it with the $20 rate.,🟡
+Diagnostic Test V2,Math,19,객관식,B,50,"Thinks the $20 rate applies and the 1200 adds in somehow, but unsure how they fit together.",🟡
+Diagnostic Test V2,Math,19,객관식,B,75,"Applies the $20 rate correctly but mistakenly includes the $1200 again, showing overconfidence in partial logic.",🟡
+Diagnostic Test V2,Math,19,객관식,B,100,"Confidently applies the $20 per guest to all and adds 1200, unaware this double counts the base.",🟡
+Diagnostic Test V2,Math,19,객관식,C,0,Chooses randomly without considering the math behind the cost function.,🔴
+Diagnostic Test V2,Math,19,객관식,C,25,"Assumes $50 is a valid blended rate and subtracts 1200 to force a fit, lacking a clear rationale.",🔴
+Diagnostic Test V2,Math,19,객관식,C,50,Attempts to combine $30 and $20 per guest into one rate but makes a computational misstep.,🔴
+Diagnostic Test V2,Math,19,객관식,C,75,Believes strongly in a $50 per guest model and subtracts 1200 to try to align with expected totals.,🔴
+Diagnostic Test V2,Math,19,객관식,C,100,"Applies flawed logic with high certainty, using a combined rate approach that ignores pricing tiers.",🔴
+Diagnostic Test V2,Math,19,객관식,D,0,Guesses based on function structure without connecting it to the cost scenario.,🔴
+Diagnostic Test V2,Math,19,객관식,D,25,"Thinks $30 might be a flat fee added to a $20 rate, misreading how the fixed cost works.",🔴
+Diagnostic Test V2,Math,19,객관식,D,50,Identifies the $20 per guest rate but confuses the 30 as a setup fee or unrelated fixed charge.,🔴
+Diagnostic Test V2,Math,19,객관식,D,75,"Assumes the function structure makes sense mathematically, but misinterprets what each number represents.",🔴
+Diagnostic Test V2,Math,19,객관식,D,100,"Firmly believes the model is $20 per guest with a $30 setup fee, missing the tiered cost model entirely.",🔴
+Diagnostic Test V2,Math,20,주관식,-3,0,Guessed and got the correct answer without understanding the connection between the quadratic's coefficients and the sum of its roots,🟢
+Diagnostic Test V2,Math,20,주관식,-3,25,Recognized it was a quadratic but lacked confidence in how to apply the sum-of-roots formula or manipulate the equation correctly,🟢
+Diagnostic Test V2,Math,20,주관식,-3,50,Applied the sum-of-roots formula and partially solved the equation but was unsure about which root to choose,🟢
+Diagnostic Test V2,Math,20,주관식,-3,75,Solved the equation correctly using the sum-of-roots approach but had slight hesitation about selecting the negative root,🟢
+Diagnostic Test V2,Math,20,주관식,-3,100,"Correctly identified the sum formula, formed and solved the quadratic accurately, and chose the negative root as required",🟢
+Diagnostic Test V2,Math,20,주관식,*,0,"Guessed without understanding the relationship between the quadratic and the sum of its roots, resulting in an incorrect choice",🔴
+Diagnostic Test V2,Math,20,주관식,*,25,"Showed low confidence and selected an incorrect answer, likely reflecting confusion about how to connect the sum of roots to the equation",🔴
+Diagnostic Test V2,Math,20,주관식,*,50,"Demonstrated partial confidence but still arrived at an incorrect answer, indicating a possible misstep in the setup or simplification",🔴
+Diagnostic Test V2,Math,20,주관식,*,75,"Felt mostly confident but ultimately chose an incorrect value, showing the method may have been close but not fully correct",🔴
+Diagnostic Test V2,Math,20,주관식,*,100,"Very confident in their approach, yet the final answer was incorrect, suggesting a strong belief in a flawed or incomplete method",🔴
+Diagnostic Test V2,Math,21,주관식,87/7,0,Guessed the correct answer without understanding how translations affect intercepts,🟢
+Diagnostic Test V2,Math,21,주관식,87/7,25,"Some awareness that vertical shifts don't affect x-intercepts, but unsure of the algebra involved",🟢
+Diagnostic Test V2,Math,21,주관식,87/7,50,Understood part of the process but uncertain whether to substitute or visually shift the graph,🟢
+Diagnostic Test V2,Math,21,주관식,87/7,75,Confident in translation mechanics but possibly rushed the math or skipped checking work,🟢
+Diagnostic Test V2,Math,21,주관식,87/7,100,"Fully understood vertical translation and intercept calculation, applied the steps correctly",🟢
+Diagnostic Test V2,Math,21,주관식,12.43,0,Guessed the correct answer without understanding how translations affect intercepts,🟢
+Diagnostic Test V2,Math,21,주관식,12.43,25,"Some awareness that vertical shifts don't affect x-intercepts, but unsure of the algebra involved",🟢
+Diagnostic Test V2,Math,21,주관식,12.43,50,Understood part of the process but uncertain whether to substitute or visually shift the graph,🟢
+Diagnostic Test V2,Math,21,주관식,12.43,75,Confident in translation mechanics but possibly rushed the math or skipped checking work,🟢
+Diagnostic Test V2,Math,21,주관식,12.43,100,"Fully understood vertical translation and intercept calculation, applied the steps correctly",🟢
+Diagnostic Test V2,Math,21,주관식,12.428,0,Guessed the correct answer without understanding how translations affect intercepts,🟢
+Diagnostic Test V2,Math,21,주관식,12.428,25,"Some awareness that vertical shifts don't affect x-intercepts, but unsure of the algebra involved",🟢
+Diagnostic Test V2,Math,21,주관식,12.428,50,Understood part of the process but uncertain whether to substitute or visually shift the graph,🟢
+Diagnostic Test V2,Math,21,주관식,12.428,75,Confident in translation mechanics but possibly rushed the math or skipped checking work,🟢
+Diagnostic Test V2,Math,21,주관식,12.428,100,"Fully understood vertical translation and intercept calculation, applied the steps correctly",🟢
+Diagnostic Test V2,Math,21,주관식,12.4,0,Guessed the correct answer without understanding how translations affect intercepts,🟢
+Diagnostic Test V2,Math,21,주관식,12.4,25,"Some awareness that vertical shifts don't affect x-intercepts, but unsure of the algebra involved",🟢
+Diagnostic Test V2,Math,21,주관식,12.4,50,Understood part of the process but uncertain whether to substitute or visually shift the graph,🟢
+Diagnostic Test V2,Math,21,주관식,12.4,75,Confident in translation mechanics but possibly rushed the math or skipped checking work,🟢
+Diagnostic Test V2,Math,21,주관식,12.4,100,"Fully understood vertical translation and intercept calculation, applied the steps correctly",🟢
+Diagnostic Test V2,Math,21,주관식,*,0,Knew they were guessing and didn’t understand the effect of translation on intercepts,🔴
+Diagnostic Test V2,Math,21,주관식,*,25,"Mild confusion about how to adjust for a vertical shift, possibly tried shifting the x-intercept directly",🔴
+Diagnostic Test V2,Math,21,주관식,*,50,"Misapplied the concept, maybe tried solving the original equation without adjusting for the shift",🔴
+Diagnostic Test V2,Math,21,주관식,*,75,"Incorrectly thought vertical shift affects x-coordinate of the intercept, misunderstanding the transformation",🔴
+Diagnostic Test V2,Math,21,주관식,*,100,"Confidently used a flawed logic or misread the problem, misunderstanding how translations work",🔴
+Diagnostic Test V2,Math,22,주관식,203,0,Guessed correctly without recognizing the connection between completing the square and the standard form of a circle,🟢
+Diagnostic Test V2,Math,22,주관식,203,25,"Some vague familiarity with circle equations, possibly unsure about how to manipulate the expression algebraically",🟢
+Diagnostic Test V2,Math,22,주관식,203,50,Understood part of the process but hesitant with completing the square or unsure about simplifying constants,🟢
+Diagnostic Test V2,Math,22,주관식,203,75,Understood how to complete the square but might have made a small arithmetic slip and double-checked to confirm,🟢
+Diagnostic Test V2,Math,22,주관식,203,100,"Confidently rewrote the equation into standard circle form, completed the square correctly, and summed constants accurately",🟢
+Diagnostic Test V2,Math,22,주관식,*,0,Knew the topic involved circles but unsure how to approach rewriting the equation,🔴
+Diagnostic Test V2,Math,22,주관식,*,25,Recognized this as a circle question but had trouble with completing the square or misapplied the formula,🔴
+Diagnostic Test V2,Math,22,주관식,*,50,Knew completing the square was involved but forgot how to adjust the constants correctly after transformation,🔴
+Diagnostic Test V2,Math,22,주관식,*,75,Incorrectly thought that the coefficients or linear terms directly gave the radius squared without completing the square,🔴
+Diagnostic Test V2,Math,22,주관식,*,100,"Fully confident in a wrong method, possibly believed the constant on the right side was already the square of the radius",🔴

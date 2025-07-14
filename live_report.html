@@ -3,144 +3,521 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{studentName}}'s Diagnostic Test Results</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
+    <title>Diagnostic Test Results</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 40px 20px; color: #33475b; }
-        .report-container { max-width: 900px; margin: auto; background: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 40px; }
-        .header { text-align: center; border-bottom: 2px solid #e0e0e0; padding-bottom: 20px; }
-        .header h1 { font-size: 32px; font-weight: 900; color: #1a3a5f; margin: 0; }
-        .header p { font-size: 16px; color: #5a7184; margin: 5px 0 0; }
+        body { 
+            font-family: 'Inter', Arial, sans-serif; 
+            background-color: #f0f4f8; 
+            margin: 0; 
+            padding: 0; 
+            color: #33475b; 
+        }
+        .report-container { 
+            max-width: 1200px; 
+            margin: 40px auto; 
+            background: #fff; 
+            border-radius: 18px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            padding: 0 0 40px 0; 
+        }
+        .header-bar {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 32px 40px 0 40px; 
+            border-radius: 18px 18px 0 0;
+            background: #f9fafb; 
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .header-bar .logo {
+            flex: 0 0 180px;
+            height: 60px;
+            margin-left: -10px;
+        }
+        .header-bar .header-links {
+            flex: 1 1 0;
+            min-width: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-bar .header-info {
+            flex: 0 0 260px;
+            text-align: right;
+        }
+        .logo { 
+            height: 60px; 
+            margin-left: -10px; /* 더 왼쪽으로 이동 */
+        }
+        .header-info { text-align: right; }
+        .header-info .name { font-size: 1.1rem; font-weight: 600; color: #1a3a5f; }
+        .header-info .date { font-size: 1rem; color: #5a7184; margin-top: 2px; }
+        .header-info .code { font-size: 1rem; color: #5a7184; margin-top: 2px; }
+        .main-title {
+            text-align: center; 
+            font-size: 2.1rem; 
+            font-weight: 900; 
+            color: #1a3a5f;
+            margin: 18px 0 0 0; 
+            letter-spacing: -1px;
+        }
+        .score-summary {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end;
+            background: #f5f7fa; 
+            border-radius: 12px; 
+            margin: 32px 40px 0 40px; 
+            padding: 32px 32px 24px 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .score-block {
+            flex: 1; 
+            text-align: center;
+        }
+        .score-block:not(:last-child) { border-right: 1.5px solid #e0e0e0; }
+        .score-label { font-size: 1.1rem; color: #5a7184; font-weight: 600; }
+        .score-value { font-size: 3.5rem; font-weight: 900; color: #3498db; margin: 8px 0 0 0; line-height: 1; }
+        .score-section-label { font-size: 1.2rem; color: #1a3a5f; font-weight: 700; margin-bottom: 6px; }
+        .score-section-value { font-size: 2.2rem; font-weight: 800; color: #22223b; }
+        .student-info {
+            max-width: 500px; 
+            margin: 40px auto; 
+            padding: 40px; 
+            background: #f9fafb; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+            text-align: center;
+        }
+        .info-item {
+            font-size: 1em; 
+            margin-top: 18px; 
+            color: #555;
+        }
+        .info-item:first-child {
+            margin-top: 0;
+        }
+        .questions-section {
+            margin: 40px 40px 0 40px;
+            background: #f9fafb; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03); 
+            padding: 28px 24px 24px 24px;
+        }
+        .questions-title {
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            color: #1a3a5f; 
+            margin-bottom: 18px;
+        }
+        table { 
+            width:100%; 
+            border-collapse:collapse; 
+            font-size:1em; 
+            background:#fff; 
+            box-shadow:0 2px 8px rgba(0,0,0,0.03); 
+        }
+        th, td { padding: 8px 6px; }
+        th { background:#e9f5ff; color:#1a3a5f; }
+        .correct { color: #27ae60; font-weight: bold; }
+        .incorrect { color: #e74c3c; font-weight: bold; }
+        .trap { color: #f39c12; font-weight: bold; }
         
-        .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 40px; }
-        .score-display { text-align: center; }
-        .score-display .label { font-size: 20px; font-weight: 700; color: #5a7184; }
-        .score-display .score-value { font-size: 100px; font-weight: 900; color: #3498db; line-height: 1; margin: 10px 0; }
-        .score-display .sub-score { font-size: 18px; color: #5a7184; }
-        .chart-container { width: 100%; max-width: 400px; margin: auto; }
-
-        .section { margin-top: 60px; }
-        .section-title { font-size: 24px; font-weight: 700; color: #1a3a5f; padding-bottom: 10px; border-bottom: 2px solid #3498db; margin-bottom: 20px; }
-        
-        .improvement-box { background-color: #e9f5ff; border-left: 5px solid #3498db; padding: 20px; border-radius: 5px; font-size: 16px; line-height: 1.7; }
-        
-        .cta-section { margin-top: 60px; background-color: #1a3a5f; color: white; padding: 40px; border-radius: 10px; text-align: center; }
-        .cta-section h2 { font-size: 28px; font-weight: 900; margin-top: 0; }
-        .cta-section p { color: #c0d1e2; font-size: 18px; }
-        .cta-button { display: inline-block; background-color: #3498db; color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-size: 20px; font-weight: bold; margin-top: 20px; transition: all 0.3s; }
-        .cta-button:hover { background-color: #ffffff; color: #1a3a5f; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        /* New styles for separated RW/Math insights */
+        .insight-section { 
+            display: flex; 
+            gap: 32px; 
+            margin: 40px 40px 0 40px; 
+            flex-wrap: wrap; 
+        }
+        .insight-card { 
+            background: #f8f9fa; 
+            border-radius: 16px; 
+            box-shadow: 0 2px 8px #0001; 
+            padding: 24px 28px; 
+            min-width: 280px; 
+            flex: 1; 
+        }
+        .insight-header { 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            margin-bottom: 18px; 
+            text-align: center; 
+            padding-bottom: 8px; 
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .rw-header { color: #000000; }
+        .math-header { color: #000000; }
+        .skills-section { margin-bottom: 20px; }
+        .skills-title { 
+            font-size: 1.15rem; 
+            font-weight: 700; 
+            color: #1a3a5f; 
+            margin-bottom: 14px; 
+        }
+        .skills-list { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        .skills-list li { 
+            margin-bottom: 6px; 
+        }
+        .skills-list b { 
+            color: #1a3a5f; 
+        }
+        .skills-list ul { 
+            list-style: none; 
+            margin: 0; 
+            padding-left: 12px; 
+        }
+        .skills-list ul li { 
+            margin-bottom: 2px; 
+        }
+        .dot { 
+            font-size: 1.1em; 
+        }
+        .difficulty-section { 
+            margin-top: 20px; 
+        }
+        .difficulty-title { 
+            font-size: 1.15rem; 
+            font-weight: 700; 
+            color: #1a3a5f; 
+            margin-bottom: 10px; 
+        }
+        .difficulty-item { 
+            margin-bottom: 6px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        .difficulty-label { 
+            min-width: 60px; 
+            font-weight: 600; 
+        }
+        .bar-bg { 
+            display: inline-block; 
+            width: 200px; 
+            height: 16px; 
+            border-radius: 8px; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .bar-fill { 
+            display: inline-block; 
+            background: #000000; 
+            height: 16px; 
+            border-radius: 8px; 
+            width: 0; /* 애니메이션 전 초기값 */
+            transition: width 1.5s ease-out;
+        }
+        .bar-fill.animate {
+            animation: fillBar 1.5s ease-out forwards;
+        }
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: var(--target-width); }
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f7f9fb;
+            border-radius: 12px;
+            padding: 24px 0;
+            margin: 32px 0 24px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .score-section {
+            flex: 1;
+            text-align: center;
+        }
+        .score-section:not(:last-child) {
+            border-right: 1px solid #e0e4ea;
+        }
+        .score-label {
+            font-size: 1.05rem;
+            color: #6c7a89;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .score-value {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #071BE9;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .score-value.rw, .score-value.math {
+            color: #232b3b;
+            font-size: 2rem;
+        }
+        .score-value.countup {
+            animation: countUp 2s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 700px) {
+            .score-board { flex-direction: column; gap: 12px; }
+            .score-section:not(:last-child) { border-right: none; border-bottom: 1px solid #e0e4ea; }
+        }
     </style>
 </head>
 <body>
     <div class="report-container">
-        <header class="header">
-            <h1>{{studentName}}'s Diagnostic Analysis Report</h1>
-            <p>Conducted on {{testDate}}</p>
-        </header>
+        <div class="header-bar">
+            <img src="/images/superfastsat_logo.png" alt="Superfast SAT Logo" class="logo" />
+                    <div class="header-info">
+            <div class="name">Name: <span id="studentName">Student Name</span></div>
+            <div class="date">Tested on: <span id="testDateValue">-</span></div>
+            <div class="code">Code: <span id="codeValue">-</span></div>
+        </div>
+        </div>
+        <div class="main-title">Your Diagnostic Test Report</div>
+        <div class="score-board">
+            <div class="score-section">
+                <div class="score-label">TOTAL SCORE</div>
+                <div class="score-value" id="total-score">0</div>
+            </div>
+            <div class="score-section">
+                <div class="score-label">RW</div>
+                <div class="score-value rw" id="rw-score">0</div>
+            </div>
+            <div class="score-section">
+                <div class="score-label">Math</div>
+                <div class="score-value math" id="math-score">0</div>
+            </div>
+        </div>
 
-        <main>
-            <section class="summary-grid">
-                <div class="score-display">
-                    <div class="label">Total Score</div>
-                    <div id="totalScoreValue" class="score-value">0</div>
-                    <div class="sub-score">RW <span id="rwScoreValue">0</span> pts | Math <span id="mathScoreValue">0</span> pts</div>
+        <!-- RW & Math Insights Section -->
+        <div class="insight-section">
+            <!-- RW Insights Card -->
+          <div class="insight-card">
+                <div class="insight-header rw-header">RW Insights</div>
+                <div class="skills-section">
+                    <div class="skills-title">Skills Insight</div>
+                    <ul class="skills-list" id="rw-skills-list">
+                        <!-- RW skills will be populated here -->
+                    </ul>
                 </div>
-                <div class="chart-container">
-                    <canvas id="skillRadarChart"></canvas>
+                <div class="difficulty-section">
+                    <div class="difficulty-title">Difficulty Insight</div>
+                    <div id="rw-difficulty-list">
+                        <!-- RW difficulty will be populated here -->
+                  </div>
                 </div>
-            </section>
+              </div>
+            
+            <!-- Math Insights Card -->
+            <div class="insight-card">
+                <div class="insight-header math-header">Math Insights</div>
+                <div class="skills-section">
+                    <div class="skills-title">Skills Insight</div>
+                    <ul class="skills-list" id="math-skills-list">
+                        <!-- Math skills will be populated here -->
+                    </ul>
+                </div>
+                <div class="difficulty-section">
+                    <div class="difficulty-title">Difficulty Insight</div>
+                    <div id="math-difficulty-list">
+                        <!-- Math difficulty will be populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <section class="section">
-                <h2 class="section-title">Learning Recommendations</h2>
-                <div class="improvement-box">
-                    <strong>{{studentName}}</strong> student showed relatively low accuracy in the <strong>'{{weakestSkill}}'</strong> area. We recommend reviewing the basic concepts of this area and developing application skills through solving related types of problems.
-                </div>
-            </section>
-
-            <section class="cta-section">
-                <h2>Are you satisfied with the results?</h2>
-                <p>Let's create the optimal learning strategy for your student<br>with Superfast SAT's expert consultants.</p>
-                <a href="http://pf.kakao.com/_YourChannelID" target="_blank" class="cta-button">Apply for 1:1 Expert Consulting</a>
-            </section>
-        </main>
+        <!-- RW/Math Question-by-Question Results -->
+        <div style="display: flex; gap: 32px; align-items: flex-start; margin: 40px 40px 0 40px; justify-content: center;">
+            <div style="flex:1; min-width:320px; max-width:400px;">
+                <h3 style="text-align: center;">RW Question Results</h3>
+                <div id="rw-table-wrap"></div>
+            </div>
+            <div style="flex:1; min-width:320px; max-width:400px;">
+                <h3 style="text-align: center;">Math Question Results</h3>
+                <div id="math-table-wrap"></div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // const reportData = {{report_data_json}};
-        const reportData = {
-            score: 1200,
-            rwScore: 600,
-            mathScore: 600,
-            // ... Add necessary data
-        };
+<!-- SuperfastSAT 공식 링크 하단 추가 -->
+<div style="margin-top:24px; text-align:center; color:#1a3a6b; font-size:1.08em;">
+    <div style="margin-bottom:6px; font-weight:600;">SuperfastSAT Official Links</div>
+    <div>
+        <a href="https://superfastsat.com/" target="_blank" style="color:#071BE9; text-decoration:underline; font-weight:500;">Official Website</a> &nbsp;|&nbsp;
+        <a href="https://blog.naver.com/superfastsat" target="_blank" style="color:#071BE9; text-decoration:underline; font-weight:500;">Official Blog</a>
+        </div>
+    </div>
 
-        // Animation effects using GSAP
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Score counting animation
-            gsap.to("#totalScoreValue", { innerText: reportData.score, duration: 1.5, ease: "power1.out", snap: "innerText" });
-            gsap.to("#rwScoreValue", { innerText: reportData.rwScore, duration: 1.5, ease: "power1.out", snap: "innerText" });
-            gsap.to("#mathScoreValue", { innerText: reportData.mathScore, duration: 1.5, ease: "power1.out", snap: "innerText" });
+<!-- DATA SCRIPT -->
+<script>
+    const reportData = window.REPORT_DATA_JSON || {};
 
-            // 2. Sequential section appearance animation (error-corrected version)
-            gsap.from(".section", { 
-                duration: 1, 
-                y: 30, 
-                opacity: 0, 
-                stagger: 0.3, 
-                delay: 0.5,
-                ease: "power2.out"
-            });
-        });
-
-        // Generate radar chart using Chart.js
-        const ctx = document.getElementById('skillRadarChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['Vocabulary', 'Grammar', 'Information Comprehension', 'Algebra', 'Problem Solving'],
-                datasets: [{
-                    label: 'Achievement by Area',
-                    // Virtual data: Generate chart data based on actual scores.
-                    data: [
-                        (reportData.rwScore - 400) / 4, 
-                        (reportData.rwScore - 350) / 4,
-                        (reportData.rwScore - 380) / 4,
-                        (reportData.mathScore - 400) / 4,
-                        (reportData.mathScore - 370) / 4
-                    ],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    borderWidth: 2,
-                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-                }]
-            },
-            options: {
-                scales: {
-                    r: {
-                        angleLines: { display: false },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
-                        pointLabels: {
-                            font: {
-                                size: 14,
-                                weight: 'bold'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
+    document.getElementById('studentName').innerText = reportData.studentName || '';
+    document.getElementById('testDateValue').innerText = reportData.testDate || '-';
+    document.getElementById('codeValue').innerText = reportData.code || '-';
+    
+    // 카운트업 애니메이션 함수
+    function animateCountUp(element, targetValue, duration = 2000) {
+        const startValue = 0;
+        const startTime = performance.now();
+        
+        function updateCount(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // easeOutQuart 함수로 자연스러운 감속
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOutQuart);
+            
+            element.innerText = currentValue;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCount);
+            } else {
+                element.innerText = targetValue;
             }
-        });
-    </script>
+        }
+        
+        requestAnimationFrame(updateCount);
+    }
+    
+    // 점수 애니메이션 시작
+    const totalScore = parseInt(reportData.score) || 0;
+    const rwScore = parseInt(reportData.rwScore) || 0;
+    const mathScore = parseInt(reportData.mathScore) || 0;
+    
+    // 각 점수 요소에 애니메이션 적용
+    const totalScoreElement = document.getElementById('total-score');
+    const rwScoreElement = document.getElementById('rw-score');
+    const mathScoreElement = document.getElementById('math-score');
+    
+    // 초기값 설정
+    totalScoreElement.innerText = '0';
+    rwScoreElement.innerText = '0';
+    mathScoreElement.innerText = '0';
+    
+    // 순차적으로 애니메이션 시작
+    setTimeout(() => {
+        animateCountUp(totalScoreElement, totalScore, 2000);
+    }, 500);
+    
+    setTimeout(() => {
+        animateCountUp(rwScoreElement, rwScore, 1500);
+    }, 1000);
+    
+    setTimeout(() => {
+        animateCountUp(mathScoreElement, mathScore, 1500);
+    }, 1500);
+
+    // Render RW Skills Insight
+    function renderSkillsInsight(skillsInsight, targetId) {
+        const container = document.getElementById(targetId);
+        if (!skillsInsight || skillsInsight.length === 0) {
+            container.innerHTML = '<li>No skills data available</li>';
+            return;
+        }
+        
+        container.innerHTML = skillsInsight.map(domain => `
+            <li><b>${domain.domain}</b>
+                <ul>
+                    ${domain.skills.map(skill => `
+                        <li>${skill.skill} <span class="dot" style="color:${skill.color};">●</span> <span style="color:#888; font-size:0.98em;">${skill.rate}%</span></li>
+                    `).join('')}
+                </ul>
+            </li>
+        `).join('');
+    }
+
+    // Render Difficulty Insight
+    function renderDifficultyInsight(difficultyInsight, targetId) {
+        const container = document.getElementById(targetId);
+        if (!difficultyInsight || difficultyInsight.length === 0) {
+            container.innerHTML = '<div>No difficulty data available</div>';
+            return;
+        }
+        
+        container.innerHTML = difficultyInsight.map(diff => `
+            <div class="difficulty-item">
+                <span class="difficulty-label">${diff.label}</span>
+                <span class="bar-bg" style="background:#e0e0e0;">
+                    <span class="bar-fill" style="--target-width: ${diff.percent}%;" data-percent="${diff.percent}"></span>
+                </span>
+                <b>${diff.percent}%</b>
+            </div>
+        `).join('');
+        
+        // 애니메이션 시작
+        setTimeout(() => {
+            const bars = container.querySelectorAll('.bar-fill');
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.classList.add('animate');
+                }, index * 200); // 각 막대마다 200ms 지연
+            });
+        }, 500); // 페이지 로드 후 500ms 지연
+    }
+
+    // Render RW/Math tables
+    function renderQuestionsTable(questions, targetId) {
+      const table = document.createElement('table');
+      table.className = 'questions-table';
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Result</th>
+            <th>Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${questions.map(q => `
+            <tr>
+              <td style="text-align:center;">${q.number}</td>
+              <td style="text-align:center;" class="${q.isCorrect ? 'correct' : (q.isTrapAnswer ? 'trap' : 'wrong')}">
+                ${q.isCorrect ? '🟢' : (q.isTrapAnswer ? '🟡' : '🔴')}
+              </td>
+              <td style="text-align:center;">${q.conf || '-'}%</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+      const wrap = document.getElementById(targetId);
+      wrap.innerHTML = '';
+      wrap.appendChild(table);
+    }
+
+    // Render all data
+    if (window.REPORT_DATA_JSON) {
+        // Render Skills and Difficulty Insights
+        renderSkillsInsight(reportData.rwSkillsInsight, 'rw-skills-list');
+        renderSkillsInsight(reportData.mathSkillsInsight, 'math-skills-list'); // Math도 동적 렌더링
+        renderDifficultyInsight(reportData.rwDifficultyInsight, 'rw-difficulty-list');
+        renderDifficultyInsight(reportData.mathDifficultyInsight, 'math-difficulty-list');
+        
+        // Render question tables
+        const rwQuestions = reportData.questionRows.filter(q => q.subject === 'RW');
+        const mathQuestions = reportData.questionRows.filter(q => q.subject === 'Math');
+      renderQuestionsTable(rwQuestions, 'rw-table-wrap');
+      renderQuestionsTable(mathQuestions, 'math-table-wrap');
+    }
+</script>
 </body>
 </html>
