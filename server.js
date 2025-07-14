@@ -784,6 +784,40 @@ app.post('/api/questions', async (req, res) => {
 
 // 관리자 검색 페이지 라우트 추가
 app.get('/admin', async (req, res) => {
+    // 비밀번호 확인
+    const password = req.query.password;
+    if (password !== 'missionto1600!') {
+        // 비밀번호가 틀리거나 없으면 로그인 페이지 표시
+        const loginHtml = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Admin Login</title>
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f7f6; padding: 40px; }
+                .container { max-width: 400px; margin: auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+                h1 { color: #2c3e50; margin-bottom: 30px; }
+                input[type="password"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box; margin-bottom: 20px; }
+                button { width: 100%; padding: 12px; background: #071BE9; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+                button:hover { background: #0515c7; }
+                .error { color: red; margin-bottom: 20px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Admin Login</h1>
+                <form method="GET" action="/admin">
+                    <input type="password" name="password" placeholder="Enter password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </body>
+        </html>
+        `;
+        return res.send(loginHtml);
+    }
+
+    // 비밀번호가 맞으면 admin 페이지 표시
     const db = await readDB();
     let html = `
     <h2>Search by Student Code/Name/Grade</h2>
@@ -804,6 +838,12 @@ app.get('/admin', async (req, res) => {
 });
 
 app.get('/admin/search', async (req, res) => {
+    // 검색 페이지에서도 비밀번호 확인
+    const password = req.query.password;
+    if (password !== 'missionto1600!') {
+        return res.redirect('/admin');
+    }
+
     const q = (req.query.q || '').trim().toLowerCase();
     if (!q) return res.send('<p>Please enter a search term.</p>');
     const db = await readDB();
