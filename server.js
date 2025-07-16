@@ -70,7 +70,7 @@ const parseSync = require('csv-parse/sync');
 // 답안/확신도 추출 함수
 async function extractAnswersAndConfidence(formData) {
   // 문항번호-과목 매핑을 위해 questions.csv 파싱
-  const csv = await fs.readFile('questions.csv', 'utf-8');
+  const csv = await fs.readFile(path.join(__dirname, 'questions.csv'), 'utf-8');
   const records = parseSync.parse(csv, {
     columns: true,
     skip_empty_lines: true,
@@ -233,7 +233,7 @@ app.post('/submit', async (req, res) => {
 
         // --- Virtual scoring logic ---
         // 기존 랜덤 점수 부여 부분을 실제 채점 로직으로 대체
-        const questionsCsv = await fs.readFile('questions.csv', 'utf-8');
+        const questionsCsv = await fs.readFile(path.join(__dirname, 'questions.csv'), 'utf-8');
         const studentAnswers = studentData; // form에서 넘어온 답안들
         
         // csv-parse를 사용한 robust한 파싱
@@ -366,7 +366,7 @@ app.post('/submit', async (req, res) => {
         await writeDB(db);
 
         // --- Show only 'next action guidance' page to student ---
-        let landingHtml = await fs.readFile('landing.html', 'utf-8');
+        let landingHtml = await fs.readFile(path.join(__dirname, 'landing.html'), 'utf-8');
         landingHtml = landingHtml.replace(/{{code}}/g, uniqueCode);
         landingHtml = landingHtml.replace(/{{studentName}}/g, studentData.studentName || '');
         res.send(landingHtml);
@@ -391,8 +391,8 @@ app.get('/report/:id', async (req, res) => {
 
     // 문제/유닛/해설 DB 파싱
     const [unitDb, rationaleDb] = await Promise.all([
-      parseCsvFile('Diagnostic DataBase - Unit DB.csv'),
-      parseCsvFile('Diagnostic DataBase - Question Rationale DB.csv')
+      parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Unit DB.csv')),
+      parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Question Rationale DB.csv'))
     ]);
     let studentAnswers = resultData.answers || {};
     let studentConfidence = resultData.confidence || {};
