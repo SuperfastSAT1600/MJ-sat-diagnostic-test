@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const { v4: uuidv4 } = require('uuid');
 const { parse } = require('csv-parse');
 const CSV_PARSE = require('csv-parse');
+const { firebaseDB } = require('./firebase-server');
 
 // 1. Server Configuration
 const app = express();
@@ -344,14 +345,14 @@ app.post('/submit', async (req, res) => {
         // PDF 리포트 생성/저장 관련 코드 완전 제거
         // (pdfPath, puppeteer, report_template.html 등 모두 삭제)
 
-        // --- Save results to DB ---
-        const db = await readDB();
+        // --- Save results to Firebase ---
         // 답안/확신도 추출
         console.log('Raw studentData:', studentData);
         const { answers, confidence } = await extractAnswersAndConfidence(studentData);
         console.log('Extracted answers:', answers);
         console.log('Extracted confidence:', confidence);
-        db.push({
+        
+        const dataToSave = {
             id: reportData.id,
             code: reportData.code,
             studentName: reportData.studentName,
@@ -362,8 +363,11 @@ app.post('/submit', async (req, res) => {
             createdAt: reportData.createdAt,
             answers,
             confidence
-        });
-        await writeDB(db);
+        };
+        
+        // Firebase에 저장
+        await firebaseDB.saveData(dataToSave);
+        console.log('Data saved to Firebase successfully');
 
         // --- Show only 'next action guidance' page to student ---
         let landingHtml = await fs.readFile(path.join(__dirname, 'landing.html'), 'utf-8');
@@ -382,9 +386,8 @@ app.post('/submit', async (req, res) => {
 // Role 3: Show dynamic report page
 app.get('/report/:id', async (req, res) => {
     try {
-        const db = await readDB();
         const resultId = req.params.id;
-        const resultData = db.find(r => r.id === resultId);
+        const resultData = await firebaseDB.getDataById(resultId);
         if (!resultData) {
             return res.status(404).send('<h1>Report not found.</h1>');
         }
@@ -818,7 +821,7 @@ app.get('/admin', async (req, res) => {
     }
 
     // 비밀번호가 맞으면 admin 페이지 표시
-    const db = await readDB();
+    const db = await firebaseDB.getAllData();
     let html = `
     <h2>Search by Student Code/Name/Grade</h2>
     <form method="GET" action="/admin/search" style="margin-bottom:24px;">
@@ -847,18 +850,28 @@ app.get('/admin/search', async (req, res) => {
 
     const q = (req.query.q || '').trim().toLowerCase();
     if (!q) return res.send('<p>Please enter a search term.</p>');
-    const db = await readDB();
-    const results = db.filter(r =>
-        (r.code && r.code.toLowerCase().includes(q)) ||
-        (r.studentName && r.studentName.toLowerCase().includes(q)) ||
-        (r.studentGrade && r.studentGrade.toLowerCase().includes(q))
+    
+    let results = [];
+    // 코드로 검색
+    if (q.length >= 3) {
+        const codeResults = await firebaseDB.searchByCode(q.toUpperCase());
+        results = results.concat(codeResults);
+    }
+    
+    // 이름으로 검색
+    const nameResults = await firebaseDB.searchByName(q);
+    results = results.concat(nameResults);
+    
+    // 중복 제거
+    const uniqueResults = results.filter((result, index, self) => 
+        index === self.findIndex(r => r.id === result.id)
     );
-    if (results.length === 0) {
+    if (uniqueResults.length === 0) {
         return res.send(`<p>No results found.</p><p><a href="/admin?password=${password}">← Back to Admin</a></p>`);
     }
-    let html = `<h3>Search Results (${results.length})</h3><table border="1" cellpadding="6" style="border-collapse:collapse;font-size:1em;">`;
+    let html = `<h3>Search Results (${uniqueResults.length})</h3><table border="1" cellpadding="6" style="border-collapse:collapse;font-size:1em;">`;
     html += '<tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>Submitted At</th><th>Report</th></tr>';
-    results.forEach(r => {
+    uniqueResults.forEach(r => {
         html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
     });
     html += '</table>';
