@@ -825,6 +825,84 @@ app.get('/admin', async (req, res) => {
 
     // 비밀번호가 맞으면 admin 페이지 표시
     const db = await firebaseDB.getAllData();
+    // 문제/유닛 DB 파싱 (점수 실시간 계산용)
+    const unitDb = await parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Unit DB.csv'));
+    // 점수 계산 함수 (라이브 리포트와 동일)
+    function calculateSATScore(questionRows, subject) {
+      const subjectQuestions = questionRows.filter(q => q.subject === subject);
+      if (subjectQuestions.length === 0) return 400;
+      let totalWeightedScore = 0;
+      let totalWeight = 0;
+      for (const q of subjectQuestions) {
+        let weight = 1;
+        switch(q.difficulty?.toLowerCase()) {
+          case 'easy': weight = 1; break;
+          case 'medium': weight = 1.5; break;
+          case 'hard': weight = 2; break;
+          default: weight = 1;
+        }
+        let score = 0;
+        switch(q.resultType) {
+          case 'correct': score = 1; break;
+          case 'trap': score = 0.5; break;
+          case 'wrong': score = 0; break;
+          default: score = 0;
+        }
+        totalWeightedScore += score * weight;
+        totalWeight += weight;
+      }
+      const weightedAverage = totalWeight > 0 ? totalWeightedScore / totalWeight : 0;
+      const satScore = Math.round((400 + (weightedAverage * 400)) / 10) * 10;
+      return Math.max(400, Math.min(800, satScore));
+    }
+    // 정답 정규화 함수
+    function normalizeAnswer(ans) {
+      if (ans === undefined || ans === null) return '';
+      if (Array.isArray(ans)) ans = ans[0] || '';
+      ans = String(ans).trim().replace(/\s/g, '');
+      if (/^\d+\/\d+$/.test(ans)) {
+        const [a, b] = ans.split('/').map(Number);
+        if (b !== 0) return (a / b).toString();
+      }
+      if (/^\d+(\.\d+)?%$/.test(ans)) {
+        return (parseFloat(ans) / 100).toString();
+      }
+      return ans;
+    }
+    // 각 학생별 점수 실시간 계산
+    const dbWithLiveScore = db.map(r => {
+      // 문항별 정보 조합
+      const answers = r.answers || {};
+      const questionRows = unitDb.map(unit => {
+        const key = `${unit.Section}-${unit.Unit}`;
+        const subject = unit.Section;
+        const number = unit.Unit;
+        const correct = unit['Correct Answer'];
+        const trapAnswer = unit['Trap Answer'];
+        const studentAnsRaw = answers[key] || '';
+        const studentAns = Array.isArray(studentAnsRaw) ? studentAnsRaw[0] : studentAnsRaw;
+        let resultType = 'wrong';
+        let isCorrect = false;
+        let isTrapAnswer = false;
+        if (studentAns && correct) {
+          const correctAnswers = String(correct).split(',').map(ans => normalizeAnswer(ans.trim()));
+          const studentNorm = normalizeAnswer(studentAns);
+          isCorrect = correctAnswers.some(ans => ans === studentNorm);
+          isTrapAnswer = trapAnswer && String(studentAns).trim().toUpperCase() === String(trapAnswer).trim().toUpperCase();
+          if (isCorrect) resultType = 'correct';
+          else if (isTrapAnswer) resultType = 'trap';
+        }
+        return {
+          subject,
+          difficulty: unit.Difficulty,
+          resultType
+        };
+      });
+      const rwScore = calculateSATScore(questionRows, 'RW');
+      const mathScore = calculateSATScore(questionRows, 'Math');
+      const totalScore = rwScore + mathScore;
+      return { ...r, score: totalScore, rwScore, mathScore };
+    });
     let html = `
     <h2>Search by Student Code/Name/Grade</h2>
     <form method="GET" action="/admin/search" style="margin-bottom:24px;">
@@ -833,12 +911,12 @@ app.get('/admin', async (req, res) => {
       <button type="submit" style="padding:8px 18px;font-size:1em;">Search</button>
     </form>
     <div id="result"></div>
-    <h3>All Submitted Students (${db.length})</h3>
+    <h3>All Submitted Students (${dbWithLiveScore.length})</h3>
     <table border="1" cellpadding="6" style="border-collapse:collapse;font-size:1em;">
-      <tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>Submitted At</th><th>Report</th></tr>
+      <tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>RW</th><th>Math</th><th>Submitted At</th><th>Report</th></tr>
 `;
-    db.slice().reverse().forEach(r => {
-      html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
+    dbWithLiveScore.slice().reverse().forEach(r => {
+      html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.rwScore || ''}</td><td>${r.mathScore || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
     });
     html += '</table>';
     res.send(html);
