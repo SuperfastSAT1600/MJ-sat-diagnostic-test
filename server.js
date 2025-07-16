@@ -353,7 +353,7 @@ app.post('/submit', async (req, res) => {
         console.log('Extracted confidence:', confidence);
         
         const dataToSave = {
-            id: reportData.id,
+            originalId: reportData.id, // 기존 UUID 보존
             code: reportData.code,
             studentName: reportData.studentName,
             studentGrade: reportData.studentGrade,
@@ -365,9 +365,12 @@ app.post('/submit', async (req, res) => {
             confidence
         };
         
-        // Firebase에 저장
-        await firebaseDB.saveData(dataToSave);
-        console.log('Data saved to Firebase successfully');
+        // Firebase에 저장하고 생성된 키 반환
+        const firebaseKey = await firebaseDB.saveData(dataToSave);
+        console.log('Data saved to Firebase successfully with key:', firebaseKey);
+        
+        // Firebase 키를 reportData.id에 저장 (리포트 링크용)
+        reportData.id = firebaseKey;
 
         // --- Show only 'next action guidance' page to student ---
         let landingHtml = await fs.readFile(path.join(__dirname, 'landing.html'), 'utf-8');
