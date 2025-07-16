@@ -823,6 +823,7 @@ app.get('/admin', async (req, res) => {
     <h2>Search by Student Code/Name/Grade</h2>
     <form method="GET" action="/admin/search" style="margin-bottom:24px;">
       <input type="text" name="q" placeholder="Code, Name, Grade, etc." style="padding:8px;font-size:1em;width:220px;">
+      <input type="hidden" name="password" value="${password}">
       <button type="submit" style="padding:8px 18px;font-size:1em;">Search</button>
     </form>
     <div id="result"></div>
@@ -853,7 +854,7 @@ app.get('/admin/search', async (req, res) => {
         (r.studentGrade && r.studentGrade.toLowerCase().includes(q))
     );
     if (results.length === 0) {
-        return res.send('<p>No results found.</p>');
+        return res.send(`<p>No results found.</p><p><a href="/admin?password=${password}">← Back to Admin</a></p>`);
     }
     let html = `<h3>Search Results (${results.length})</h3><table border="1" cellpadding="6" style="border-collapse:collapse;font-size:1em;">`;
     html += '<tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>Submitted At</th><th>Report</th></tr>';
@@ -861,6 +862,7 @@ app.get('/admin/search', async (req, res) => {
         html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
     });
     html += '</table>';
+    html += `<p><a href="/admin?password=${password}">← Back to Admin</a></p>`;
     res.send(html);
 });
 
