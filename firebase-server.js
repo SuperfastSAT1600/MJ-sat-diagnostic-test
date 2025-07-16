@@ -50,9 +50,10 @@ const firebaseDB = {
     }
   },
 
-  // ID로 데이터 조회
+  // ID로 데이터 조회 (Firebase 키 또는 기존 UUID)
   async getDataById(id) {
     try {
+      // 먼저 Firebase 키로 직접 조회
       const snapshot = await get(ref(database, `diagnostic_results/${id}`));
       if (snapshot.exists()) {
         return {
@@ -60,6 +61,25 @@ const firebaseDB = {
           ...snapshot.val()
         };
       }
+      
+      // Firebase 키로 찾지 못한 경우, originalId로 검색
+      const q = query(
+        ref(database, 'diagnostic_results/'),
+        orderByChild('originalId'),
+        equalTo(id)
+      );
+      const searchSnapshot = await get(q);
+      if (searchSnapshot.exists()) {
+        const data = [];
+        searchSnapshot.forEach((childSnapshot) => {
+          data.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        return data[0]; // 첫 번째 결과 반환
+      }
+      
       return null;
     } catch (error) {
       console.error('Error reading from Firebase:', error);
