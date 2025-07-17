@@ -490,6 +490,7 @@
             <img src="/images/superfastsat_logo.png" alt="Superfast SAT Logo" class="logo" />
             <div class="header-info">
                 <div class="name">Name: <span id="studentName">Student Name</span></div>
+                <div class="grade">Grade: <span id="studentGrade">-</span></div>
                 <div class="date">Tested on: <span id="testDateValue">-</span></div>
                 <div class="code">Code: <span id="codeValue">-</span></div>
             </div>
@@ -574,6 +575,7 @@
     const reportData = window.REPORT_DATA_JSON || {};
 
     document.getElementById('studentName').innerText = reportData.studentName || '';
+    document.getElementById('studentGrade').innerText = reportData.studentGrade || '-';
     document.getElementById('testDateValue').innerText = reportData.testDate || '-';
     document.getElementById('codeValue').innerText = reportData.code || '-';
     
