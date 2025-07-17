@@ -310,91 +310,149 @@
     document.getElementById('quizForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // 문제별로 답안(q...)과 확신도(c...) 그룹을 모두 체크했는지 확인
         const form = this;
+        const missingItems = [];
+        const missingFields = [];
+        
+        // 1. 이름 체크
+        const studentName = form.querySelector('#studentName');
+        if (!studentName.value.trim()) {
+            missingItems.push('Student Name');
+            missingFields.push(studentName);
+        }
+        
+        // 2. Grade 체크
+        const studentGrade = form.querySelector('#studentGrade');
+        if (!studentGrade.value) {
+            missingItems.push('Grade');
+            missingFields.push(studentGrade);
+        }
+        
+        // 3답안과 확신도 체크
         const allInputs = Array.from(form.querySelectorAll('input[type="radio"], input[type="text"]'));
         const questionNames = new Set();
         const confidenceNames = new Set();
+        
         allInputs.forEach(input => {
             if (input.name.startsWith('q')) questionNames.add(input.name);
             if (input.name.startsWith('c')) confidenceNames.add(input.name);
         });
-        const missingFields = [];
+        
+        const missingAnswers = [];
+        const missingConfidence = [];
+        
         // 답안 체크
         questionNames.forEach(name => {
             const group = form.querySelectorAll(`input[name='${name}']`);
             const isChecked = Array.from(group).some(input => input.checked || (input.type === 'text' && input.value.trim() !== ''));
-            if (!isChecked) missingFields.push(group[0]);
+            if (!isChecked) {
+                missingFields.push(group[0]);
+                // 문제 번호 추출 (qRW1 -> RW1 qMath5 -> Math5)
+                const questionNum = name.substring(1);
+                missingAnswers.push(questionNum);
+            }
         });
+        
         // 확신도 체크
         confidenceNames.forEach(name => {
             const group = form.querySelectorAll(`input[name='${name}']`);
             const isChecked = Array.from(group).some(input => input.checked);
-            if (!isChecked) missingFields.push(group[0]);
+            if (!isChecked) {
+                missingFields.push(group[0]);
+                // 문제 번호 추출 (cRW1 -> RW1 cMath5 -> Math5)
+                const questionNum = name.substring(1);
+                missingConfidence.push(questionNum);
+            }
         });
-        if (missingFields.length > 0) {
+        
+        if (missingItems.length > 0 || missingAnswers.length > 0 || missingConfidence.length > 0) {
             // 누락된 필드들을 위치 순으로 정렬 (상단부터)
             missingFields.sort((a, b) => {
                 const rectA = a.getBoundingClientRect();
                 const rectB = b.getBoundingClientRect();
                 return rectA.top - rectB.top;
             });
+            
             // 첫 번째 누락된 필드로 스크롤
-            const firstMissingField = missingFields[0];
-            firstMissingField.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center' 
-            });
-            // 시각적 강조 효과 추가
-            firstMissingField.style.border = '2px solid #e74c3c';
-            firstMissingField.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.3)';
-            // 3초 후 강조 효과 제거
-            setTimeout(() => {
-                firstMissingField.style.border = '';
-                firstMissingField.style.boxShadow = '';
-            }, 3000);
+            if (missingFields.length > 0) {
+                const firstMissingField = missingFields[0];
+                firstMissingField.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // 시각적 강조 효과 추가
+                firstMissingField.style.border = '2px solid #e74c3c';
+                firstMissingField.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.3)';
+                // 3초 후 강조 효과 제거
+                setTimeout(() => {
+                    firstMissingField.style.border = '';
+                    firstMissingField.style.boxShadow = '';
+                }, 3000);
+            }
+            
+            // 상세한 알림 메시지 생성
+            let message = 'Please complete the following required fields:\n\n';
+            
+            if (missingItems.length > 0) {
+                message += `• ${missingItems.join(', ')}\n`;
+            }
+            
+            if (missingAnswers.length > 0) {
+                message += `• Answer: ${missingAnswers.join(', ')}\n`;
+            }
+            
+            if (missingConfidence.length > 0) {
+                message += `• Confidence Rating: ${missingConfidence.join(',')}`;
+            }
+            
             // 알림 메시지 표시
-            showNotification(`Please complete ${missingFields.length} missing field(s). Scrolling to the first one...`);
+            showDetailedNotification(message);
             return false;
         }
+        
         // 모든 필수 필드가 완료되면 폼 제출
         this.submit();
     });
     
-    // 알림 메시지 함수
-    function showNotification(message) {
+    // 상세한 알림 메시지 함수
+    function showDetailedNotification(message) {
         // 기존 알림 제거
-        const existingNotification = document.querySelector('.notification');
+        const existingNotification = document.querySelector('.detailed-notification');
         if (existingNotification) {
             existingNotification.remove();
         }
         
         // 새 알림 생성
         const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
+        notification.className = 'detailed-notification';
         notification.style.cssText = `
             position: fixed;
-            top: 20px;
+            top:20;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(-20px);
             background: #e74c3c;
             color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 20px 30px;
+            border-radius: 12px;
             font-weight: 600;
             z-index: 10000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             animation: slideDown 0.3s ease-out;
+            max-width: 500px;
+            white-space: pre-line;
+            line-height: 1.5;
+            font-size: 14px;
         `;
         
+        notification.textContent = message;
         document.body.appendChild(notification);
         
-        // 4초 후 알림 제거
+        // 알림 표시 후 6초 후 사라지도록 설정
         setTimeout(() => {
             notification.style.animation = 'slideUp 0.3s ease-in';
             setTimeout(() => notification.remove(), 300);
-        }, 4000);
+        }, 6000);
     }
     </script>
     <style>
