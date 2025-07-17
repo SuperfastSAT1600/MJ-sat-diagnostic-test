@@ -117,6 +117,17 @@
                   rwOpen = !rwOpen;
                   rwPanel.style.display = rwOpen ? 'block' : 'none';
                   updateRwHeader();
+                  
+                  // RW 아코디언 상태에 따라 required 속성 관리
+                  const rwInputs = rwPanel.querySelectorAll('input[required]');
+                  rwInputs.forEach(input => {
+                    if (rwOpen) {
+                      input.required = true;
+                    } else {
+                      input.required = false;
+                    }
+                  });
+                  
                   if (rwOpen && !timerStarted) {
                     timerStarted = true;
                     startTimer(3600);
@@ -130,6 +141,7 @@
                 const mathPanel = document.createElement('div');
                 mathPanel.className = 'accordion-panel';
                 mathPanel.style.display = 'none';
+                // Math 아코디언 버튼에 펼침/접힘 기호 추가
                 let mathOpen = false;
                 const updateMathHeader = () => {
                   mathHeader.textContent = (mathOpen ? '▼ ' : '▶ ') + 'Math';
@@ -139,6 +151,17 @@
                   mathOpen = !mathOpen;
                   mathPanel.style.display = mathOpen ? 'block' : 'none';
                   updateMathHeader();
+                  
+                  // Math 아코디언 상태에 따라 required 속성 관리
+                  const mathInputs = mathPanel.querySelectorAll('input[required]');
+                  mathInputs.forEach(input => {
+                    if (mathOpen) {
+                      input.required = true;
+                    } else {
+                      input.required = false;
+                    }
+                  });
+                  
                   if (mathOpen && !timerStarted) {
                     timerStarted = true;
                     startTimer(3600);
@@ -300,35 +323,55 @@
                 questionsArea.insertBefore(rwPanel, rwHeader.nextSibling);
                 questionsArea.insertBefore(mathHeader, rwPanel.nextSibling);
                 questionsArea.insertBefore(mathPanel, mathHeader.nextSibling);
+                
+                // 초기 상태에서 숨겨진 패널의 required 속성 제거
+                const hiddenInputs = document.querySelectorAll('.accordion-panel[style*="display: none"] input[required]');
+                hiddenInputs.forEach(input => {
+                  input.required = false;
+                });
+                
+                // 실시간 검증 설정
+                setupRealTimeValidation();
             }
         });
 
 
     });
 
-    // 폼 제출 시 누락된 부분으로 자동 스크롤하는 기능
+    // 폼 제출 시 검증 및 제출 처리
     document.getElementById('quizForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const form = this;
+        const validationResult = validateAllFields();
+        
+        if (!validationResult.isValid) {
+            // 누락된 항목이 있으면 메시지 창 표시
+            showValidationMessage(validationResult.missingItems, validationResult.subjectResults);
+            return;
+        }
+        
+        // 모든 필수 요소가 완료되면 메시지 창 없이 바로 폼 제출
+        this.submit();
+    });
+    
+    // 모든 필수 필드 검증 함수
+    function validateAllFields() {
+        const form = document.getElementById('quizForm');
         const missingItems = [];
-        const missingFields = [];
         
         // 1. 이름 체크
         const studentName = form.querySelector('#studentName');
         if (!studentName.value.trim()) {
             missingItems.push('Student Name');
-            missingFields.push(studentName);
         }
         
         // 2. Grade 체크
         const studentGrade = form.querySelector('#studentGrade');
         if (!studentGrade.value) {
             missingItems.push('Grade');
-            missingFields.push(studentGrade);
         }
         
-        // 3답안과 확신도 체크
+        // 3. 과목별로 답안과 확신도 체크
         const allInputs = Array.from(form.querySelectorAll('input[type="radio"], input[type="text"]'));
         const questionNames = new Set();
         const confidenceNames = new Set();
@@ -338,82 +381,168 @@
             if (input.name.startsWith('c')) confidenceNames.add(input.name);
         });
         
-        const missingAnswers = [];
-        const missingConfidence = [];
+        // 과목별로 분류
+        const rwMissingAnswers = [];
+        const rwMissingConfidence = [];
+        const mathMissingAnswers = [];
+        const mathMissingConfidence = [];
         
-        // 답안 체크
+        // 답안 체크 (과목별로 분류)
         questionNames.forEach(name => {
             const group = form.querySelectorAll(`input[name='${name}']`);
             const isChecked = Array.from(group).some(input => input.checked || (input.type === 'text' && input.value.trim() !== ''));
             if (!isChecked) {
-                missingFields.push(group[0]);
-                // 문제 번호 추출 (qRW1 -> RW1 qMath5 -> Math5)
-                const questionNum = name.substring(1);
-                missingAnswers.push(questionNum);
+                // 과목 판별 (RW 또는 Math)
+                if (name.includes('RW')) {
+                    const questionNum = name.replace('qRW', '');
+                    rwMissingAnswers.push(questionNum);
+                } else if (name.includes('Math')) {
+                    const questionNum = name.replace('qMath', '');
+                    mathMissingAnswers.push(questionNum);
+                }
             }
         });
         
-        // 확신도 체크
+        // 확신도 체크 (과목별로 분류)
         confidenceNames.forEach(name => {
             const group = form.querySelectorAll(`input[name='${name}']`);
             const isChecked = Array.from(group).some(input => input.checked);
             if (!isChecked) {
-                missingFields.push(group[0]);
-                // 문제 번호 추출 (cRW1 -> RW1 cMath5 -> Math5)
-                const questionNum = name.substring(1);
-                missingConfidence.push(questionNum);
+                // 과목 판별 (RW 또는 Math)
+                if (name.includes('RW')) {
+                    const questionNum = name.replace('cRW', '');
+                    rwMissingConfidence.push(questionNum);
+                } else if (name.includes('Math')) {
+                    const questionNum = name.replace('cMath', '');
+                    mathMissingConfidence.push(questionNum);
+                }
             }
         });
         
-        if (missingItems.length > 0 || missingAnswers.length > 0 || missingConfidence.length > 0) {
-            // 누락된 필드들을 위치 순으로 정렬 (상단부터)
-            missingFields.sort((a, b) => {
-                const rectA = a.getBoundingClientRect();
-                const rectB = b.getBoundingClientRect();
-                return rectA.top - rectB.top;
-            });
-            
-            // 첫 번째 누락된 필드로 스크롤
-            if (missingFields.length > 0) {
-                const firstMissingField = missingFields[0];
-                firstMissingField.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-                
-                // 시각적 강조 효과 추가
-                firstMissingField.style.border = '2px solid #e74c3c';
-                firstMissingField.style.boxShadow = '0 0 10px rgba(231, 76, 60, 0.3)';
-                // 3초 후 강조 효과 제거
-                setTimeout(() => {
-                    firstMissingField.style.border = '';
-                    firstMissingField.style.boxShadow = '';
-                }, 3000);
+        // 과목별 결과 구성
+        const subjectResults = [];
+        
+        if (rwMissingAnswers.length > 0 || rwMissingConfidence.length > 0) {
+            const rwItems = [];
+            if (rwMissingAnswers.length > 0) {
+                rwItems.push(`Answer: ${rwMissingAnswers.join(', ')}`);
             }
-            
-            // 상세한 알림 메시지 생성
-            let message = 'Please complete the following required fields:\n\n';
-            
-            if (missingItems.length > 0) {
-                message += `• ${missingItems.join(', ')}\n`;
+            if (rwMissingConfidence.length > 0) {
+                rwItems.push(`Confidence Rating: ${rwMissingConfidence.join(', ')}`);
             }
-            
-            if (missingAnswers.length > 0) {
-                message += `• Answer: ${missingAnswers.join(', ')}\n`;
-            }
-            
-            if (missingConfidence.length > 0) {
-                message += `• Confidence Rating: ${missingConfidence.join(',')}`;
-            }
-            
-            // 알림 메시지 표시
-            showDetailedNotification(message);
-            return false;
+            subjectResults.push(`RW:\n  • ${rwItems.join('\n  • ')}`);
         }
         
-        // 모든 필수 필드가 완료되면 사용자가 수동으로 제출할 수 있도록 안내
-        showDetailedNotification('All required fields are completed! You can now submit the form.');
-    });
+        if (mathMissingAnswers.length > 0 || mathMissingConfidence.length > 0) {
+            const mathItems = [];
+            if (mathMissingAnswers.length > 0) {
+                mathItems.push(`Answer: ${mathMissingAnswers.join(', ')}`);
+            }
+            if (mathMissingConfidence.length > 0) {
+                mathItems.push(`Confidence Rating: ${mathMissingConfidence.join(', ')}`);
+            }
+            subjectResults.push(`Math:\n  • ${mathItems.join('\n  • ')}`);
+        }
+        
+        return {
+            isValid: missingItems.length === 0 && subjectResults.length === 0,
+            missingItems: missingItems,
+            subjectResults: subjectResults
+        };
+    }
+    
+    // Submit 버튼 클릭 시 검증 메시지 표시 함수
+    function showValidationMessage(missingItems, subjectResults) {
+        // 기존 메시지 찾기
+        let existingMessage = document.querySelector('.validation-message');
+        
+        if (missingItems.length === 0 && subjectResults.length === 0) {
+            // 모든 항목이 완료되면 메시지 숨김 (애니메이션과 함께)
+            if (existingMessage) {
+                existingMessage.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => existingMessage.remove(), 300);
+            }
+            return;
+        }
+        
+        let message = 'Please complete the following required fields:\n\n';
+        
+        // 기본 정보 (이름, Grade)
+        if (missingItems.length > 0) {
+            message += 'Basic Information:\n';
+            missingItems.forEach(item => {
+                message += `  • ${item}\n`;
+            });
+            message += '\n';
+        }
+        
+        // 과목별 정보
+        if (subjectResults.length > 0) {
+            subjectResults.forEach(subject => {
+                message += `${subject}\n\n`;
+            });
+        }
+        
+        if (existingMessage) {
+            // 기존 메시지가 있으면 내용만 업데이트 (애니메이션 없음)
+            existingMessage.textContent = message;
+        } else {
+            // 새 메시지 생성 (첫 번째 표시 시에만 애니메이션)
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'validation-message';
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 100px;
+                left: calc(100% - 280px - 200px);
+                transform: translateX(-50%);
+                background: #e74c3c;
+                color: white;
+                padding: 14px 32px;
+                border-radius: 12px;
+                font-weight: 700;
+                z-index: 10000;
+                box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+                max-width: 400px;
+                white-space: pre-line;
+                line-height: 1.5;
+                font-size: 14px;
+                animation: slideInRight 0.3s ease-out;
+                letter-spacing: 1px;
+            `;
+            
+            messageDiv.textContent = message;
+            document.body.appendChild(messageDiv);
+        }
+    }
+    
+    // 실시간 검증을 위한 이벤트 리스너들
+    function setupRealTimeValidation() {
+        const form = document.getElementById('quizForm');
+        
+        // 모든 입력 요소에 이벤트 리스너 추가
+        const allInputs = form.querySelectorAll('input[type="text"], input[type="radio"], select');
+        
+        allInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                // 메시지 창이 이미 노출되어 있을 때만 실시간 업데이트
+                const existingMessage = document.querySelector('.validation-message');
+                if (existingMessage) {
+                    // 약간의 지연을 두어 값이 업데이트된 후 검증 실행
+                    setTimeout(() => {
+                        const validationResult = validateAllFields();
+                        if (validationResult.missingItems.length > 0 || validationResult.subjectResults.length > 0) {
+                            showValidationMessage(validationResult.missingItems, validationResult.subjectResults);
+                        } else {
+                            // 모든 항목이 완료되면 메시지 숨김
+                            existingMessage.remove();
+                        }
+                    }, 100);
+                }
+            });
+        });
+    }
+    
+
     
     // 상세한 알림 메시지 함수
     function showDetailedNotification(message) {
@@ -428,7 +557,7 @@
         notification.className = 'detailed-notification';
         notification.style.cssText = `
             position: fixed;
-            top:20;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(-20px);
             background: #e74c3c;
@@ -461,7 +590,7 @@
         const minimizeBtn = document.createElement('button');
         minimizeBtn.textContent = '접어두기';
         minimizeBtn.style.cssText = `
-            background: rgba(255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
             padding: 8px 16px;
@@ -482,7 +611,7 @@
         const closeBtn = document.createElement('button');
         closeBtn.textContent = '✕';
         closeBtn.style.cssText = `
-            background: rgba(255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
             padding: 8px 12px;
@@ -590,6 +719,28 @@
       to {
         opacity: 0;
         transform: translateX(-50%) translateY(-20px);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideOutRight {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(100%);
       }
     }
     </style>
