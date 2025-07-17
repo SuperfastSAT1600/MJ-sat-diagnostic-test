@@ -411,8 +411,8 @@
             return false;
         }
         
-        // 모든 필수 필드가 완료되면 폼 제출
-        this.submit();
+        // 모든 필수 필드가 완료되면 사용자가 수동으로 제출할 수 있도록 안내
+        showDetailedNotification('All required fields are completed! You can now submit the form.');
     });
     
     // 상세한 알림 메시지 함수
@@ -445,14 +445,65 @@
             font-size: 14px;
         `;
         
-        notification.textContent = message;
-        document.body.appendChild(notification);
+        // 메시지 내용
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = message;
+        messageDiv.style.marginBottom = '15px';
+        notification.appendChild(messageDiv);
         
-        // 알림 표시 후 6초 후 사라지도록 설정
-        setTimeout(() => {
+        // 버튼 컨테이너
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.gap = '10px';
+        buttonContainer.style.justifyContent = 'flex-end';
+        
+        // 접어두기 버튼
+        const minimizeBtn = document.createElement('button');
+        minimizeBtn.textContent = '접어두기';
+        minimizeBtn.style.cssText = `
+            background: rgba(255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        `;
+        minimizeBtn.onmouseover = () => minimizeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+        minimizeBtn.onmouseout = () => minimizeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+        minimizeBtn.onclick = () => {
+            notification.style.transform = 'translateX(-50%) translateY(-10px)';
+            notification.style.opacity = '0';
+            setTimeout(() => notification.remove(), 300);
+        };
+        
+        // X 버튼
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = '✕';
+        closeBtn.style.cssText = `
+            background: rgba(255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.2s;
+        `;
+        closeBtn.onmouseover = () => closeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+        closeBtn.onmouseout = () => closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+        closeBtn.onclick = () => {
             notification.style.animation = 'slideUp 0.3s ease-in';
             setTimeout(() => notification.remove(), 300);
-        }, 6000);
+        };
+        
+        buttonContainer.appendChild(minimizeBtn);
+        buttonContainer.appendChild(closeBtn);
+        notification.appendChild(buttonContainer);
+        
+        document.body.appendChild(notification);
     }
     </script>
     <style>
