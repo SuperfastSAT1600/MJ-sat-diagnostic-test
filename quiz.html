@@ -51,7 +51,6 @@
             </div>
 
             <div id="questions-area"></div>
-            <div class="timer-box" id="timerBox" style="display:none;"></div>
             <div class="submit-section" id="submitSection" style="display:block; text-align: center; margin-top: 30px;">
                 <button type="submit" class="submit-btn" style="background: #071BE9; color: white; padding: 16px 32px; border: none; border-radius: 24px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background 0.2s;">
                     Submit
@@ -66,10 +65,64 @@
       let time = duration;
       const timerBox = document.getElementById('timerBox');
       timerBox.style.display = 'block';
+      
+      // 타이머 위치를 아코디언 패널 기준으로 설정
+      function updateTimerPosition() {
+        const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+        if (activePanel) {
+          const panelRect = activePanel.getBoundingClientRect();
+          const containerRect = document.querySelector('.container').getBoundingClientRect();
+          const maxLeft = window.innerWidth - timerBox.offsetWidth - 20; // 오른쪽 여백 20px
+          
+          // 아코디언 패널이 컨테이너 내에서 차지하는 비율을 계산
+          const panelRightRatio = (panelRect.right - containerRect.left) / containerRect.width;
+          
+          // 뷰포트 기준으로 위치 계산
+          let leftPosition = panelRect.right + 10;
+          
+          // 화면 밖으로 나가지 않도록 조정
+          if (leftPosition > maxLeft) {
+            leftPosition = maxLeft;
+          }
+          
+          // 최소 왼쪽 여백 보장
+          if (leftPosition < 20) {
+            leftPosition = 20;
+          }
+          
+          timerBox.style.left = leftPosition + 'px';
+        }
+      }
+      
+      // 초기 위치 설정
+      updateTimerPosition();
+      
+      // 윈도우 리사이즈 시 위치 재조정
+      window.addEventListener('resize', updateTimerPosition);
+      
+      // 스크롤 시에도 위치 재조정
+      window.addEventListener('scroll', updateTimerPosition);
+      
+      // 줌 레벨 변경 감지
+      let lastZoom = window.devicePixelRatio;
+      const checkZoom = () => {
+        if (Math.abs(window.devicePixelRatio - lastZoom) > 0.1) {
+          lastZoom = window.devicePixelRatio;
+          setTimeout(updateTimerPosition, 100);
+        }
+      };
+      
+      // 줌 변경 감지를 위한 주기적 체크
+      const zoomCheckInterval = setInterval(checkZoom, 500);
+      
+      // 타이머 드래그 기능 추가
+      makeDraggable(timerBox);
+      
       function updateTimer() {
         if (time < 0) {
           timerBox.textContent = '시간 종료';
           clearInterval(timerInterval);
+          clearInterval(zoomCheckInterval);
           return;
         }
         const h = String(Math.floor(time / 3600)).padStart(2, '0');
@@ -107,6 +160,14 @@
                 const rwPanel = document.createElement('div');
                 rwPanel.className = 'accordion-panel';
                 rwPanel.style.display = 'none';
+                rwPanel.style.position = 'relative';
+                
+                // 타이머를 RW 패널에 추가
+                const timerBox = document.createElement('div');
+                timerBox.className = 'timer-box';
+                timerBox.id = 'timerBox';
+                timerBox.style.display = 'none';
+                rwPanel.appendChild(timerBox);
                 // RW 아코디언 버튼에 펼침/접힘 기호 추가
                 let rwOpen = false;
                 const updateRwHeader = () => {
@@ -453,8 +514,8 @@
     
     // Submit 버튼 클릭 시 검증 메시지 표시 함수
     function showValidationMessage(missingItems, subjectResults) {
-        // 기존 메시지 찾기
-        let existingMessage = document.querySelector('.validation-message');
+        // 기존 메시지 찾기 (아코디언 패널 내부에서 먼저 찾기)
+        let existingMessage = document.querySelector('.accordion-panel .validation-message') || document.querySelector('.validation-message');
         
         if (missingItems.length === 0 && subjectResults.length === 0) {
             // 모든 항목이 완료되면 메시지 숨김 (애니메이션과 함께)
@@ -486,32 +547,66 @@
         if (existingMessage) {
             // 기존 메시지가 있으면 내용만 업데이트 (애니메이션 없음)
             existingMessage.textContent = message;
+            // 위치도 재조정
+            updateMessagePosition(existingMessage);
         } else {
             // 새 메시지 생성 (첫 번째 표시 시에만 애니메이션)
             const messageDiv = document.createElement('div');
             messageDiv.className = 'validation-message';
             messageDiv.style.cssText = `
                 position: fixed;
-                top: 100px;
-                left: calc(100% - 280px - 200px);
-                transform: translateX(-50%);
+                top: 120px;
                 background: #e74c3c;
                 color: white;
-                padding: 14px 32px;
+                padding: 14px 40px;
                 border-radius: 12px;
                 font-weight: 700;
                 z-index: 10000;
                 box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
-                max-width: 400px;
+                width: 450px;
                 white-space: pre-line;
                 line-height: 1.5;
                 font-size: 14px;
                 animation: slideInRight 0.3s ease-out;
                 letter-spacing: 1px;
+                cursor: grab;
             `;
             
             messageDiv.textContent = message;
+            
+            // 메시지 창을 body에 추가하고 아코디언 패널 위치를 기준으로 고정
             document.body.appendChild(messageDiv);
+            
+            // 위치 설정
+            updateMessagePosition(messageDiv);
+            
+            // 메시지 창 드래그 기능 추가
+            makeDraggable(messageDiv);
+        }
+    }
+    
+    // 메시지 창 위치 업데이트 함수
+    function updateMessagePosition(messageDiv) {
+        const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+        if (activePanel) {
+            const panelRect = activePanel.getBoundingClientRect();
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            const maxLeft = window.innerWidth - messageDiv.offsetWidth - 20; // 오른쪽 여백 20px
+            
+            // 뷰포트 기준으로 위치 계산
+            let leftPosition = panelRect.right + 10;
+            
+            // 화면 밖으로 나가지 않도록 조정
+            if (leftPosition > maxLeft) {
+                leftPosition = maxLeft;
+            }
+            
+            // 최소 왼쪽 여백 보장
+            if (leftPosition < 20) {
+                leftPosition = 20;
+            }
+            
+            messageDiv.style.left = leftPosition + 'px';
         }
     }
     
@@ -534,13 +629,189 @@
                             showValidationMessage(validationResult.missingItems, validationResult.subjectResults);
                         } else {
                             // 모든 항목이 완료되면 메시지 숨김
-                            existingMessage.remove();
+                            const existingMessage = document.querySelector('.accordion-panel .validation-message') || document.querySelector('.validation-message');
+                            if (existingMessage) {
+                                existingMessage.remove();
+                            }
                         }
                     }, 100);
                 }
             });
         });
     }
+    
+    // 윈도우 리사이즈 시 타이머와 메시지 창 위치 재조정
+    window.addEventListener('resize', function() {
+        const timerBox = document.getElementById('timerBox');
+        const messageDiv = document.querySelector('.validation-message');
+        
+        if (timerBox && timerBox.style.display !== 'none') {
+            const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+            if (activePanel) {
+                const panelRect = activePanel.getBoundingClientRect();
+                const maxLeft = window.innerWidth - timerBox.offsetWidth - 20;
+                
+                let leftPosition = panelRect.right + 10;
+                if (leftPosition > maxLeft) {
+                    leftPosition = maxLeft;
+                }
+                if (leftPosition < 20) {
+                    leftPosition = 20;
+                }
+                
+                timerBox.style.left = leftPosition + 'px';
+            }
+        }
+        
+        if (messageDiv) {
+            updateMessagePosition(messageDiv);
+        }
+    });
+    
+    // 스크롤 시에도 위치 재조정
+    window.addEventListener('scroll', function() {
+        const timerBox = document.getElementById('timerBox');
+        const messageDiv = document.querySelector('.validation-message');
+        
+        if (timerBox && timerBox.style.display !== 'none') {
+            const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+            if (activePanel) {
+                const panelRect = activePanel.getBoundingClientRect();
+                const maxLeft = window.innerWidth - timerBox.offsetWidth - 20;
+                
+                let leftPosition = panelRect.right + 10;
+                if (leftPosition > maxLeft) {
+                    leftPosition = maxLeft;
+                }
+                if (leftPosition < 20) {
+                    leftPosition = 20;
+                }
+                
+                timerBox.style.left = leftPosition + 'px';
+            }
+        }
+        
+        if (messageDiv) {
+            updateMessagePosition(messageDiv);
+        }
+    });
+    
+    // 줌 레벨 변경 감지 및 위치 재조정
+    let lastZoom = window.devicePixelRatio;
+    const checkZoomAndUpdate = () => {
+        if (Math.abs(window.devicePixelRatio - lastZoom) > 0.1) {
+            lastZoom = window.devicePixelRatio;
+            setTimeout(() => {
+                const timerBox = document.getElementById('timerBox');
+                const messageDiv = document.querySelector('.validation-message');
+                
+                if (timerBox && timerBox.style.display !== 'none') {
+                    const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+                    if (activePanel) {
+                        const panelRect = activePanel.getBoundingClientRect();
+                        const maxLeft = window.innerWidth - timerBox.offsetWidth - 20;
+                        
+                        let leftPosition = panelRect.right + 10;
+                        if (leftPosition > maxLeft) {
+                            leftPosition = maxLeft;
+                        }
+                        if (leftPosition < 20) {
+                            leftPosition = 20;
+                        }
+                        
+                        timerBox.style.left = leftPosition + 'px';
+                    }
+                }
+                
+                if (messageDiv) {
+                    updateMessagePosition(messageDiv);
+                }
+            }, 100);
+        }
+    };
+    
+    // 줌 변경 감지를 위한 주기적 체크
+    setInterval(checkZoomAndUpdate, 500);
+    
+    // 드래그 앤 드롭 기능 함수
+    function makeDraggable(element) {
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+        
+        // 드래그 시작
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+            
+            if (e.target === element) {
+                isDragging = true;
+                element.style.cursor = 'grabbing';
+                element.style.userSelect = 'none';
+            }
+        }
+        
+        // 드래그 중
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                
+                xOffset = currentX;
+                yOffset = currentY;
+                
+                // 경계 제한 제거 - 자유롭게 드래그 가능
+                
+                setTranslate(currentX, currentY, element);
+            }
+        }
+        
+        // 드래그 종료
+        function dragEnd() {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+            element.style.cursor = 'grab';
+            element.style.userSelect = 'auto';
+        }
+        
+        // 위치 설정
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
+        
+        // 마우스 이벤트
+        element.addEventListener("mousedown", dragStart);
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", dragEnd);
+        
+        // 터치 이벤트 (모바일 지원)
+        element.addEventListener("touchstart", dragStart, { passive: false });
+        document.addEventListener("touchmove", drag, { passive: false });
+        document.addEventListener("touchend", dragEnd);
+        
+        // 드래그 가능함을 나타내는 스타일
+        element.style.cursor = 'grab';
+        element.style.userSelect = 'none';
+    }
+    
+
     
 
     
@@ -681,20 +952,63 @@
     }
     .timer-box {
       position: fixed;
-      top: 32px;
-      right: 280px;
+      top: 20px;
       z-index: 1000;
       background: #071BE9;
       color: #fff;
       font-size: 1.35em;
       font-weight: 700;
-      padding: 14px 32px;
+      padding: 14px 40px;
       border-radius: 32px;
       box-shadow: 0 4px 16px rgba(7,27,233,0.08);
       letter-spacing: 1px;
       transition: background 0.2s;
       opacity: 0.97;
-      user-select: none;
+      white-space: nowrap;
+      cursor: grab;
+    }
+    
+    .timer-box:active {
+      cursor: grabbing;
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .timer-box {
+        font-size: 1.1em;
+        padding: 12px 24px;
+        top: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .timer-box {
+        font-size: 1em;
+        padding: 10px 20px;
+        top: 10px;
+      }
+    }
+    
+    /* 메시지 창 반응형 디자인 */
+    @media (max-width: 768px) {
+      .validation-message {
+        width: 350px !important;
+        font-size: 12px !important;
+        padding: 12px 20px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .validation-message {
+        width: 300px !important;
+        font-size: 11px !important;
+        padding: 10px 16px !important;
+      }
+    }
+    
+    /* 드래그 가능한 요소 스타일 */
+    .validation-message:active {
+      cursor: grabbing !important;
     }
     .submit-btn:hover {
       background: #0515c7 !important;
