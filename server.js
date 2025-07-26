@@ -768,11 +768,11 @@ app.post('/api/questions', async (req, res) => {
     // 새 문제 행 추가
     const newRow = [
       number,
-      stem.replace(/\n/g, ' ').replace(/,/g, ' '),
-      prompt.replace(/\n/g, ' ').replace(/,/g, ' '),
+      stem.replace(/\n/g, ' '),
+      prompt.replace(/\n/g, ' '),
       // 4개 선택지 컬럼을 모두 채우기
       ...(questionType === 'multiple_choice' 
-        ? choices.map(c => c.replace(/\n/g, ' ').replace(/,/g, ' '))
+        ? choices.map(c => c.replace(/\n/g, ' '))
         : ['', '', '', ''] // 주관식은 선택지 컬럼을 비워둠
       ),
       questionType === 'multiple_choice' ? String.fromCharCode(65 + answer) : (choices.length > 0 ? choices.join('|') : ''),
@@ -780,7 +780,16 @@ app.post('/api/questions', async (req, res) => {
       questionType
     ];
     
-    await fs.appendFile(QUESTIONS_PATH, `\n${newRow.join(',')}`);
+    // CSV 형식에 맞게 데이터 이스케이프 처리
+    const escapedRow = newRow.map(field => {
+      if (typeof field === 'string' && (field.includes(',') || field.includes('"') || field.includes('\n'))) {
+        // 콤마, 따옴표, 줄바꿈이 포함된 경우 따옴표로 감싸고 내부 따옴표는 이스케이프
+        return `"${field.replace(/"/g, '""')}"`;
+      }
+      return field;
+    });
+    
+    await fs.appendFile(QUESTIONS_PATH, `\n${escapedRow.join(',')}`);
     res.json({ success: true });
   } catch (e) {
     console.error('❌ 문제 저장 실패:', e.message);
