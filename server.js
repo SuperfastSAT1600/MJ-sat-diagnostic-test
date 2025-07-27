@@ -125,6 +125,18 @@ async function extractAnswersAndConfidence(formData) {
   console.log('qMap[qMath2]:', qMap['qMath2']);
   console.log('qMap[qMath14]:', qMap['qMath14']);
   
+  // Math 2번, 14번 문제가 qMap에 없는 경우 수동으로 추가
+  if (!qMap['qMath2']) {
+    qMap['qMath2'] = 'Math-2';
+    qMap['cMath2'] = 'Math-2';
+    console.log('Math-2 매핑 수동 추가됨');
+  }
+  if (!qMap['qMath14']) {
+    qMap['qMath14'] = 'Math-14';
+    qMap['cMath14'] = 'Math-14';
+    console.log('Math-14 매핑 수동 추가됨');
+  }
+  
   const answers = {};
   const confidence = {};
   for (const key in formData) {
