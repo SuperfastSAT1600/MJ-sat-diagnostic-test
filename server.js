@@ -110,6 +110,21 @@ async function extractAnswersAndConfidence(formData) {
   
   console.log('qMap:', qMap);
   
+  // 실제 폼 데이터에서 Math 관련 키들 확인
+  console.log('FormData Math keys:');
+  Object.keys(formData).filter(key => key.includes('Math')).forEach(key => {
+    console.log(`${key}: ${formData[key]}`);
+  });
+  
+  // Math 2번, 14번 문제 특별 확인
+  console.log('=== Math 2, 14번 문제 디버깅 ===');
+  console.log('qMath2 in formData:', formData['qMath2']);
+  console.log('cMath2 in formData:', formData['cMath2']);
+  console.log('qMath14 in formData:', formData['qMath14']);
+  console.log('cMath14 in formData:', formData['cMath14']);
+  console.log('qMap[qMath2]:', qMap['qMath2']);
+  console.log('qMap[qMath14]:', qMap['qMath14']);
+  
   const answers = {};
   const confidence = {};
   for (const key in formData) {
@@ -448,6 +463,28 @@ app.get('/report/:id', async (req, res) => {
       if (questionInfo) {
         studentAnsRaw = studentAnswers[key] || '';
         conf = studentConfidence[key] || '';
+      } else {
+        // questionMap에 없는 경우, 직접 키로 찾아보기
+        studentAnsRaw = studentAnswers[key] || '';
+        conf = studentConfidence[key] || '';
+      }
+      
+      // 디버깅: Math 2번, 14번 문제의 답안 확인
+      if (key === 'Math-2' || key === 'Math-14') {
+        console.log(`Processing ${key}:`);
+        console.log(`  - studentAnsRaw: ${studentAnsRaw}`);
+        console.log(`  - conf: ${conf}`);
+        console.log(`  - questionInfo:`, questionInfo);
+        console.log(`  - Available answers:`, Object.keys(studentAnswers));
+        console.log(`  - Available confidence:`, Object.keys(studentConfidence));
+      }
+      
+      // 디버깅: Math 2번, 14번 문제의 답안 확인
+      if (key === 'Math-2' || key === 'Math-14') {
+        console.log(`Processing ${key}:`);
+        console.log(`  - studentAnsRaw: ${studentAnsRaw}`);
+        console.log(`  - conf: ${conf}`);
+        console.log(`  - questionInfo:`, questionInfo);
       }
       
       const studentAns = Array.isArray(studentAnsRaw) ? studentAnsRaw[0] : studentAnsRaw;
