@@ -95,7 +95,7 @@ async function extractAnswersAndConfidence(formData) {
     }
   }
   
-  // 디버깅: 실제 매핑 확인
+  // 디버깅: 실제 매핑 확인 (Math 2번, 14번 포함)
   console.log('Sample mappings:');
   for (let i = 1; i <= 3; i++) {
     console.log(`qRW${i} -> ${qMap['qRW'+i] || 'NOT FOUND'}`);
@@ -103,6 +103,10 @@ async function extractAnswersAndConfidence(formData) {
     console.log(`qMath${i} -> ${qMap['qMath'+i] || 'NOT FOUND'}`);
     console.log(`cMath${i} -> ${qMap['cMath'+i] || 'NOT FOUND'}`);
   }
+  console.log(`qMath2 -> ${qMap['qMath2'] || 'NOT FOUND'}`);
+  console.log(`cMath2 -> ${qMap['cMath2'] || 'NOT FOUND'}`);
+  console.log(`qMath14 -> ${qMap['qMath14'] || 'NOT FOUND'}`);
+  console.log(`cMath14 -> ${qMap['cMath14'] || 'NOT FOUND'}`);
   
   console.log('qMap:', qMap);
   
@@ -396,12 +400,34 @@ app.get('/report/:id', async (req, res) => {
         }
 
     // 문제/유닛/해설 DB 파싱
-    const [unitDb, rationaleDb] = await Promise.all([
+    const [unitDb, rationaleDb, questionsCsv] = await Promise.all([
       parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Unit DB.csv')),
-      parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Question Rationale DB.csv'))
+      parseCsvFile(path.join(__dirname, 'Diagnostic DataBase - Question Rationale DB.csv')),
+      parseCsvFile(path.join(__dirname, 'questions.csv'))
     ]);
     let studentAnswers = resultData.answers || {};
     let studentConfidence = resultData.confidence || {};
+
+    // questions.csv에서 문제 번호와 과목 매핑 생성
+    const questionMap = {};
+    for (const q of questionsCsv) {
+      const num = q.Number;
+      const subj = q.Subject;
+      if (num && subj) {
+        questionMap[`${subj}-${num}`] = {
+          number: num,
+          subject: subj,
+          answer: q.Answer,
+          questionType: q.QuestionType
+        };
+      }
+    }
+    
+    // 디버깅: Math 2번, 14번 문제 매핑 확인
+    console.log('Math-2 mapping:', questionMap['Math-2']);
+    console.log('Math-14 mapping:', questionMap['Math-14']);
+    console.log('Available student answers keys:', Object.keys(studentAnswers));
+    console.log('Available student confidence keys:', Object.keys(studentConfidence));
 
     // 문항별 정보 조합
     const questionRows = [];
@@ -413,9 +439,18 @@ app.get('/report/:id', async (req, res) => {
       const skill = unit.Skill;
       const correct = unit['Correct Answer'];
       const trapAnswer = unit['Trap Answer'];
-      const studentAnsRaw = studentAnswers[key] || '';
+      
+      // questions.csv의 매핑을 사용해서 답안과 확신도 찾기
+      const questionInfo = questionMap[key];
+      let studentAnsRaw = '';
+      let conf = '';
+      
+      if (questionInfo) {
+        studentAnsRaw = studentAnswers[key] || '';
+        conf = studentConfidence[key] || '';
+      }
+      
       const studentAns = Array.isArray(studentAnsRaw) ? studentAnsRaw[0] : studentAnsRaw;
-      const conf = studentConfidence[key] || '';
       
       // answers/confidence 데이터가 없는 경우 기본값 설정
       let resultType = 'wrong';
