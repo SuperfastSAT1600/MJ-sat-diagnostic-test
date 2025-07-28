@@ -567,7 +567,7 @@ app.get('/report/:id', async (req, res) => {
         let score = 0;
         switch(q.resultType) {
           case 'correct': score = 1; break;
-          case 'trap': score = 0.5; break;
+          case 'trap': score = 0; break;
           case 'wrong': score = 0; break;
           default: score = 0;
         }
