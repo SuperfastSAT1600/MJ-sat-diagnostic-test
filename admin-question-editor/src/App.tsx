@@ -88,6 +88,8 @@ function App() {
     }
   };
 
+
+
   const handleAccordion = (subj: 'RW' | 'Math') => {
     setOpenAccordion(prev => ({ ...prev, [subj]: !prev[subj] }));
   };

@@ -2,15 +2,15 @@ Test,Section,Domain,Skill,Unit,Difficulty,Score,Question,Passage,Key Point,Time,
 Diagnostic Test V2,RW,Craft and Structure,words in context,1,Easy,1,Which choice completes the text with the most logical and precise word or phrase?,,,1 min,A,B
 Diagnostic Test V2,RW,Craft and Structure,words in context,2,Medium,1,Which choice completes the text with the most logical and precise word or phrase?,,,1 min,D,A
 Diagnostic Test V2,RW,Craft and Structure,words in context,3,Hard,1,Which choice completes the text with the most logical and precise word or phrase?,,,1 min,C,B
-Diagnostic Test V2,RW,Craft and Structure,words in context,4,Medium,1,"As used in the text, what does the word “X” most nearly mean?",Literary,,1 min,B,A
+Diagnostic Test V2,RW,Craft and Structure,words in context,4,Medium,1,"As used in the text, what does the word ?�X??most nearly mean?",Literary,,1 min,B,A
 Diagnostic Test V2,RW,Craft and Structure,text structure and purpose,5,Medium,1,Which choice best describes the function of the underlined sentence in the text as a whole?,Literary,,1 min,C,A
 Diagnostic Test V2,RW,Craft and Structure,text structure and purpose,6,Medium,1,Which choice best describes the main purpose of the text?,Argumentative,,1 min,A,B
 Diagnostic Test V2,RW,Craft and Structure,cross-text connections,7,Medium,1,"Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",Argumentative,,1 min,D,A
 Diagnostic Test V2,RW,Information and Ideas,command of evidence (quantitative),8,Easy,1,Which choice most effectively uses data from the table to complete the statement?,Expository,,1 min,C,B
-Diagnostic Test V2,RW,Information and Ideas,command of evidence (quantitative),9,Hard,1,Which choice best describes data from the graph that support the researchers’ conclusion?,Expository,,1 min,B,C
+Diagnostic Test V2,RW,Information and Ideas,command of evidence (quantitative),9,Hard,1,Which choice best describes data from the graph that support the researchers??conclusion?,Expository,,1 min,B,C
 Diagnostic Test V2,RW,Information and Ideas,command of evidence (textual),10,Medium,1,Which quotation most effectively illustrates the claim?,Literary,,2 mins,D,"A,B"
-Diagnostic Test V2,RW,Information and Ideas,command of evidence (textual),11,Medium,1,"Which finding, if true, would most directly support/weaken [X]‘s claim/hypothesis/argument/conclusion?",Expository,,2 mins,C,D
-Diagnostic Test V2,RW,Information and Ideas,command of evidence (textual),12,Hard,1,"Which finding, if true, would most directly support/weaken [X]‘s claim/hypothesis/argument/conclusion?",Expository,,2 mins,D,A
+Diagnostic Test V2,RW,Information and Ideas,command of evidence (textual),11,Medium,1,"Which finding, if true, would most directly support/weaken [X]?�s claim/hypothesis/argument/conclusion?",Expository,,2 mins,C,D
+Diagnostic Test V2,RW,Information and Ideas,command of evidence (textual),12,Hard,1,"Which finding, if true, would most directly support/weaken [X]?�s claim/hypothesis/argument/conclusion?",Expository,,2 mins,D,A
 Diagnostic Test V2,RW,Information and Ideas,central ideas and details,13,Medium,1,Which choice best states the main idea of the text?,Argumentative,,1 min,A,D
 Diagnostic Test V2,RW,Information and Ideas,central ideas and details,14,Easy,1,"According to the text, what is true about X?",Expository,,1 min,C,A
 Diagnostic Test V2,RW,Information and Ideas,inferences,15,Medium,1,Which choice most logically completes the text?,Expository,,2 mins,B,A
@@ -24,33 +24,31 @@ Diagnostic Test V2,RW,Standard English Conventions,"form, structure, and sense",
 Diagnostic Test V2,RW,Standard English Conventions,"form, structure, and sense",23,Medium,1,Which choice completes the text so that it conforms to the conventions of Standard English?,"verb tense, apostrophe",apostrophe,1 min,C,B
 Diagnostic Test V2,RW,Expression of Ideas,transitions,24,Hard,1,Which choice completes the text with the most logical transition?,,,1 min,C,A
 Diagnostic Test V2,RW,Expression of Ideas,transitions,25,Medium,1,Which choice completes the text with the most logical transition?,,,1 min,B,D
-Diagnostic Test V2,RW,Expression of Ideas,rhetorical synthesis,26,Medium,1,[context]. Which choice most effectively uses relevant information from the notes to accomplish this goal?,,질문만 읽고도 풀리는 것,1 min,B,A
-Diagnostic Test V2,RW,Expression of Ideas,rhetorical synthesis,27,Hard,1,[context]. Which choice most effectively uses relevant information from the notes to accomplish this goal?,,지문도 읽어야 풀리는 것,1 min,B,A
-Diagnostic Test V2,Math,Algebra,Linear equations in one variable,1,Easy,1,,,일차식의 식 변형을 볼 수 있는가,1 min,A,B
-Diagnostic Test V2,Math,Problem-Solving and Data Analysis,One-variable data: Distributions and measures of center and spread,2,Easy,1,,,평균 구하기(평균 개념 적용),1 min,C,
-Diagnostic Test V2,Math,Problem-Solving and Data Analysis,"Ratios, rates, proportional relationships, and units",3,Easy,1,,,단순 비례식,1 min,C,
-Diagnostic Test V2,Math,Geometry and Trigonometry,"Lines, angles, and triangles",4,Easy,1,,,동위각,1 min,A,
-Diagnostic Test V2,Math,Algebra,Linear functions,5,Easy,1,,,y절편,1 min,C,
-Diagnostic Test V2,Math,Advanced Math,Equivalent expressions,6,Easy,1,,,기본 인수분해(easy에 가깝다고 생각),1 min,D,"A,B"
-Diagnostic Test V2,Math,Algebra,Linear equations in two variables,7,Hard,1,,,"그래프-식으로
-기울기, 절편",2 mins,A,
-Diagnostic Test V2,Math,Problem-Solving and Data Analysis,Percentages,8,Hard,1,,,"추상화를 거친다
-퍼센트, 방정식- HARD",2 mins,C,B
+Diagnostic Test V2,RW,Expression of Ideas,rhetorical synthesis,26,Medium,1,[context]. Which choice most effectively uses relevant information from the notes to accomplish this goal?,,질문�??�고???�리는 �?1 min,B,A,
+Diagnostic Test V2,RW,Expression of Ideas,rhetorical synthesis,27,Hard,1,[context]. Which choice most effectively uses relevant information from the notes to accomplish this goal?,,지문도 ?�어???�리는 �?1 min,B,A,
+Diagnostic Test V2,Math,Algebra,Linear equations in one variable,1,Easy,1,,,?�차?�의 ??변?�을 �????�는가,1 min,A,B
+Diagnostic Test V2,Math,Problem-Solving and Data Analysis,One-variable data: Distributions and measures of center and spread,2,Easy,1,,,?�균 구하�??�균 개념 ?�용),1 min,C,
+Diagnostic Test V2,Math,Problem-Solving and Data Analysis,"Ratios, rates, proportional relationships, and units",3,Easy,1,,,?�순 비�???1 min,C,,
+Diagnostic Test V2,Math,Geometry and Trigonometry,"Lines, angles, and triangles",4,Easy,1,,,?�위�?1 min,A,,
+Diagnostic Test V2,Math,Algebra,Linear functions,5,Easy,1,,,y?�편,1 min,C,
+Diagnostic Test V2,Math,Advanced Math,Equivalent expressions,6,Easy,1,,,기본 ?�수분해(easy??가깝다�??�각),1 min,D,"A,B"
+Diagnostic Test V2,Math,Algebra,Linear equations in two variables,7,Hard,1,,,그래???�으�?기울�? ?�편,2 mins,A,
+Diagnostic Test V2,Math,Problem-Solving and Data Analysis,Percentages,8,Hard,1,,,추상?��? 거친???�센?? 방정?? HARD,2 mins,C,B
 Diagnostic Test V2,Math,Problem-Solving and Data Analysis,Evaluating statistical claims: Observational studies and experiments,9,Medium,1,,,,1 min,A,
 Diagnostic Test V2,Math,Problem-Solving and Data Analysis,Inference from sample statistics and margin of error,10,Medium,1,,,,1 min,D,
-Diagnostic Test V2,Math,Geometry and Trigonometry,Area and volume,11,Medium,1,,,"말을 식으로(추상화)
-삼각형의 닮음",2 mins,D,
+Diagnostic Test V2,Math,Geometry and Trigonometry,Area and volume,11,Medium,1,,,"말을 ?�으�?추상??
+?�각?�의 ??��",2 mins,D,
 Diagnostic Test V2,Math,Algebra,Linear equations in one variable,12,Medium,1,,,,2 mins,C,
-Diagnostic Test V2,Math,Geometry and Trigonometry,Right triangles and trigonometry,13,Medium,1,,,"(논의점)구조는 EASY라고 생각하는데, 개념이 medium",1 min,B,
+Diagnostic Test V2,Math,Geometry and Trigonometry,Right triangles and trigonometry,13,Medium,1,,,(?�의??구조??EASY?�고 ?�각?�는?? 개념??medium,1 min,B,
 Diagnostic Test V2,Math,Advanced Math,Nonlinear equations in one variable and systems of equations in two variables,14,Hard,1,,,,2 mins,A,C
 Diagnostic Test V2,Math,Problem-Solving and Data Analysis,Probability and conditional probability,15,Medium,1,,,,1 min,"25/100,0.25,1/4",
 Diagnostic Test V2,Math,Algebra,Linear inequalities in one or two variables,16,Medium,1,,,,1 min,D,
-Diagnostic Test V2,Math,Algebra,Systems of two linear equations in two variables,17,Hard,1,,,"(논의점)medium이라고 생각
+Diagnostic Test V2,Math,Algebra,Systems of two linear equations in two variables,17,Hard,1,,,"(?�의??medium?�라�??�각
 
-추상화 : 목표를 위해 의도적으로 문제에서 준 조건을 수정함",2 mins,C,
-Diagnostic Test V2,Math,Advanced Math,Nonlinear functions,18,Hard,1,,,복잡해 보이는 절댓값 문제,3 mins,792,
-Diagnostic Test V2,Math,Algebra,Linear functions,19,Hard,1,,,"medium
-1차 추상화",2 mins,A,B
-Diagnostic Test V2,Math,Advanced Math,Nonlinear equations in one variable and systems of equations in two variables,20,Hard,1,,,복잡한 이차방정식,2 mins,-3,
+추상??: 목표�??�해 ?�도?�으�?문제?�서 준 조건???�정??,2 mins,C,
+Diagnostic Test V2,Math,Advanced Math,Nonlinear functions,18,Hard,1,,,복잡??보이???�댓�?문제,3 mins,792,
+Diagnostic Test V2,Math,Algebra,Linear functions,19,Hard,1,,,medium",,,
+1�?추상??,2 mins,A,B,,,,,,,,,
+Diagnostic Test V2,Math,Advanced Math,Nonlinear equations in one variable and systems of equations in two variables,20,Hard,1,,,복잡???�차방정??2 mins,,D,
 Diagnostic Test V2,Math,Algebra,Linear equations in two variables,21,Hard,1,,,medium,2 mins,"87/7,12.43,12.428,12.4",
-Diagnostic Test V2,Math,Geometry and Trigonometry,Circles,22,Hard,1,,,medium,3 mins,203,
+Diagnostic Test V2,Math,Geometry and Trigonometry,Circles,22,Hard,1,,,medium,3 mins,20,
