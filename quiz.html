@@ -8,6 +8,25 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        // MathJax 설정 개선
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            },
+            startup: {
+                pageReady: () => {
+                    console.log('MathJax is loaded and ready');
+                }
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -61,6 +80,44 @@
     <script>
     let timerStarted = false;
     let timerInterval = null;
+    
+    // HTML 엔티티를 디코딩하는 함수
+    function decodeHtmlEntities(text) {
+        if (typeof text !== 'string') return text;
+        
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = text;
+        return textarea.value;
+    }
+    
+    // 텍스트를 안전하게 HTML로 렌더링하는 함수
+    function renderTextSafely(text) {
+        if (!text) return '';
+        
+        // HTML 엔티티 디코딩
+        let decodedText = decodeHtmlEntities(text);
+        
+        // 줄바꿈을 <br>로 변환
+        decodedText = decodedText.replace(/\n/g, '<br>');
+        
+        // 추가적인 특수 문자 처리
+        // 온도 기호가 제대로 표시되도록 보장
+        decodedText = decodedText.replace(/&deg;/g, '°');
+        
+        // 콤마가 제대로 표시되도록 보장 (숫자 사이의 공백 제거)
+        decodedText = decodedText.replace(/(\d)\s+(\d{3})/g, '$1,$2');
+        
+        // 문장 내 콤마가 제대로 표시되도록 보장
+        // "word1  word2" 형태를 "word1, word2"로 변환
+        decodedText = decodedText.replace(/([a-zA-Z])\s{2,}([a-zA-Z])/g, '$1, $2');
+        
+        // 수학 수식에서 특수 문자가 제대로 표시되도록 보장
+        // LaTeX 수식 내의 특수 문자 처리
+        decodedText = decodedText.replace(/\\([a-zA-Z]+)/g, '\\\\$1');
+        
+        return decodedText;
+    }
+    
     function startTimer(duration) {
       let time = duration;
       const timerBox = document.getElementById('timerBox');
@@ -241,7 +298,7 @@
                     if(row.Passage && row.Passage.trim() !== '') {
                         const passageDiv = document.createElement('div');
                         passageDiv.className = 'passage';
-                        passageDiv.innerHTML = row.Passage.replace(/\n/g, '<br>');
+                        passageDiv.innerHTML = renderTextSafely(row.Passage);
                         qBlock.appendChild(passageDiv);
                     }
                     // Question N
@@ -252,7 +309,7 @@
                     // Question Text
                     const qTitle = document.createElement('div');
                     qTitle.className = 'question-title';
-                    qTitle.innerHTML = row.Question;
+                    qTitle.innerHTML = renderTextSafely(row.Question);
                     qBlock.appendChild(qTitle);
                     // Answer label
                     const answerLabel = document.createElement('div');
@@ -318,7 +375,7 @@
                         if(opt==='A') input.required = true;
                         label.appendChild(input);
                         const span = document.createElement('span');
-                        span.innerHTML = row['Option'+opt];
+                        span.innerHTML = renderTextSafely(row['Option'+opt]);
                         label.appendChild(span);
                         rowDiv.appendChild(label);
                         optionsDiv.appendChild(rowDiv);
@@ -374,9 +431,12 @@
                       rwPanel.appendChild(qBlock);
                     }
 
-                    // MathJax 동적 렌더링 트리거
+                    // MathJax 동적 렌더링 트리거 (특수 문자 처리 후)
                     if (window.MathJax && window.MathJax.typesetPromise) {
-                      window.MathJax.typesetPromise([qBlock]);
+                      // 특수 문자 처리가 완료된 후 MathJax 렌더링
+                      setTimeout(() => {
+                        window.MathJax.typesetPromise([qBlock]);
+                      }, 100);
                     }
                 });
                 // RW, Math 아코디언 버튼/패널을 questionsArea에 추가

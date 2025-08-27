@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특수 문자 렌더링 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .original {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .rendered {
+            background-color: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>진단 테스트 특수 문자 렌더링 테스트</h1>
+    
+    <div class="test-section">
+        <h2>1. 어퍼스트로피 (&rsquo;)</h2>
+        <div class="original">
+            <strong>원본:</strong> Longfellow&rsquo;s poem, Darwin&rsquo;s theory
+        </div>
+        <div class="rendered" id="apostrophe-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Em Dash (&mdash;)</h2>
+        <div class="original">
+            <strong>원본:</strong> outdated tropes&mdash;predictable whodunits&mdash;making them less relevant
+        </div>
+        <div class="rendered" id="emdash-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. 따옴표 (&ldquo;, &rdquo;)</h2>
+        <div class="original">
+            <strong>원본:</strong> &ldquo;The Tide Rises, The Tide Falls.&rdquo;
+        </div>
+        <div class="rendered" id="quotes-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Non-breaking Space (&nbsp;)</h2>
+        <div class="original">
+            <strong>원본:</strong> The narwhal&rsquo;s long&nbsp;spiral tusk
+        </div>
+        <div class="rendered" id="nbsp-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. 복합 예시</h2>
+        <div class="original">
+            <strong>원본:</strong> <p>William Cullen Bryant&rsquo;s poem&nbsp;<em>&ldquo;Thanatopsis&rdquo;</em> explores nature&rsquo;s role&mdash;both in life and death.</p>
+        </div>
+        <div class="rendered" id="complex-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>6. 온도 기호 (&deg;)</h2>
+        <div class="original">
+            <strong>원본:</strong> The temperature was 1 375&deg;F, which is very high.
+        </div>
+        <div class="rendered" id="temperature-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>7. 숫자와 콤마</h2>
+        <div class="original">
+            <strong>원본:</strong> The population is 1 234 567 people.
+        </div>
+        <div class="rendered" id="number-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>8. 수학 수식</h2>
+        <div class="original">
+            <strong>원본:</strong> <p>The equation below is true for some value of \( z \):</p> <p>\[ 4z - 20 = 12 \]</p>
+        </div>
+        <div class="rendered" id="math-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>9. 문장 내 콤마</h2>
+        <div class="original">
+            <strong>원본:</strong> <p>various marine species establish an _____ network of interactions: small fish seek shelter among the coral branches  larger predators patrol the outer edges  and symbiotic organisms help maintain the reef's delicate balance.</p>
+        </div>
+        <div class="rendered" id="comma-test">
+            <strong>렌더링 결과:</strong>
+        </div>
+    </div>
+
+    <script>
+        // HTML 엔티티를 디코딩하는 함수 (quiz.html과 동일)
+        function decodeHtmlEntities(text) {
+            if (typeof text !== 'string') return text;
+            
+            const textarea = document.createElement('textarea');
+            textarea.innerHTML = text;
+            return textarea.value;
+        }
+        
+        // 텍스트를 안전하게 HTML로 렌더링하는 함수 (quiz.html과 동일)
+        function renderTextSafely(text) {
+            if (!text) return '';
+            
+            // HTML 엔티티 디코딩
+            let decodedText = decodeHtmlEntities(text);
+            
+            // 줄바꿈을 <br>로 변환
+            decodedText = decodedText.replace(/\n/g, '<br>');
+            
+            // 추가적인 특수 문자 처리
+            // 온도 기호가 제대로 표시되도록 보장
+            decodedText = decodedText.replace(/&deg;/g, '°');
+            
+                    // 콤마가 제대로 표시되도록 보장 (숫자 사이의 공백 제거)
+        decodedText = decodedText.replace(/(\d)\s+(\d{3})/g, '$1,$2');
+        
+        // 문장 내 콤마가 제대로 표시되도록 보장
+        // "word1  word2" 형태를 "word1, word2"로 변환
+        decodedText = decodedText.replace(/([a-zA-Z])\s{2,}(a-zA-Z])/g, '$1, $2');
+        
+        // 수학 수식에서 특수 문자가 제대로 표시되도록 보장
+        // LaTeX 수식 내의 특수 문자 처리
+        decodedText = decodedText.replace(/\\([a-zA-Z]+)/g, '\\\\$1');
+            
+            return decodedText;
+        }
+
+        // 테스트 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. 어퍼스트로피 테스트
+            document.getElementById('apostrophe-test').innerHTML += 
+                renderTextSafely('Longfellow&rsquo;s poem, Darwin&rsquo;s theory');
+            
+            // 2. Em Dash 테스트
+            document.getElementById('emdash-test').innerHTML += 
+                renderTextSafely('outdated tropes&mdash;predictable whodunits&mdash;making them less relevant');
+            
+            // 3. 따옴표 테스트
+            document.getElementById('quotes-test').innerHTML += 
+                renderTextSafely('&ldquo;The Tide Rises, The Tide Falls.&rdquo;');
+            
+            // 4. Non-breaking Space 테스트
+            document.getElementById('nbsp-test').innerHTML += 
+                renderTextSafely('The narwhal&rsquo;s long&nbsp;spiral tusk');
+            
+            // 5. 복합 예시 테스트
+            document.getElementById('complex-test').innerHTML += 
+                renderTextSafely('<p>William Cullen Bryant&rsquo;s poem&nbsp;<em>&ldquo;Thanatopsis&rdquo;</em> explores nature&rsquo;s role&mdash;both in life and death.</p>');
+            
+            // 6. 온도 기호 테스트
+            document.getElementById('temperature-test').innerHTML += 
+                renderTextSafely('The temperature was 1 375&deg;F, which is very high.');
+            
+            // 7. 숫자와 콤마 테스트
+            document.getElementById('number-test').innerHTML += 
+                renderTextSafely('The population is 1 234 567 people.');
+            
+            // 8. 수학 수식 테스트
+            document.getElementById('math-test').innerHTML += 
+                renderTextSafely('<p>The equation below is true for some value of \\( z \\):</p> <p>\\[ 4z - 20 = 12 \\]</p>');
+            
+            // 9. 문장 내 콤마 테스트
+            document.getElementById('comma-test').innerHTML += 
+                renderTextSafely('<p>various marine species establish an _____ network of interactions: small fish seek shelter among the coral branches  larger predators patrol the outer edges  and symbiotic organisms help maintain the reef\'s delicate balance.</p>');
+        });
+    </script>
+</body>
+</html>
