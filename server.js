@@ -348,11 +348,12 @@ app.post('/submit', async (req, res) => {
           }
         }
         // 점수 계산 (SAT 스케일에 맞춰 200~800, 10점 단위 반올림)
+        // 현재 문제 수: RW 13문제, Math 12문제
         function roundToNearest10(n) {
           return Math.round(n / 10) * 10;
         }
-        const rwScore = roundToNearest10(200 + (rwCorrect / 27) * 600);
-        const mathScore = roundToNearest10(200 + (mathCorrect / 27) * 600);
+        const rwScore = roundToNearest10(200 + (rwCorrect / 13) * 600);
+        const mathScore = roundToNearest10(200 + (mathCorrect / 12) * 600);
         const totalScore = rwScore + mathScore;
         
         // --- Prepare report data ---
