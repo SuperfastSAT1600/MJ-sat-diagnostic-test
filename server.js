@@ -465,8 +465,6 @@ app.get('/report/:id', async (req, res) => {
       const domain = unit.Domain;
       const skill = unit.Skill;
       const correct = unit['Correct Answer'];
-      const trapAnswer = unit['Trap Answer'];
-      
       // questions.csv의 매핑을 사용해서 답안과 확신도 찾기
       const questionInfo = questionMap[key];
       let studentAnsRaw = '';
@@ -504,7 +502,6 @@ app.get('/report/:id', async (req, res) => {
       // answers/confidence 데이터가 없는 경우 기본값 설정
       let resultType = 'wrong';
       let isCorrect = false;
-      let isTrapAnswer = false;
       
       if (studentAns && correct) {
         // 정답 정규화 함수
@@ -528,13 +525,11 @@ app.get('/report/:id', async (req, res) => {
         const correctAnswers = String(correct).split(',').map(ans => normalizeAnswer(ans.trim()));
         const studentNorm = normalizeAnswer(studentAns);
         
-        // 정오답 및 함정 문제 판정
+        // 정오답 판정 (Trap Answer 로직 제거)
         isCorrect = correctAnswers.some(ans => ans === studentNorm);
-        isTrapAnswer = trapAnswer && String(studentAns).trim().toUpperCase() === String(trapAnswer).trim().toUpperCase();
         
-        // 결과 타입 결정: correct, trap, wrong
+        // 결과 타입 결정: correct 또는 wrong
         if (isCorrect) resultType = 'correct';
-        else if (isTrapAnswer) resultType = 'trap';
       }
       
       // 해설 찾기 (정답/확신도별)
@@ -971,19 +966,15 @@ app.get('/admin', async (req, res) => {
         const subject = unit.Section;
         const number = unit.Unit;
         const correct = unit['Correct Answer'];
-        const trapAnswer = unit['Trap Answer'];
         const studentAnsRaw = answers[key] || '';
         const studentAns = Array.isArray(studentAnsRaw) ? studentAnsRaw[0] : studentAnsRaw;
         let resultType = 'wrong';
         let isCorrect = false;
-        let isTrapAnswer = false;
         if (studentAns && correct) {
           const correctAnswers = String(correct).split(',').map(ans => normalizeAnswer(ans.trim()));
           const studentNorm = normalizeAnswer(studentAns);
           isCorrect = correctAnswers.some(ans => ans === studentNorm);
-          isTrapAnswer = trapAnswer && String(studentAns).trim().toUpperCase() === String(trapAnswer).trim().toUpperCase();
           if (isCorrect) resultType = 'correct';
-          else if (isTrapAnswer) resultType = 'trap';
         }
         return {
           subject,

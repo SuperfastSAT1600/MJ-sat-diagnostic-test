@@ -45,6 +45,10 @@ jspm_packages/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # IDE files
 .vscode/
@@ -65,7 +69,33 @@ Thumbs.db
 # Logs
 logs
 *.log
+nohup.out
+nohup-admin-dev.out
 
 # Temporary files
 tmp/
-temp/ 
+temp/
+
+# Build outputs
+dist/
+build/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Reports (generated files)
+reports/*.pdf
+
+# Database backups
+database-backup.json
+
+# Test files
+test-results/
+coverage/
+
+# Local configuration
+config.local.js
+local.env 

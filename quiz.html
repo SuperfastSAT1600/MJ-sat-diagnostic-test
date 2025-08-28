@@ -7,25 +7,142 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
-        // MathJax 설정 개선
+        // MathJax CDN 로드 상태 확인
+        window.addEventListener('load', function() {
+            console.log('🔍 페이지 로드 완료');
+            
+            // MathJax 스크립트 로드 완료를 기다림
+            const mathJaxScript = document.getElementById('MathJax-script');
+            if (mathJaxScript) {
+                mathJaxScript.addEventListener('load', function() {
+                    console.log('✅ MathJax 스크립트 로드 완료');
+                    // MathJax가 준비되면 즉시 렌더링
+                    setTimeout(() => {
+                        if (window.MathJax && window.pendingMathJaxRenders) {
+                            console.log('🔍 MathJax 준비됨, 예약된 렌더링 실행');
+                            executeAllPendingRenders();
+                        }
+                    }, 500);
+                });
+            }
+        });
+        // MathJax 설정 완전 새로 작성 (TikZ + pgfplots 지원)
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 processEscapes: true,
-                processEnvironments: true
+                processEnvironments: true,
+                packages: ['base', 'ams', 'noerrors', 'noundefined', 'tikz', 'pgfplots'],
+                macros: {
+                    // TikZ 관련 매크로 정의
+                    'tikz': '\\text{tikz}',
+                    'pgfplots': '\\text{pgfplots}',
+                    'draw': '\\text{draw}',
+                    'plot': '\\text{plot}',
+                    'axis': '\\text{axis}',
+                    'addplot': '\\text{addplot}'
+                }
             },
             options: {
                 skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
             },
             startup: {
                 pageReady: () => {
-                    console.log('MathJax is loaded and ready');
+                    console.log('✅ MathJax 즉시 렌더링 시작 (TikZ 지원)');
+                    // 모든 예약된 렌더링 즉시 실행
+                    if (window.pendingMathJaxRenders && window.pendingMathJaxRenders.length > 0) {
+                        executeAllPendingRenders();
+                    }
                 }
             }
         };
+        
+        // 간단한 MathJax 준비 확인 함수
+        function checkMathJaxReady() {
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                console.log('✅ MathJax 준비됨');
+                return true;
+            }
+            return false;
+        }
+        
+        // TikZ 코드를 LaTeX로 변환하는 함수
+        function convertTikZToLatex(tikzCode) {
+            if (!tikzCode || !tikzCode.includes('tikzpicture')) {
+                return tikzCode;
+            }
+            
+            console.log('🔍 TikZ 코드 변환 시작:', tikzCode.substring(0, 100));
+            
+            // TikZ 환경을 LaTeX로 변환
+            let latexCode = tikzCode
+                .replace(/\\begin\{tikzpicture\}/g, '\\begin{center}\\begin{tikzpicture}')
+                .replace(/\\end\{tikzpicture\}/g, '\\end{tikzpicture}\\end{center}')
+                .replace(/\\begin\{axis\}/g, '\\begin{center}\\begin{axis}')
+                .replace(/\\end\{axis\}/g, '\\end{axis}\\end{center}');
+            
+            console.log('✅ TikZ 변환 완료:', latexCode.substring(0, 100));
+            return latexCode;
+        }
+        
+        // MathJax가 준비되면 자동으로 렌더링하도록 예약하는 함수
+        function scheduleMathJaxRendering(qBlock, row) {
+            // 예약된 렌더링을 전역 배열에 저장
+            if (!window.pendingMathJaxRenders) {
+                window.pendingMathJaxRenders = [];
+            }
+            
+            window.pendingMathJaxRenders.push({ qBlock, row });
+            console.log('📝 MathJax 렌더링 예약됨:', row.Number, row.Subject);
+        }
+        
+        // 예약된 모든 렌더링을 실행하는 함수
+        function executeAllPendingRenders() {
+            if (!window.pendingMathJaxRenders || window.pendingMathJaxRenders.length === 0) {
+                console.log('🔍 예약된 렌더링이 없음');
+                return;
+            }
+            
+            console.log(`🔍 ${window.pendingMathJaxRenders.length}개의 예약된 렌더링 실행 시작`);
+            
+            window.pendingMathJaxRenders.forEach(({ qBlock, row }) => {
+                console.log('🔍 예약된 렌더링 실행:', row.Number, row.Subject);
+                
+                // LaTeX 구문 복원 및 렌더링
+                const mathElements = qBlock.querySelectorAll('p');
+                mathElements.forEach(p => {
+                    let html = p.innerHTML;
+                    html = html.replace(/&#92;&#91;/g, '\\[');
+                    html = html.replace(/&#92;&#93;/g, '\\]');
+                    html = html.replace(/&#92;&#40;/g, '\\(');
+                    html = html.replace(/&#92;&#41;/g, '\\)');
+                    html = html.replace(/&#92;cdot/g, '\\cdot');
+                    html = html.replace(/&#92;tfrac/g, '\\tfrac');
+                    html = html.replace(/&#92;frac/g, '\\frac');
+                    html = html.replace(/&#92;sqrt/g, '\\sqrt');
+                    html = html.replace(/&#92;sum/g, '\\sum');
+                    html = html.replace(/&#92;int/g, '\\int');
+                    
+                    if (html !== p.innerHTML) {
+                        console.log('🔍 예약된 LaTeX 구문 복원:', html.substring(0, 100));
+                        p.innerHTML = html;
+                    }
+                });
+                
+                window.MathJax.typesetPromise([qBlock]).then(() => {
+                    console.log('✅ 예약된 MathJax 렌더링 완료:', row.Number, row.Subject);
+                }).catch(error => {
+                    console.error('❌ 예약된 MathJax 렌더링 오류:', error);
+                });
+            });
+            
+            // 예약된 렌더링 목록 초기화
+            window.pendingMathJaxRenders = [];
+        }
     </script>
 </head>
 <body>
@@ -107,6 +224,20 @@
         // 콤마가 제대로 표시되도록 보장 (숫자 사이의 공백 제거)
         decodedText = decodedText.replace(/(\d)\s+(\d{3})/g, '$1,$2');
         
+        // LaTeX 구문을 HTML 엔티티로 변환하여 MathJax가 인식하도록 함
+        decodedText = decodedText.replace(/\\\[/g, '&#92;&#91;');
+        decodedText = decodedText.replace(/\\\]/g, '&#92;&#93;');
+        decodedText = decodedText.replace(/\\\(/g, '&#92;&#40;');
+        decodedText = decodedText.replace(/\\\)/g, '&#92;&#41;');
+        
+        // 추가 LaTeX 명령어들도 HTML 엔티티로 변환
+        decodedText = decodedText.replace(/\\cdot/g, '&#92;cdot');
+        decodedText = decodedText.replace(/\\tfrac/g, '&#92;tfrac');
+        decodedText = decodedText.replace(/\\frac/g, '&#92;frac');
+        decodedText = decodedText.replace(/\\sqrt/g, '&#92;sqrt');
+        decodedText = decodedText.replace(/\\sum/g, '&#92;sum');
+        decodedText = decodedText.replace(/\\int/g, '&#92;int');
+        
         // 문장 내 콤마가 제대로 표시되도록 보장
         // "word1  word2" 형태를 "word1, word2"로 변환
         decodedText = decodedText.replace(/([a-zA-Z])\s{2,}([a-zA-Z])/g, '$1, $2');
@@ -118,59 +249,38 @@
         return decodedText;
     }
     
+    // 타이머 위치를 아코디언 기준으로 업데이트하는 함수
+    function updateTimerPosition() {
+      const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
+      if (activePanel) {
+        const panelRect = activePanel.getBoundingClientRect();
+        const containerRect = document.querySelector('.container').getBoundingClientRect();
+        
+        // 뷰포트 기준으로 절대 위치 계산
+        const viewportLeft = panelRect.right + 20; // 아코디언 오른쪽에서 20px 떨어진 위치
+        
+        const timerBox = document.getElementById('timerBox');
+        if (timerBox) {
+          timerBox.style.left = viewportLeft + 'px';
+          timerBox.style.right = 'auto';
+        }
+      }
+    }
+
     function startTimer(duration) {
       let time = duration;
       const timerBox = document.getElementById('timerBox');
       timerBox.style.display = 'block';
       
-      // 타이머 위치를 아코디언 패널 기준으로 설정
-      function updateTimerPosition() {
-        const activePanel = document.querySelector('.accordion-panel[style*="display: block"]');
-        if (activePanel) {
-          const panelRect = activePanel.getBoundingClientRect();
-          const containerRect = document.querySelector('.container').getBoundingClientRect();
-          const maxLeft = window.innerWidth - timerBox.offsetWidth - 20; // 오른쪽 여백 20px
-          
-          // 아코디언 패널이 컨테이너 내에서 차지하는 비율을 계산
-          const panelRightRatio = (panelRect.right - containerRect.left) / containerRect.width;
-          
-          // 뷰포트 기준으로 위치 계산
-          let leftPosition = panelRect.right + 10;
-          
-          // 화면 밖으로 나가지 않도록 조정
-          if (leftPosition > maxLeft) {
-            leftPosition = maxLeft;
-          }
-          
-          // 최소 왼쪽 여백 보장
-          if (leftPosition < 20) {
-            leftPosition = 20;
-          }
-          
-          timerBox.style.left = leftPosition + 'px';
-        }
-      }
-      
-      // 초기 위치 설정
+      // 타이머를 아코디언 오른쪽에 표시
       updateTimerPosition();
+      console.log('⏰ 타이머 시작 - 아코디언 오른쪽');
       
-      // 윈도우 리사이즈 시 위치 재조정
-      window.addEventListener('resize', updateTimerPosition);
-      
-      // 스크롤 시에도 위치 재조정
+      // 스크롤 시 타이머 위치 유지
       window.addEventListener('scroll', updateTimerPosition);
       
-      // 줌 레벨 변경 감지
-      let lastZoom = window.devicePixelRatio;
-      const checkZoom = () => {
-        if (Math.abs(window.devicePixelRatio - lastZoom) > 0.1) {
-          lastZoom = window.devicePixelRatio;
-          setTimeout(updateTimerPosition, 100);
-        }
-      };
-      
-      // 줌 변경 감지를 위한 주기적 체크
-      const zoomCheckInterval = setInterval(checkZoom, 500);
+      // 윈도우 리사이즈 시 타이머 위치 업데이트
+      window.addEventListener('resize', updateTimerPosition);
       
       // 타이머 드래그 기능 추가
       makeDraggable(timerBox);
@@ -179,7 +289,10 @@
         if (time < 0) {
           timerBox.textContent = '시간 종료';
           clearInterval(timerInterval);
-          clearInterval(zoomCheckInterval);
+          
+          // 이벤트 리스너 제거
+          window.removeEventListener('scroll', updateTimerPosition);
+          window.removeEventListener('resize', updateTimerPosition);
           return;
         }
         const h = String(Math.floor(time / 3600)).padStart(2, '0');
@@ -198,7 +311,24 @@
             header: true,
             skipEmptyLines: true,
             complete: function(results) {
-                const data = results.data.filter(row => row.Question);
+                console.log('🔍 CSV 파싱 결과:', results);
+                console.log('📊 전체 데이터 개수:', results.data.length);
+                
+                const data = results.data.filter(row => row.Question || row.Subject === 'Math');
+                console.log('✅ Question이 있는 데이터 개수:', data.length);
+                
+                // Math 문제만 따로 확인
+                const mathProblems = data.filter(row => row.Subject === 'Math');
+                console.log('🎯 Math 문제 개수:', mathProblems.length);
+                mathProblems.forEach((row, idx) => {
+                    console.log(`Math ${idx + 1}:`, row.Number, row.Subject, row.QuestionType, 'Question:', row.Question ? '있음' : '없음');
+                });
+                
+                // 필터링된 모든 데이터 확인
+                console.log('🔍 필터링된 모든 데이터:');
+                data.forEach((row, idx) => {
+                    console.log(`${idx + 1}:`, row.Number, row.Subject, row.QuestionType, 'Question:', row.Question ? '있음' : '없음');
+                });
                 const questionsArea = document.getElementById('questions-area');
                 // Number(문제 번호) 기준으로 오름차순 정렬
                 data.sort(function(a, b) {
@@ -219,12 +349,27 @@
                 rwPanel.style.display = 'none';
                 rwPanel.style.position = 'relative';
                 
-                // 타이머를 RW 패널에 추가
+                // 타이머를 body에 직접 추가 (문제 영역 옆에 보이도록)
                 const timerBox = document.createElement('div');
                 timerBox.className = 'timer-box';
                 timerBox.id = 'timerBox';
                 timerBox.style.display = 'none';
-                rwPanel.appendChild(timerBox);
+                timerBox.style.position = 'fixed';
+                timerBox.style.top = '100px';
+                timerBox.style.left = 'auto';
+                timerBox.style.right = '20px';
+                timerBox.style.zIndex = '1000';
+                timerBox.style.background = 'rgba(7, 27, 233, 0.9)';
+                timerBox.style.color = 'white';
+                timerBox.style.padding = '20px 30px';
+                timerBox.style.borderRadius = '12px';
+                timerBox.style.fontSize = '24px';
+                timerBox.style.fontWeight = 'bold';
+                timerBox.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.2)';
+                timerBox.style.border = '3px solid rgba(255, 255, 255, 0.3)';
+                timerBox.style.minWidth = '200px';
+                timerBox.style.textAlign = 'center';
+                document.body.appendChild(timerBox);
                 // RW 아코디언 버튼에 펼침/접힘 기호 추가
                 let rwOpen = false;
                 const updateRwHeader = () => {
@@ -246,9 +391,10 @@
                     }
                   });
                   
-                  if (rwOpen && !timerStarted) {
-                    timerStarted = true;
-                    startTimer(3600);
+                  if (rwOpen) {
+                    startTimerIfFirst('RW');
+                    // 타이머 위치를 RW 패널 기준으로 업데이트
+                    updateTimerPosition();
                   }
                 });
 
@@ -280,9 +426,10 @@
                     }
                   });
                   
-                  if (mathOpen && !timerStarted) {
-                    timerStarted = true;
-                    startTimer(3600);
+                  if (mathOpen) {
+                    startTimerIfFirst('Math');
+                    // 타이머 위치를 Math 패널 기준으로 업데이트
+                    updateTimerPosition();
                   }
                 });
 
@@ -290,6 +437,14 @@
                     const qNum = row.Number || (idx + 1);
                     const qBlock = document.createElement('div');
                     qBlock.className = 'question-block';
+                    
+                    // 디버깅: 모든 문제 정보 확인
+                    console.log('문제 로드:', row.Number, 'Subject:', row.Subject, 'Type:', row.QuestionType);
+                    
+                    // Math 문제 특별 확인
+                    if (row.Subject === 'Math') {
+                        console.log('🎯 Math 문제 발견:', row.Number, row.Subject, row.Question);
+                    }
                     
                     // 문제 타입 확인
                     const questionType = row.QuestionType || 'multiple_choice';
@@ -425,25 +580,122 @@
                     qBlock.appendChild(confBtns);
 
                     // Subject 컬럼 기준으로 분류
+                    console.log('🔍 문제 분류:', row.Number, 'Subject:', row.Subject, 'Type:', typeof row.Subject, 'Length:', row.Subject ? row.Subject.length : 0);
+                    
                     if (row.Subject && row.Subject.trim() === 'Math') {
+                      console.log('✅ Math 패널에 추가:', row.Number);
                       mathPanel.appendChild(qBlock);
                     } else {
+                      console.log('📚 RW 패널에 추가:', row.Number);
                       rwPanel.appendChild(qBlock);
                     }
 
                     // MathJax 동적 렌더링 트리거 (특수 문자 처리 후)
-                    if (window.MathJax && window.MathJax.typesetPromise) {
-                      // 특수 문자 처리가 완료된 후 MathJax 렌더링
+                    if (checkMathJaxReady()) {
+                      // MathJax가 준비된 경우 즉시 렌더링
                       setTimeout(() => {
-                        window.MathJax.typesetPromise([qBlock]);
+                        try {
+                          console.log('🔍 MathJax 렌더링 시작:', row.Number, row.Subject);
+                          
+                                              // LaTeX 구문을 강제로 복원하여 MathJax가 인식하도록 함
+                    const mathElements = qBlock.querySelectorAll('p');
+                    mathElements.forEach(p => {
+                        let html = p.innerHTML;
+                        // HTML 엔티티를 다시 LaTeX 구문으로 복원
+                        html = html.replace(/&#92;&#91;/g, '\\[');
+                        html = html.replace(/&#92;&#93;/g, '\\]');
+                        html = html.replace(/&#92;&#40;/g, '\\(');
+                        html = html.replace(/&#92;&#41;/g, '\\)');
+                        html = html.replace(/&#92;cdot/g, '\\cdot');
+                        html = html.replace(/&#92;tfrac/g, '\\tfrac');
+                        html = html.replace(/&#92;frac/g, '\\frac');
+                        html = html.replace(/&#92;sqrt/g, '\\sqrt');
+                        html = html.replace(/&#92;sum/g, '\\sum');
+                        html = html.replace(/&#92;int/g, '\\int');
+                        
+                        // TikZ 코드 변환 적용
+                        html = convertTikZToLatex(html);
+                        
+                        if (html !== p.innerHTML) {
+                            console.log('🔍 LaTeX 구문 복원 + TikZ 변환:', html.substring(0, 100));
+                            p.innerHTML = html;
+                        }
+                    });
+                          
+                          window.MathJax.typesetPromise([qBlock]).then(() => {
+                            console.log('✅ MathJax 렌더링 완료:', row.Number, row.Subject);
+                          }).catch(error => {
+                            console.error('❌ MathJax 렌더링 오류:', error);
+                          });
+                        } catch (error) {
+                          console.error('❌ MathJax typesetPromise 오류:', error);
+                        }
                       }, 100);
+                    } else {
+                      // MathJax가 준비되지 않은 경우 예약
+                      scheduleMathJaxRendering(qBlock, row);
                     }
                 });
+                // 통합 타이머 시작 함수
+                function startTimerIfFirst(accordionType) {
+                  if (!timerStarted) {
+                    timerStarted = true;
+                    console.log(`⏰ ${accordionType} 아코디언에서 타이머 시작 (30분)`);
+                    startTimer(1800); // 30분 (1800초)
+                  } else {
+                    console.log(`⏰ 타이머가 이미 실행 중입니다 (${accordionType} 아코디언)`);
+                  }
+                }
+                
                 // RW, Math 아코디언 버튼/패널을 questionsArea에 추가
                 questionsArea.insertBefore(rwHeader, questionsArea.firstChild);
                 questionsArea.insertBefore(rwPanel, rwHeader.nextSibling);
                 questionsArea.insertBefore(mathHeader, rwPanel.nextSibling);
                 questionsArea.insertBefore(mathPanel, mathHeader.nextSibling);
+                
+                // Math 패널 상태 확인
+                console.log('🔍 Math 패널 상태 확인:');
+                console.log('Math 패널 자식 요소 개수:', mathPanel.children.length);
+                console.log('Math 패널 내용:', mathPanel.innerHTML);
+                
+                // RW 패널 상태 확인
+                console.log('🔍 RW 패널 상태 확인:');
+                console.log('RW 패널 자식 요소 개수:', rwPanel.children.length);
+                
+                // 모든 문제 로드 후 MathJax 재렌더링
+                setTimeout(() => {
+                    if (window.MathJax && window.MathJax.typesetPromise) {
+                        console.log('🔍 전체 페이지 MathJax 재렌더링 시작');
+                        
+                        // 전체 페이지에서 LaTeX 구문을 강제로 복원
+                        const allMathElements = document.querySelectorAll('p');
+                        allMathElements.forEach(p => {
+                            let html = p.innerHTML;
+                            // HTML 엔티티를 다시 LaTeX 구문으로 복원
+                            html = html.replace(/&#92;&#91;/g, '\\[');
+                            html = html.replace(/&#92;&#93;/g, '\\]');
+                            html = html.replace(/&#92;&#40;/g, '\\(');
+                            html = html.replace(/&#92;&#41;/g, '\\)');
+                            html = html.replace(/&#92;cdot/g, '\\cdot');
+                            html = html.replace(/&#92;tfrac/g, '\\tfrac');
+                            html = html.replace(/&#92;frac/g, '\\frac');
+                            html = html.replace(/&#92;sqrt/g, '\\sqrt');
+                            html = html.replace(/&#92;sum/g, '\\sum');
+                            html = html.replace(/&#92;int/g, '\\int');
+                            
+                            if (html !== p.innerHTML) {
+                                console.log('🔍 전체 페이지 LaTeX 구문 복원:', html.substring(0, 100));
+                                p.innerHTML = html;
+                            }
+                        });
+                        
+                        window.MathJax.typesetPromise().then(() => {
+                            console.log('✅ 전체 페이지 MathJax 렌더링 완료');
+                        }).catch(error => {
+                            console.error('❌ 전체 페이지 MathJax 렌더링 오류:', error);
+                        });
+                    }
+                }, 800);
                 
                 // 초기 상태에서 숨겨진 패널의 required 속성 제거
                 const hiddenInputs = document.querySelectorAll('.accordion-panel[style*="display: none"] input[required]');
