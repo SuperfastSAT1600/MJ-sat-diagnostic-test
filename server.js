@@ -551,7 +551,7 @@ app.get('/report/:id', async (req, res) => {
       const rationale = rationaleDb.find(r => r.Section === subject && r.Unit === number && r.Answer === studentAns && String(r.Confidence) === String(conf));
       questionRows.push({
         key, subject, number, domain, skill, studentAns: String(studentAns), conf: String(conf),
-        correct: String(correct), trapAnswer: String(trapAnswer), isCorrect, isTrapAnswer, resultType,
+        correct: String(correct), isCorrect, resultType,
         difficulty: unit.Difficulty, rationale: rationale ? rationale['Question Rationale'] : ''
       });
     }
@@ -695,35 +695,7 @@ app.get('/report/:id', async (req, res) => {
       });
     });
 
-    // RW와 Math Difficulty Insight 분리
-    const rwQuestions = questionRows.filter(q => q.subject === 'RW');
-    const mathQuestions = questionRows.filter(q => q.subject === 'Math');
-    
-    const rwDifficultyInsight = ['easy', 'medium', 'hard'].map(diff => {
-      const total = rwQuestions.filter(q => q.difficulty?.toLowerCase() === diff).length;
-      const correct = rwQuestions.filter(q => q.difficulty?.toLowerCase() === diff && q.resultType === 'correct').length;
-      const trap = rwQuestions.filter(q => q.difficulty?.toLowerCase() === diff && q.resultType === 'trap').length;
-      const percent = total > 0 ? Math.round(((correct + trap * 0.5) / total) * 100) : 0;
-      let bgColor = diff === 'easy' ? '#d4edda' : diff === 'medium' ? '#fff3cd' : '#f8d7da';
-      return {
-        label: diff.charAt(0).toUpperCase() + diff.slice(1),
-        percent,
-        bgColor
-      };
-    });
-    
-    const mathDifficultyInsight = ['easy', 'medium', 'hard'].map(diff => {
-      const total = mathQuestions.filter(q => q.difficulty?.toLowerCase() === diff).length;
-      const correct = mathQuestions.filter(q => q.difficulty?.toLowerCase() === diff && q.resultType === 'correct').length;
-      const trap = mathQuestions.filter(q => q.difficulty?.toLowerCase() === diff && q.resultType === 'trap').length;
-      const percent = total > 0 ? Math.round(((correct + trap * 0.5) / total) * 100) : 0;
-      let bgColor = diff === 'easy' ? '#d4edda' : diff === 'medium' ? '#fff3cd' : '#f8d7da';
-      return {
-        label: diff.charAt(0).toUpperCase() + diff.slice(1),
-        percent,
-        bgColor
-      };
-    });
+
 
     // 최신 리포트 템플릿 읽기
     let html = await fs.readFile('live_report.html', 'utf-8');
@@ -739,9 +711,7 @@ app.get('/report/:id', async (req, res) => {
       questionRows,
       domainSkillRows,
       rwSkillsInsight,
-      mathSkillsInsight,
-      rwDifficultyInsight,
-      mathDifficultyInsight
+      mathSkillsInsight
     };
     // 로그 추가
     console.log('resultData:', resultData);
@@ -1015,7 +985,7 @@ app.get('/admin', async (req, res) => {
       <tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>RW</th><th>Math</th><th>Submitted At</th><th>Report</th></tr>
 `;
     dbWithLiveScore.slice().reverse().forEach(r => {
-      html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.rwScore || ''}</td><td>${r.mathScore || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
+      html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.rwScore || ''}</td><td>${r.mathScore || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
     });
     html += '</table>';
     res.send(html);
@@ -1052,7 +1022,7 @@ app.get('/admin/search', async (req, res) => {
     let html = `<h3>Search Results (${uniqueResults.length})</h3><table border="1" cellpadding="6" style="border-collapse:collapse;font-size:1em;">`;
     html += '<tr><th>Code</th><th>Name</th><th>Grade</th><th>Score</th><th>Submitted At</th><th>Report</th></tr>';
     uniqueResults.forEach(r => {
-        html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString() : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
+        html += `<tr><td>${r.code || ''}</td><td>${r.studentName || ''}</td><td>${r.studentGrade || ''}</td><td>${r.score || ''}</td><td>${r.createdAt ? new Date(r.createdAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }) : ''}</td><td><a href="/report/${r.id}" target="_blank">View Report</a></td></tr>`;
     });
     html += '</table>';
     html += `<p><a href="/admin?password=${password}">← Back to Admin</a></p>`;

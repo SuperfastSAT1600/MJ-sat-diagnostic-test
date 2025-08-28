@@ -220,61 +220,7 @@
             from { width: 0%; }
             to { width: var(--target-width); }
         }
-        .score-board {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f7f9fb;
-            border-radius: 12px;
-            padding: 20px 0;
-            margin: 32px 20px 24px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-        .score-section {
-            flex: 1;
-            text-align: center;
-        }
-        .score-section:not(:last-child) {
-            border-right: 1px solid #e0e4ea;
-        }
-        .score-label {
-            font-size: 1rem;
-            color: #6c7a89;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .score-value {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #071BE9;
-            letter-spacing: 1px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        .score-value.rw, .score-value.math {
-            color: #232b3b;
-            font-size: 1.8rem;
-        }
-        .score-value.countup {
-            animation: countUp 2s ease-out forwards;
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes countUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
 
         /* Question Results Section */
         .question-results-section {
@@ -350,26 +296,7 @@
                 padding: 0 15px;
             }
             
-            .score-board {
-                flex-direction: column;
-                gap: 15px;
-                margin: 20px 15px;
-                padding: 15px 0;
-            }
-            
-            .score-section:not(:last-child) {
-                border-right: none;
-                border-bottom: 1px solid #e0e4ea;
-                padding-bottom: 15px;
-            }
-            
-            .score-value {
-                font-size: 2rem;
-            }
-            
-            .score-value.rw, .score-value.math {
-                font-size: 1.6rem;
-            }
+
             
             .insight-section {
                 flex-direction: column;
@@ -431,18 +358,7 @@
                 padding: 0 10px;
             }
             
-            .score-board {
-                margin: 15px 10px;
-                padding: 10px 0;
-            }
-            
-            .score-value {
-                font-size: 1.8rem;
-            }
-            
-            .score-value.rw, .score-value.math {
-                font-size: 1.4rem;
-            }
+
             
             .insight-section {
                 margin: 15px 10px 0 10px;
@@ -496,20 +412,7 @@
             </div>
         </div>
         <div class="main-title">Your Diagnostic Test Report</div>
-        <div class="score-board">
-            <div class="score-section">
-                <div class="score-label">TOTAL SCORE</div>
-                <div class="score-value" id="total-score">0</div>
-            </div>
-            <div class="score-section">
-                <div class="score-label">RW</div>
-                <div class="score-value rw" id="rw-score">0</div>
-            </div>
-            <div class="score-section">
-                <div class="score-label">Math</div>
-                <div class="score-value math" id="math-score">0</div>
-            </div>
-        </div>
+
 
         <!-- RW & Math Insights Section -->
         <div class="insight-section">
@@ -522,12 +425,7 @@
                         <!-- RW skills will be populated here -->
                     </ul>
                 </div>
-                <div class="difficulty-section">
-                    <div class="difficulty-title">Difficulty Insight</div>
-                    <div id="rw-difficulty-list">
-                        <!-- RW difficulty will be populated here -->
-                    </div>
-                </div>
+
             </div>
             
             <!-- Math Insights Card -->
@@ -539,12 +437,7 @@
                         <!-- Math skills will be populated here -->
                     </ul>
                 </div>
-                <div class="difficulty-section">
-                    <div class="difficulty-title">Difficulty Insight</div>
-                    <div id="math-difficulty-list">
-                        <!-- Math difficulty will be populated here -->
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -579,58 +472,9 @@
     document.getElementById('testDateValue').innerText = reportData.testDate || '-';
     document.getElementById('codeValue').innerText = reportData.code || '-';
     
-    // 카운트업 애니메이션 함수
-    function animateCountUp(element, targetValue, duration = 2000) {
-        const startValue = 0;
-        const startTime = performance.now();
-        
-        function updateCount(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // easeOutQuart 함수로 자연스러운 감속
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOutQuart);
-            
-            element.innerText = currentValue;
-            
-            if (progress < 1) {
-                requestAnimationFrame(updateCount);
-            } else {
-                element.innerText = targetValue;
-            }
-        }
-        
-        requestAnimationFrame(updateCount);
-    }
+
     
-    // 점수 애니메이션 시작
-    const totalScore = parseInt(reportData.score) || 0;
-    const rwScore = parseInt(reportData.rwScore) || 0;
-    const mathScore = parseInt(reportData.mathScore) || 0;
-    
-    // 각 점수 요소에 애니메이션 적용
-    const totalScoreElement = document.getElementById('total-score');
-    const rwScoreElement = document.getElementById('rw-score');
-    const mathScoreElement = document.getElementById('math-score');
-    
-    // 초기값 설정
-    totalScoreElement.innerText = '0';
-    rwScoreElement.innerText = '0';
-    mathScoreElement.innerText = '0';
-    
-    // 순차적으로 애니메이션 시작
-    setTimeout(() => {
-        animateCountUp(totalScoreElement, totalScore, 2000);
-    }, 500);
-    
-    setTimeout(() => {
-        animateCountUp(rwScoreElement, rwScore, 1500);
-    }, 1000);
-    
-    setTimeout(() => {
-        animateCountUp(mathScoreElement, mathScore, 1500);
-    }, 1500);
+
 
     // Render RW Skills Insight
     function renderSkillsInsight(skillsInsight, targetId) {
@@ -651,34 +495,7 @@
         `).join('');
     }
 
-    // Render Difficulty Insight
-    function renderDifficultyInsight(difficultyInsight, targetId) {
-        const container = document.getElementById(targetId);
-        if (!difficultyInsight || difficultyInsight.length === 0) {
-            container.innerHTML = '<div>No difficulty data available</div>';
-            return;
-        }
-        
-        container.innerHTML = difficultyInsight.map(diff => `
-            <div class="difficulty-item">
-                <span class="difficulty-label">${diff.label}</span>
-                <span class="bar-bg" style="background:#e0e0e0;">
-                    <span class="bar-fill" style="--target-width: ${diff.percent}%;" data-percent="${diff.percent}"></span>
-                </span>
-                <b>${diff.percent}%</b>
-            </div>
-        `).join('');
-        
-        // 애니메이션 시작
-        setTimeout(() => {
-            const bars = container.querySelectorAll('.bar-fill');
-            bars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.classList.add('animate');
-                }, index * 200); // 각 막대마다 200ms 지연
-            });
-        }, 500); // 페이지 로드 후 500ms 지연
-    }
+
 
     // Render RW/Math tables
     function renderQuestionsTable(questions, targetId) {
@@ -711,11 +528,9 @@
 
     // Render all data
     if (window.REPORT_DATA_JSON) {
-        // Render Skills and Difficulty Insights
+        // Render Skills Insights
         renderSkillsInsight(reportData.rwSkillsInsight, 'rw-skills-list');
         renderSkillsInsight(reportData.mathSkillsInsight, 'math-skills-list'); // Math도 동적 렌더링
-        renderDifficultyInsight(reportData.rwDifficultyInsight, 'rw-difficulty-list');
-        renderDifficultyInsight(reportData.mathDifficultyInsight, 'math-difficulty-list');
         
         // Render question tables
         const rwQuestions = reportData.questionRows.filter(q => q.subject === 'RW');
