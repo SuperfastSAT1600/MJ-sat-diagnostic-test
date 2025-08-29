@@ -180,7 +180,8 @@
                     <p style="margin: 0 0 5px 0; color: #555; font-weight: 700; text-decoration: underline;">You must select both Confidence Rating and Answer to submit properly. Please check all items to quickly receive your diagnostic results. We receive many inquiries from students who cannot click the submit button because they did not select all required items.</p>
                     <ul style="margin: 0; padding-left: 20px; color: #555;">
                         <li style="margin-bottom: 10px;">Please do not use GPT or any AI tools during this diagnostic test. Understanding what you need to study is much more valuable than getting a high score on this test.</li>
-                        <li style="margin-bottom: 0;">Havent studied for the SAT yet or worried about not improving your scores? Don't worry! SuperfastSAT is here to fully support your SAT success.</li>
+                        <li style="margin-bottom: 10px;">Havent studied for the SAT yet or worried about not improving your scores? Don't worry! SuperfastSAT is here to fully support your SAT success.</li>
+                        <li style="margin-bottom: 0;">⏰ <strong>Timer starts when you click the subject button.</strong> Please be prepared before starting.</li>
                     </ul>
                 </div>
 
@@ -314,7 +315,7 @@
                 console.log('🔍 CSV 파싱 결과:', results);
                 console.log('📊 전체 데이터 개수:', results.data.length);
                 
-                const data = results.data.filter(row => row.Question || row.Subject === 'Math');
+                const data = results.data.filter(row => (row.Question && row.Question.trim() !== '') || (row.Subject && row.Subject.trim() !== ''));
                 console.log('✅ Question이 있는 데이터 개수:', data.length);
                 
                 // Math 문제만 따로 확인
@@ -454,6 +455,9 @@
                         const passageDiv = document.createElement('div');
                         passageDiv.className = 'passage';
                         passageDiv.innerHTML = renderTextSafely(row.Passage);
+                        
+
+                        
                         qBlock.appendChild(passageDiv);
                     }
                     // Question N
@@ -465,6 +469,9 @@
                     const qTitle = document.createElement('div');
                     qTitle.className = 'question-title';
                     qTitle.innerHTML = renderTextSafely(row.Question);
+                    
+
+                    
                     qBlock.appendChild(qTitle);
                     // Answer label
                     const answerLabel = document.createElement('div');
@@ -559,21 +566,79 @@
                         label.style.border = '1.5px solid #e5e8f0';
                         label.style.borderRadius = '6px';
                         label.style.padding = '4px 12px';
-                        label.style.background = '#fff';
-                        label.style.transition = 'background 0.2s, color 0.2s, border 0.2s';
+                        label.style.background = '#ffffff';
+                        label.style.transition = 'background 0.2s, color 0.2s, border 0.2s, font-weight 0.2s';
+                        label.style.position = 'relative';
+                        label.style.boxShadow = 'none';
+                        label.style.outline = 'none';
                         const input = document.createElement('input');
                         input.type = 'radio';
                         input.name = 'c' + row.Subject + qNum;
                         input.value = val;
-                        input.style.marginRight = '6px';
-                        input.style.accentColor = '#071BE9';
+                        input.style.marginRight = '0px';
+                        input.style.accentColor = 'transparent';
+                        input.style.position = 'absolute';
+                        input.style.opacity = '0';
+                        input.style.pointerEvents = 'none';
                         if(i===0) input.required = true;
+                        
+                        // Confidence Rating 버튼 클릭 이벤트 추가
+                        input.addEventListener('change', function() {
+                            console.log('Confidence Rating 버튼 클릭됨:', this.value);
+                            
+                            // 모든 confidence 버튼의 스타일 초기화
+                            const allLabels = confBtns.querySelectorAll('label');
+                            allLabels.forEach(l => {
+                                l.style.background = '#ffffff';
+                                l.style.color = '#333333';
+                                l.style.border = '1.5px solid #e5e8f0';
+                                l.style.fontWeight = 'normal';
+                                l.style.boxShadow = 'none';
+                                l.style.outline = 'none';
+                                
+                                // span 요소의 스타일도 초기화
+                                const span = l.querySelector('span');
+                                if (span) {
+                                    span.style.color = '#333333';
+                                    span.style.fontWeight = 'normal';
+                                }
+                            });
+                            
+                            // 선택된 버튼 스타일 변경
+                            if (this.checked) {
+                                console.log('선택된 버튼 스타일 변경:', this.value);
+                                label.style.background = '#071BE9';
+                                label.style.color = '#ffffff';
+                                label.style.border = 'none !important';
+                                label.style.borderWidth = '0px !important';
+                                label.style.borderStyle = 'none !important';
+                                label.style.borderColor = 'transparent !important';
+                                label.style.fontWeight = 'bold';
+                                label.style.boxShadow = 'none';
+                                label.style.outline = 'none';
+                                label.style.setProperty('border', 'none', 'important');
+                                label.style.setProperty('border-width', '0px', 'important');
+                                label.style.setProperty('border-style', 'none', 'important');
+                                label.style.setProperty('border-color', 'transparent', 'important');
+                                
+                                // span 요소의 색상도 변경
+                                const span = label.querySelector('span');
+                                if (span) {
+                                    span.style.color = '#ffffff';
+                                    span.style.fontWeight = 'bold';
+                                }
+                            }
+                        });
+                        
                         label.appendChild(input);
                         const span = document.createElement('span');
                         span.textContent = val + '%';
                         span.style.display = 'inline-block';
                         span.style.width = '100%';
                         span.style.textAlign = 'center';
+                        span.style.color = '#333333';
+                        span.style.fontWeight = 'normal';
+                        span.style.transition = 'color 0.2s, font-weight 0.2s';
                         label.appendChild(span);
                         confBtns.appendChild(label);
                     });

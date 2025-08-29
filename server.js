@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
+const fsSync = require('fs');
+const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const { parse } = require('csv-parse');
 const CSV_PARSE = require('csv-parse');
@@ -14,7 +16,51 @@ const DB_PATH = path.join(__dirname, 'database.json');
 const REPORTS_DIR = path.join(__dirname, 'reports');
 
 // 2. Middleware Configuration
+
+// multer 설정 - 이미지 업로드용
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const imagesDir = path.join(__dirname, 'images');
+    // images 폴더가 없으면 생성
+    if (!fsSync.existsSync(imagesDir)) {
+      fsSync.mkdirSync(imagesDir, { recursive: true });
+    }
+    cb(null, imagesDir);
+  },
+  filename: function (req, file, cb) {
+    // 파일명: 타임스탬프_원본파일명
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    // 이미지 파일만 허용
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('이미지 파일만 업로드 가능합니다.'), false);
+    }
+  },
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5MB 제한
+  }
+});
+
 app.use((req, res, next) => {
+  // CORS 설정 추가
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  // OPTIONS 요청 처리
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+    return;
+  }
+  
   // landing.html은 정적으로 서빙하지 않음
   if (req.path === '/landing.html') {
     return next();
@@ -23,7 +69,7 @@ app.use((req, res, next) => {
 });
 app.use('/images', express.static(path.join(__dirname, 'images'))); // images 폴더 static 서빙 추가
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json({ limit: '2mb' })); // JSON 파싱 미들웨어 추가
+app.use(express.json({ limit: '50mb' })); // JSON 파싱 미들웨어 추가 (이미지 업로드용)
 
 // 3. DB Read/Write Helper Functions
 const readDB = async () => {
@@ -48,6 +94,45 @@ const generateCode = () => {
     }
     return code;
 };
+
+// HTML 콘텐츠 정리 함수
+function cleanHtmlContent(htmlContent) {
+  if (!htmlContent || typeof htmlContent !== 'string') return '';
+
+  // base64 이미지를 제거하고 텍스트만 유지
+  let cleaned = htmlContent.replace(
+    /<img[^>]+src=["']data:image\/[^"']+["'][^>]*>/gi,
+    '[이미지]'
+  );
+
+  // 일반 이미지 태그는 보존 (실제 이미지 파일 URL)
+  // cleaned = cleaned.replace(
+  //   /<img[^>]+src=["'][^"']+["'][^>]*>/gi,
+  //   '[이미지]'
+  // );
+
+  // HTML 태그 제거 (이미지 태그 제외)
+  cleaned = cleaned.replace(/<(?!img)[^>]*>/gi, '');
+
+  // HTML 엔티티 디코딩
+  cleaned = cleaned.replace(/&amp;/g, '&');
+  cleaned = cleaned.replace(/&lt;/g, '<');
+  cleaned = cleaned.replace(/&gt;/g, '>');
+  cleaned = cleaned.replace(/&quot;/g, '"');
+  cleaned = cleaned.replace(/&#39;/g, "'");
+  cleaned = cleaned.replace(/&ldquo;/g, '"');
+  cleaned = cleaned.replace(/&rdquo;/g, '"');
+  cleaned = cleaned.replace(/&mdash;/g, '—');
+  cleaned = cleaned.replace(/&ndash;/g, '–');
+
+  // 줄바꿈을 공백으로 변환 (CSV 호환성)
+  cleaned = cleaned.replace(/\n/g, ' ');
+
+  // 연속된 공백을 하나로 정리
+  cleaned = cleaned.replace(/\s+/g, ' ');
+
+  return cleaned.trim();
+}
 
 // CSV 파일 파싱 함수 (Promise)
 async function parseCsvFile(filePath) {
@@ -803,6 +888,25 @@ app.get('/api/questions', async (req, res) => {
   }
 });
 
+// 이미지 업로드 API
+app.post('/api/upload-image', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: '이미지 파일이 없습니다.' });
+    }
+    
+    const imageUrl = `/images/${req.file.filename}`;
+    res.json({ 
+      success: true, 
+      url: imageUrl,
+      filename: req.file.filename
+    });
+  } catch (error) {
+    console.error('이미지 업로드 실패:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // 문제 추가 API
 app.post('/api/questions', async (req, res) => {
   try {
@@ -832,11 +936,11 @@ app.post('/api/questions', async (req, res) => {
     // 새 문제 행 추가
     const newRow = [
       number,
-      stem.replace(/\n/g, ' '),
-      prompt.replace(/\n/g, ' '),
+      cleanHtmlContent(stem),
+      cleanHtmlContent(prompt),
       // 4개 선택지 컬럼을 모두 채우기
       ...(questionType === 'multiple_choice' 
-        ? choices.map(c => c.replace(/\n/g, ' '))
+        ? choices.map(c => cleanHtmlContent(c))
         : ['', '', '', ''] // 주관식은 선택지 컬럼을 비워둠
       ),
       questionType === 'multiple_choice' ? String.fromCharCode(65 + answer) : (choices.length > 0 ? choices.join('|') : ''),

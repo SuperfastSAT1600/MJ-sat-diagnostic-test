@@ -114,7 +114,48 @@ function App() {
       'table', 'lists', 'link', 'image', 'code'
     ],
     toolbar:
-      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | table | code'
+      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | table | image | code',
+    // 이미지 업로드 설정 - 메인 서버로 변경
+    images_upload_url: 'http://localhost:3000/api/upload-image',
+    images_upload_handler: function (blobInfo: any) {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('image', blobInfo.blob(), blobInfo.filename());
+        
+        fetch('http://localhost:3000/api/upload-image', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            resolve(result.url);
+          } else {
+            reject('Image upload failed');
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+      });
+    },
+    // 이미지 관련 설정
+    image_title: true,
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    // HTML 정리 설정
+    cleanup: true,
+    verify_html: true,
+    // 줄바꿈 처리
+    forced_root_block: 'p',
+    remove_linebreaks: false,
+    convert_newlines_to_brs: true,
+    // 이미지 크기 조정
+    image_advtab: true,
+    image_dimensions: true,
+    image_class_list: [
+      {title: 'Responsive', value: 'img-fluid'}
+    ]
   };
 
   return (

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 업로드 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .upload-area { border: 2px dashed #ccc; padding: 20px; text-align: center; margin: 20px 0; }
+        .result { margin: 20px 0; padding: 10px; background: #f0f0f0; }
+        img { max-width: 300px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>이미지 업로드 테스트</h1>
+    
+    <div class="upload-area">
+        <input type="file" id="imageInput" accept="image/*">
+        <button onclick="uploadImage()">업로드</button>
+    </div>
+    
+    <div class="result" id="result">
+        결과가 여기에 표시됩니다.
+    </div>
+    
+    <div id="imagePreview"></div>
+
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('이미지를 선택해주세요.');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', file);
+            
+            try {
+                const response = await fetch('/api/upload-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Upload result:', result);
+                
+                document.getElementById('result').innerHTML = `
+                    <strong>업로드 성공!</strong><br>
+                    파일명: ${result.filename}<br>
+                    URL: ${result.url}
+                `;
+                
+                // 이미지 미리보기
+                document.getElementById('imagePreview').innerHTML = `
+                    <h3>업로드된 이미지:</h3>
+                    <img src="${result.url}" alt="업로드된 이미지">
+                `;
+                
+            } catch (error) {
+                console.error('Upload error:', error);
+                document.getElementById('result').innerHTML = `
+                    <strong>업로드 실패!</strong><br>
+                    오류: ${error.message}
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
