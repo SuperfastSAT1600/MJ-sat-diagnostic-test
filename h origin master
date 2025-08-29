@@ -1,0 +1,5 @@
+[33mff76c4c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m Add timer notice to diagnostic test page
+[33m879511a[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Unit DB Domain 이름 수정
+[33m6eed63e[m 한국시간 기준 시간 표시 수정 및 Difficulty Insight/점수 영역 제거
+[33me136e91[m Fix Firebase data extraction: ensure all Math (1-12) and RW (1-13) questions are properly mapped and saved
+[33m8d4e562[m Fix Math 5 question and update scoring algorithm for current question count (RW: 13, Math: 12)
