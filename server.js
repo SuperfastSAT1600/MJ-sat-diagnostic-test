@@ -105,14 +105,23 @@ function cleanHtmlContent(htmlContent) {
     '[이미지]'
   );
 
+  // TinyMCE 등에서 생성되는 underline 스타일 span을 <u>로 변환
+  // style="text-decoration: underline" 또는 text-decoration:underline 모두 대응
+  cleaned = cleaned.replace(/<span([^>]*?)style=["'][^"']*text-decoration\s*:\s*underline[^"']*["']([^>]*)>([\s\S]*?)<\/span>/gi, '<u>$3</u>');
+
+  // i, b를 em, strong으로 정규화 (선택적)
+  cleaned = cleaned.replace(/<i>([\s\S]*?)<\/i>/gi, '<em>$1</em>');
+  cleaned = cleaned.replace(/<b>([\s\S]*?)<\/b>/gi, '<strong>$1</strong>');
+
   // 일반 이미지 태그는 보존 (실제 이미지 파일 URL)
   // cleaned = cleaned.replace(
   //   /<img[^>]+src=["'][^"']+["'][^>]*>/gi,
   //   '[이미지]'
   // );
 
-  // HTML 태그 제거 (이미지 태그 제외)
-  cleaned = cleaned.replace(/<(?!img)[^>]*>/gi, '');
+  // HTML 태그 제거 (허용 태그만 보존)
+  // 허용: img, u, em, strong, i, b, sub, sup, br, p
+  cleaned = cleaned.replace(/<(?!\/?(?:img|u|em|strong|i|b|sub|sup|br|p)\b)[^>]*>/gi, '');
 
   // HTML 엔티티 디코딩
   cleaned = cleaned.replace(/&amp;/g, '&');
@@ -127,6 +136,11 @@ function cleanHtmlContent(htmlContent) {
 
   // 줄바꿈을 공백으로 변환 (CSV 호환성)
   cleaned = cleaned.replace(/\n/g, ' ');
+
+  // 잘못된 인코딩으로 생긴 특수문자(�, ?� 등) 교정
+  // 흔한 패턴: ?� -> — (emdash) 또는 : (콜론) 전후 문맥에 따라. 안전하게 하이픈으로 대체.
+  cleaned = cleaned.replace(/\?�/g, ' — ');
+  cleaned = cleaned.replace(/�/g, '—');
 
   // 연속된 공백을 하나로 정리
   cleaned = cleaned.replace(/\s+/g, ' ');
@@ -817,6 +831,9 @@ app.get('/report/:id', async (req, res) => {
 // questions.csv를 UTF-8로 제공하는 라우트
 app.get('/questions.csv', (req, res) => {
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.sendFile(path.join(__dirname, 'questions.csv'));
 });
 

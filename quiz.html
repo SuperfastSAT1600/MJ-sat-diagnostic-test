@@ -236,6 +236,10 @@
         
         // HTML 엔티티 디코딩
         let decodedText = decodeHtmlEntities(text);
+
+        // 모지바케 교정: �, ?� 등 비표준 치환
+        decodedText = decodedText.replace(/\?�/g, ' — ');
+        decodedText = decodedText.replace(/�/g, '—');
         
         // 줄바꿈을 <br>로 변환
         decodedText = decodedText.replace(/\n/g, '<br>');

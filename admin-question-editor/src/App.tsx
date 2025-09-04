@@ -24,7 +24,7 @@ function App() {
   const [openAccordion, setOpenAccordion] = useState<{ RW: boolean; Math: boolean }>({ RW: true, Math: false });
 
   useEffect(() => {
-    fetch('/api/questions')
+    fetch('http://localhost:3000/api/questions?t=' + Date.now())
       .then(res => res.json())
       .then(data => {
         console.log('=== Received question list from frontend ===');
@@ -72,7 +72,7 @@ function App() {
       subject,
       questionType
     };
-    const res = await fetch('/api/questions', {
+    const res = await fetch('http://localhost:3000/api/questions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -80,7 +80,7 @@ function App() {
     if (res.ok) {
       alert('Question saved!');
       // Immediately refresh question list
-      fetch('/api/questions')
+      fetch('http://localhost:3000/api/questions?t=' + Date.now())
         .then(res => res.json())
         .then(data => setQuestions(data));
     } else {
